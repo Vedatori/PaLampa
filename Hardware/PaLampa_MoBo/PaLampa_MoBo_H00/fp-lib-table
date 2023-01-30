@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "PaLampa_Library")(type "KiCad")(uri "${KIPRJMOD}/../../PaLampa_Library/PaLampa_Library.pretty")(options "")(descr ""))
+)
