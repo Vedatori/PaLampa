@@ -56,12 +56,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        "items_not_allowed|63246000|23368000|ddb018b1-0631-46b1-be76-fad039fa736c|00000000-0000-0000-0000-000000000000",
-        "silk_over_copper|0|10200000|b06d0f18-c7c1-4973-8806-d4fa87df5412|cee83100-5339-4444-a0e0-400901ef6b03",
-        "silk_over_copper|0|800000|b06d0f18-c7c1-4973-8806-d4fa87df5412|4c63dc87-76af-4910-8c5f-4ad2245538c9",
-        "track_dangling|76327000|19177000|86a71071-7a4a-4d9d-8e85-6bd6553660b8|00000000-0000-0000-0000-000000000000"
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -448,7 +443,7 @@
   "net_settings": {
     "classes": [
       {
-        "bus_width": 12.0,
+        "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
@@ -462,11 +457,11 @@
         "track_width": 0.25,
         "via_diameter": 0.8,
         "via_drill": 0.4,
-        "wire_width": 6.0
+        "wire_width": 6
       }
     ],
     "meta": {
-      "version": 2
+      "version": 3
     },
     "net_colors": null,
     "netclass_assignments": null,
