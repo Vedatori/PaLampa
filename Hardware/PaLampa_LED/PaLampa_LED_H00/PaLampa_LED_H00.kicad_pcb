@@ -12632,7 +12632,7 @@
       (stroke (width 0.1) (type solid)) (layer "B.Fab") (tstamp 32f509b5-c0ae-4c26-9fff-2186dfe27310))
     (fp_line (start 13.28 5.1) (end 13.28 -12.72)
       (stroke (width 0.1) (type solid)) (layer "B.Fab") (tstamp 411b66cb-e6ad-4337-a01f-1680a83cf217))
-    (pad "1" thru_hole roundrect (at 0 0 90) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (roundrect_rratio 0.147059)
+    (pad "1" thru_hole roundrect (at 0 0 90) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (roundrect_rratio 0.1470588235)
       (net 67 "WARM_ANODE") (pinfunction "Pin_1") (pintype "passive") (tstamp 6bc55dae-e767-4922-9be7-023b636636d6))
     (pad "2" thru_hole circle (at 2.54 0 90) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask")
       (net 52 "WARM_CATHODE") (pinfunction "Pin_2") (pintype "passive") (tstamp 0588cf35-6841-479a-b795-ba7bed039741))
