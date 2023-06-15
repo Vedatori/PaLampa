@@ -495,7 +495,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "PaLampa_MoBo_H00.step",
+      "step": "PaLampa_MoBo_H01.step",
       "vrml": ""
     },
     "page_layout_descr_file": "${KICAD_USER_TEMPLATE_DIR}/kicad sheet optimized.kicad_wks"
