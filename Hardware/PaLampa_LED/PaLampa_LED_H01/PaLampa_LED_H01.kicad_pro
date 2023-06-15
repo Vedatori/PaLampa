@@ -437,7 +437,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "PaLampa_LED_H00.kicad_pro",
+    "filename": "PaLampa_LED_H01.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -473,7 +473,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "PaLampa_LED_H00.step",
+      "step": "PaLampa_LED_H01.step",
       "vrml": ""
     },
     "page_layout_descr_file": "${KICAD_USER_TEMPLATE_DIR}/kicad sheet optimized.kicad_wks"

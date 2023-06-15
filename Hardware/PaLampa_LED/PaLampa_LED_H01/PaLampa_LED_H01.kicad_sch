@@ -5,6 +5,59 @@
   (paper "A4")
 
   (lib_symbols
+    (symbol "Connector_Generic:Conn_01x03" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 5.08 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "Conn_01x03" (at 0 -5.08 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "~" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "connector" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "Connector*:*_1x??_*" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "Conn_01x03_1_1"
+        (rectangle (start -1.27 -2.413) (end 0 -2.667)
+          (stroke (width 0.1524) (type default))
+          (fill (type none))
+        )
+        (rectangle (start -1.27 0.127) (end 0 -0.127)
+          (stroke (width 0.1524) (type default))
+          (fill (type none))
+        )
+        (rectangle (start -1.27 2.667) (end 0 2.413)
+          (stroke (width 0.1524) (type default))
+          (fill (type none))
+        )
+        (rectangle (start -1.27 3.81) (end 1.27 -3.81)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+        (pin passive line (at -5.08 2.54 0) (length 3.81)
+          (name "Pin_1" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at -5.08 0 0) (length 3.81)
+          (name "Pin_2" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at -5.08 -2.54 0) (length 3.81)
+          (name "Pin_3" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "Connector_Generic:Conn_02x04_Odd_Even" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 1.27 5.08 0)
         (effects (font (size 1.27 1.27)))
@@ -432,6 +485,117 @@
         (circle (center 0 0) (radius 1.27)
           (stroke (width 1.27) (type default))
           (fill (type none))
+        )
+      )
+    )
+    (symbol "Sensor_Temperature:DS18B20" (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -3.81 6.35 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "DS18B20" (at 6.35 6.35 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at -25.4 -6.35 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf" (at -3.81 6.35 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "OneWire 1Wire Dallas Maxim" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Programmable Resolution 1-Wire Digital Thermometer TO-92" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "TO*92*" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "DS18B20_0_1"
+        (rectangle (start -5.08 5.08) (end 5.08 -5.08)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+        (circle (center -3.302 -2.54) (radius 1.27)
+          (stroke (width 0.254) (type default))
+          (fill (type outline))
+        )
+        (rectangle (start -2.667 -1.905) (end -3.937 0)
+          (stroke (width 0.254) (type default))
+          (fill (type outline))
+        )
+        (arc (start -2.667 3.175) (mid -3.302 3.8073) (end -3.937 3.175)
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy -3.937 0.635)
+            (xy -3.302 0.635)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy -3.937 1.27)
+            (xy -3.302 1.27)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy -3.937 1.905)
+            (xy -3.302 1.905)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy -3.937 2.54)
+            (xy -3.302 2.54)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy -3.937 3.175)
+            (xy -3.937 0)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy -3.937 3.175)
+            (xy -3.302 3.175)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy -2.667 3.175)
+            (xy -2.667 0)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "DS18B20_1_1"
+        (pin power_in line (at 0 -7.62 90) (length 2.54)
+          (name "GND" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin bidirectional line (at 7.62 0 180) (length 2.54)
+          (name "DQ" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+        (pin power_in line (at 0 7.62 270) (length 2.54)
+          (name "V_{DD}" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
         )
       )
     )
@@ -8470,19 +8634,17 @@
     )
   )
 
-  (junction (at 208.28 52.07) (diameter 0) (color 0 0 0 0)
-    (uuid 73e7302b-832c-4b1d-89d9-ef60b7da7336)
+  (junction (at 172.72 52.07) (diameter 0) (color 0 0 0 0)
+    (uuid 453fc287-6968-4d87-85e7-5399ef9b7179)
   )
 
-  (no_connect (at 248.92 130.81) (uuid 1db59c08-d5d0-4b1a-bb98-f8d483882848))
-
+  (wire (pts (xy 168.91 52.07) (xy 172.72 52.07))
+    (stroke (width 0) (type default))
+    (uuid 0b25d8c4-e019-47fd-9225-a4d82d82d05e)
+  )
   (wire (pts (xy 80.01 130.81) (xy 88.9 130.81))
     (stroke (width 0) (type default))
     (uuid 0b8c8fab-d054-4f33-add5-ced411f789ea)
-  )
-  (wire (pts (xy 208.28 52.07) (xy 208.28 50.8))
-    (stroke (width 0) (type default))
-    (uuid 1435a01f-7b9c-4a26-9a97-6bcd1cc3df3d)
   )
   (wire (pts (xy 152.4 130.81) (xy 161.29 130.81))
     (stroke (width 0) (type default))
@@ -8492,7 +8654,7 @@
     (stroke (width 0) (type default))
     (uuid 23b6cf47-d3a2-481b-a57e-c78e531d71a4)
   )
-  (wire (pts (xy 208.28 52.07) (xy 190.5 52.07))
+  (wire (pts (xy 208.28 50.8) (xy 190.5 50.8))
     (stroke (width 0) (type default))
     (uuid 2610ec7c-8bd5-45b6-abb2-14f21e6032ad)
   )
@@ -8507,6 +8669,14 @@
   (wire (pts (xy 152.4 102.87) (xy 161.29 102.87))
     (stroke (width 0) (type default))
     (uuid 311b5f89-b4f3-450b-9d08-f50767b69fb2)
+  )
+  (wire (pts (xy 172.72 53.34) (xy 172.72 52.07))
+    (stroke (width 0) (type default))
+    (uuid 32b2f4a0-c319-47c3-9238-faa70e0491e2)
+  )
+  (wire (pts (xy 267.97 123.19) (xy 267.97 127))
+    (stroke (width 0) (type default))
+    (uuid 42d29fe1-aa38-4055-8c6b-e5f9b870f7fb)
   )
   (wire (pts (xy 80.01 102.87) (xy 88.9 102.87))
     (stroke (width 0) (type default))
@@ -8524,11 +8694,7 @@
     (stroke (width 0) (type default))
     (uuid 5ea618c6-dbd6-4b8f-91b3-3b9200a83a4d)
   )
-  (wire (pts (xy 208.28 53.34) (xy 208.28 52.07))
-    (stroke (width 0) (type default))
-    (uuid 7022c3ce-8711-4ee1-b7b7-8b3a45769ee8)
-  )
-  (wire (pts (xy 190.5 52.07) (xy 190.5 57.15))
+  (wire (pts (xy 190.5 50.8) (xy 190.5 57.15))
     (stroke (width 0) (type default))
     (uuid 749cb06f-9892-47fe-a4b3-5e83476bc343)
   )
@@ -8539,6 +8705,10 @@
   (wire (pts (xy 59.69 130.81) (xy 64.77 130.81))
     (stroke (width 0) (type default))
     (uuid 77959935-6247-4961-a287-db59b5a37503)
+  )
+  (wire (pts (xy 208.28 53.34) (xy 172.72 53.34))
+    (stroke (width 0) (type default))
+    (uuid 7a3264d1-2a35-4e8a-b726-a17f8baa6e7e)
   )
   (wire (pts (xy 128.27 102.87) (xy 137.16 102.87))
     (stroke (width 0) (type default))
@@ -8556,6 +8726,10 @@
     (stroke (width 0) (type default))
     (uuid 8fe9c7c9-a10a-4d2c-979c-8e2c5e63719a)
   )
+  (wire (pts (xy 261.62 133.35) (xy 260.35 133.35))
+    (stroke (width 0) (type default))
+    (uuid 93fcf201-4878-4b3f-b263-5fd5af796134)
+  )
   (wire (pts (xy 224.79 130.81) (xy 233.68 130.81))
     (stroke (width 0) (type default))
     (uuid a49605b2-6272-417f-bc8e-22d9523be2ae)
@@ -8564,6 +8738,10 @@
     (stroke (width 0) (type default))
     (uuid a832c99d-5a68-4546-b890-8e8875a01656)
   )
+  (wire (pts (xy 248.92 130.81) (xy 261.62 130.81))
+    (stroke (width 0) (type default))
+    (uuid bcd22a24-9b75-44e7-af10-513912f2bd43)
+  )
   (wire (pts (xy 69.85 62.23) (xy 69.85 73.66))
     (stroke (width 0) (type default))
     (uuid cd29b64c-2c24-4faa-8af0-31db54404915)
@@ -8571,6 +8749,10 @@
   (wire (pts (xy 104.14 102.87) (xy 113.03 102.87))
     (stroke (width 0) (type default))
     (uuid d126de4e-6b62-4090-80f4-dfaceaf9a62d)
+  )
+  (wire (pts (xy 260.35 133.35) (xy 260.35 127))
+    (stroke (width 0) (type default))
+    (uuid d257fd74-1089-42be-8c1e-bf16a4994e60)
   )
   (wire (pts (xy 259.08 116.84) (xy 59.69 116.84))
     (stroke (width 0) (type default))
@@ -8591,6 +8773,10 @@
   (wire (pts (xy 200.66 130.81) (xy 209.55 130.81))
     (stroke (width 0) (type default))
     (uuid e586b2df-e2a8-4e1f-8eeb-4e1ed7ef64f0)
+  )
+  (wire (pts (xy 260.35 127) (xy 267.97 127))
+    (stroke (width 0) (type default))
+    (uuid ed9702bd-567b-4550-910b-21d6eb8d5ab2)
   )
 
   (global_label "WARM_CATHODE" (shape input) (at 69.85 67.31 180) (fields_autoplaced)
@@ -8687,7 +8873,7 @@
     (pin "3" (uuid fb1811aa-c704-4c61-8acf-42c5048c8420))
     (pin "4" (uuid 621dfff2-3e43-4213-ac78-f2491c24356f))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS1") (unit 1)
         )
@@ -8712,7 +8898,7 @@
     )
     (pin "1" (uuid 9e20c2ba-09c0-4854-9dfa-e85f1bf24e89))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR019") (unit 1)
         )
@@ -8743,7 +8929,7 @@
     (pin "3" (uuid ff547ea2-8217-479c-8555-927c92cffcf2))
     (pin "4" (uuid b135568f-4601-414a-88ba-6562e555dfa0))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS3") (unit 1)
         )
@@ -8768,7 +8954,7 @@
     )
     (pin "1" (uuid c6e76026-833e-4d15-a148-4de7f4f537f6))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR049") (unit 1)
         )
@@ -8797,7 +8983,7 @@
     (pin "1" (uuid 976954b7-6a99-4f4a-959d-50f2c55e618b))
     (pin "2" (uuid 876db419-b292-431e-975f-5b58f65bf7cc))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS16") (unit 1)
         )
@@ -8827,7 +9013,7 @@
     (pin "2" (uuid da7670e8-11e2-4e4f-8c51-f39596f39609))
     (pin "3" (uuid aaabf392-1009-4c38-808b-ccc4657559b4))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW4") (unit 1)
         )
@@ -8857,7 +9043,7 @@
     (pin "2" (uuid 389615a7-e27f-4ac8-88f6-7c2bd89785fd))
     (pin "3" (uuid ec89cf9a-30c2-4933-8604-4a09774ef523))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW13") (unit 1)
         )
@@ -8886,7 +9072,7 @@
     (pin "1" (uuid 8b4c7bba-6d53-4468-b7d3-1b9c6c8c9c13))
     (pin "2" (uuid afe3197a-e25d-449f-896e-74f8f7e01184))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS3") (unit 1)
         )
@@ -8916,7 +9102,7 @@
     (pin "2" (uuid a8ce5f3e-f36c-4920-ace2-6402bcc6ffe0))
     (pin "3" (uuid 3d52f3e8-df3f-4842-9de6-d6249dcf2b8e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW7") (unit 1)
         )
@@ -8941,7 +9127,7 @@
     )
     (pin "1" (uuid 02df4016-096c-4170-86fd-d4ee29a5e5bd))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR08") (unit 1)
         )
@@ -8966,7 +9152,7 @@
     )
     (pin "1" (uuid 9dfd4a6b-3176-49fb-ada9-66185d42eba0))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR054") (unit 1)
         )
@@ -8995,7 +9181,7 @@
     (pin "1" (uuid f820e007-2300-47a9-a4b1-60f1662773ff))
     (pin "2" (uuid ca236f04-8bfb-4433-92f8-35fa63c750e1))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS6") (unit 1)
         )
@@ -9024,7 +9210,7 @@
     (pin "1" (uuid f3cdc420-b357-4380-9a97-74b0f1e91297))
     (pin "2" (uuid 0b78d520-ec30-4c2a-b5a1-b51ff29768f3))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS11") (unit 1)
         )
@@ -9049,7 +9235,7 @@
     )
     (pin "1" (uuid 049b23ce-d6b4-42fb-9ea3-3b7b8606bec3))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR024") (unit 1)
         )
@@ -9074,7 +9260,7 @@
     )
     (pin "1" (uuid f2feb0ff-03c4-4f99-9a36-6c0c4ce774a3))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR051") (unit 1)
         )
@@ -9103,7 +9289,7 @@
     (pin "1" (uuid 4a10b8d8-b346-4a76-b782-cde9b8a93087))
     (pin "2" (uuid 885dea66-5f8f-4d3b-a1c0-7eca8ef6741c))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "C1") (unit 1)
         )
@@ -9133,7 +9319,7 @@
     (pin "2" (uuid 29d43eb9-1bbf-49a7-83d8-2a142e537957))
     (pin "3" (uuid f6b61c9c-39f4-4201-b46e-8ad67ac979b9))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW8") (unit 1)
         )
@@ -9158,7 +9344,7 @@
     )
     (pin "1" (uuid eade2401-7775-404e-8a3a-e74f546cad79))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR046") (unit 1)
         )
@@ -9183,7 +9369,7 @@
     )
     (pin "1" (uuid 54bf055d-8b1a-48a3-9f49-44e22c9cb2e7))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR045") (unit 1)
         )
@@ -9208,7 +9394,7 @@
     )
     (pin "1" (uuid 2c46e4b8-1f28-4dd2-9eae-3d7f763ae1d5))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR038") (unit 1)
         )
@@ -9239,7 +9425,7 @@
     (pin "3" (uuid 8b45a850-4dda-46f9-ba17-136fdd67d25f))
     (pin "4" (uuid fd356a7c-801c-4ea3-9803-483f0ff68295))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS14") (unit 1)
         )
@@ -9270,7 +9456,7 @@
     (pin "3" (uuid 3a724181-c874-4677-9e7c-dc7ea48e16b9))
     (pin "4" (uuid 880ec900-36b3-4d3a-8376-28d1e36c0451))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS10") (unit 1)
         )
@@ -9295,7 +9481,7 @@
     )
     (pin "1" (uuid debf4ef1-dfec-4a8d-ac5a-1af6d641ce7b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR058") (unit 1)
         )
@@ -9325,9 +9511,34 @@
     (pin "2" (uuid 66984198-3a64-4b70-84f6-04d8775be7ee))
     (pin "3" (uuid 44fdcad3-9cee-4525-95e3-650a30a555c3))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW6") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 161.29 59.69 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 30a85349-01d2-4b75-83fe-0c8f66e71f60)
+    (property "Reference" "#PWR067" (at 161.29 66.04 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 161.29 64.1334 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 161.29 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 161.29 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid a5aaf192-33df-46c9-b5e7-f49eaf853ad8))
+    (instances
+      (project "PaLampa_LED_H01"
+        (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
+          (reference "#PWR067") (unit 1)
         )
       )
     )
@@ -9350,7 +9561,7 @@
     )
     (pin "1" (uuid c2f0a795-7365-4c1b-be71-1e8b283eb0dc))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR050") (unit 1)
         )
@@ -9374,7 +9585,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "H2") (unit 1)
         )
@@ -9399,7 +9610,7 @@
     )
     (pin "1" (uuid c3b4ca2a-6e32-4bb1-9877-96275fd99f9c))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR064") (unit 1)
         )
@@ -9429,7 +9640,7 @@
     (pin "2" (uuid 2e1957c9-1ca8-46f7-996b-b08627eaf3d2))
     (pin "3" (uuid 06eadd31-07fc-4e1c-bfea-27a3401c0a6b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW2") (unit 1)
         )
@@ -9459,7 +9670,7 @@
     (pin "2" (uuid 5fd6e22a-55a8-4ff8-a39f-0380036c96ae))
     (pin "3" (uuid 5ca4a558-65b2-4cdb-9eae-96d579d043d8))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW12") (unit 1)
         )
@@ -9484,7 +9695,7 @@
     )
     (pin "1" (uuid 4a78adc0-9705-4241-b44b-1bcc60a4e4d1))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR036") (unit 1)
         )
@@ -9514,7 +9725,7 @@
     (pin "2" (uuid 8c9885a6-224a-4d32-91ee-22f07aacacec))
     (pin "3" (uuid e32f3ffe-7447-41f4-8512-cdafaed15881))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW6") (unit 1)
         )
@@ -9539,9 +9750,38 @@
     )
     (pin "1" (uuid 8e7c3485-5363-4175-82ad-cecd297fdd04))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR044") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R") (at 172.72 48.26 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 3f6da58b-95b0-4991-af1d-67fdf32babde)
+    (property "Reference" "R2" (at 174.498 47.6163 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "4K7" (at 174.498 49.5373 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 170.942 48.26 90)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 172.72 48.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "LCSC" "C25900" (at 172.72 48.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid e5b8f7fb-ca73-4a63-997a-eb10b79986fd))
+    (pin "2" (uuid e57474a0-ff08-4118-8ada-32a9c8f3ebf1))
+    (instances
+      (project "PaLampa_LED_H01"
+        (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
+          (reference "R2") (unit 1)
         )
       )
     )
@@ -9564,7 +9804,7 @@
     )
     (pin "1" (uuid 25edb3c8-a034-41ef-96b0-d66d74953546))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR042") (unit 1)
         )
@@ -9594,7 +9834,7 @@
     (pin "2" (uuid 66e1625c-3ac6-4529-b395-72e255dfa259))
     (pin "3" (uuid 437c7605-7c03-4ea2-98d3-b3140d5b39c9))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW2") (unit 1)
         )
@@ -9619,7 +9859,7 @@
     )
     (pin "1" (uuid 45991791-7ebc-4fab-9892-6262ee346b54))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR04") (unit 1)
         )
@@ -9644,7 +9884,7 @@
     )
     (pin "1" (uuid 4cc8c53d-c7af-4099-b4ac-4698f30d0b76))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR022") (unit 1)
         )
@@ -9674,7 +9914,7 @@
     (pin "2" (uuid 6e5bac4d-add5-42da-abc3-246bf900d0c3))
     (pin "3" (uuid 47f85f02-a501-420b-99e4-478168c0dac4))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW11") (unit 1)
         )
@@ -9698,7 +9938,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "H3") (unit 1)
         )
@@ -9727,7 +9967,7 @@
     (pin "1" (uuid a1f4ae4e-7206-46c0-a26e-557b6613f495))
     (pin "2" (uuid fae3fcab-6f56-4eb9-9159-5eab4c388224))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "C2") (unit 1)
         )
@@ -9752,9 +9992,34 @@
     )
     (pin "1" (uuid 5513dc06-f0f1-4d4b-b969-d6eecd14d2dd))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR0104") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+5V") (at 267.97 123.19 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 53716d84-1ef9-4597-b8d1-4acd767f841b)
+    (property "Reference" "#PWR071" (at 267.97 127 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+5V" (at 267.97 119.6142 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 267.97 123.19 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 267.97 123.19 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 1e8fd55d-8b10-4fef-a6c8-717589f53b2f))
+    (instances
+      (project "PaLampa_LED_H01"
+        (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
+          (reference "#PWR071") (unit 1)
         )
       )
     )
@@ -9777,7 +10042,7 @@
     )
     (pin "1" (uuid 0016ebf9-3a05-4ceb-8899-a9de64015a0e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR062") (unit 1)
         )
@@ -9802,7 +10067,7 @@
     )
     (pin "1" (uuid 7dd8d70d-d3d9-43c1-aaa3-bef72a3bd28e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR025") (unit 1)
         )
@@ -9819,14 +10084,14 @@
     (property "Value" "Vedatori_logo" (at 251.46 177.353 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Footprint" "PaLampa_Library:Vedatori_15mm" (at 251.46 173.99 0)
+    (property "Footprint" "PaLampa_Library:VedatoriNew_40x5,7mm" (at 251.46 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 251.46 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "G2") (unit 1)
         )
@@ -9850,7 +10115,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "H4") (unit 1)
         )
@@ -9880,7 +10145,7 @@
     (pin "2" (uuid 4cf98a09-d6bb-4536-8285-86fce6dce551))
     (pin "3" (uuid daff5c2c-5918-408a-bfaa-487787283178))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW15") (unit 1)
         )
@@ -9911,7 +10176,7 @@
     (pin "3" (uuid d3dc0d65-98c3-4ce7-8f8c-77e7805be54a))
     (pin "4" (uuid 8533785d-c8d2-4173-b7e9-bc6b53785a4f))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS5") (unit 1)
         )
@@ -9936,7 +10201,7 @@
     )
     (pin "1" (uuid b3f2c419-f7c3-4221-bbd0-6298fde3718b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR039") (unit 1)
         )
@@ -9965,7 +10230,7 @@
     (pin "1" (uuid 9239b713-bc49-4eb0-86f1-564c78e8a421))
     (pin "2" (uuid 08df6a66-30f7-4758-850e-a34356c0737b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS9") (unit 1)
         )
@@ -9995,7 +10260,7 @@
     (pin "2" (uuid cf9ebb09-b5e2-41a9-9ab2-04a55ae4d39b))
     (pin "3" (uuid 33d82654-8473-44cb-8495-8288be366bee))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW9") (unit 1)
         )
@@ -10026,9 +10291,34 @@
     (pin "3" (uuid 7abfaa3a-5016-4928-a059-8cc8193384e1))
     (pin "4" (uuid ff9d95df-4525-4171-afc9-077c5ac946c1))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS8") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+5V") (at 172.72 44.45 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 6cf32691-caea-4b4f-b6e0-6b8acf8bc767)
+    (property "Reference" "#PWR069" (at 172.72 48.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+5V" (at 172.72 40.8742 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 172.72 44.45 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 172.72 44.45 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 60955ed6-6411-4cd1-a187-9aae26ddb18e))
+    (instances
+      (project "PaLampa_LED_H01"
+        (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
+          (reference "#PWR069") (unit 1)
         )
       )
     )
@@ -10051,7 +10341,7 @@
     )
     (pin "1" (uuid 53a33f7a-ed99-4a24-831a-842d1f366979))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR0103") (unit 1)
         )
@@ -10076,7 +10366,7 @@
     )
     (pin "1" (uuid cfbecde2-2c19-441f-93a9-8f1e40b48ff5))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR03") (unit 1)
         )
@@ -10101,7 +10391,7 @@
     )
     (pin "1" (uuid 2d579202-d262-448f-9092-ffe4bc540e32))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR037") (unit 1)
         )
@@ -10130,7 +10420,7 @@
     (pin "1" (uuid d7e191cb-69e5-4293-9c84-01901f64721e))
     (pin "2" (uuid 08bbcd0c-317e-46e8-86b9-2ae2b4a69272))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS15") (unit 1)
         )
@@ -10155,7 +10445,7 @@
     )
     (pin "1" (uuid 5dad2043-c6d7-4862-aae4-83ee4e48c836))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR0102") (unit 1)
         )
@@ -10184,7 +10474,7 @@
     (pin "1" (uuid 04909194-c704-46f2-868b-a36fda820a8d))
     (pin "2" (uuid caad7dd7-718e-416d-a6f2-233784b9dae7))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS7") (unit 1)
         )
@@ -10213,7 +10503,7 @@
     (pin "1" (uuid 1b9717f8-ca99-4fd6-a1e2-712898912244))
     (pin "2" (uuid aa23db9e-930c-413e-8c3f-8c6894a34086))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS2") (unit 1)
         )
@@ -10238,7 +10528,7 @@
     )
     (pin "1" (uuid acda48d3-f217-4052-97bf-bf1f67c8016a))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR060") (unit 1)
         )
@@ -10263,7 +10553,7 @@
     )
     (pin "1" (uuid 9930efc1-d2e0-42b4-858a-eebca0e7d317))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR052") (unit 1)
         )
@@ -10288,7 +10578,7 @@
     )
     (pin "1" (uuid eac91437-df7f-4cd5-b20f-6a8bc43cf996))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR0105") (unit 1)
         )
@@ -10313,7 +10603,7 @@
     )
     (pin "1" (uuid cd67edd7-4af1-48a1-81e9-f8e63e411e0b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR0106") (unit 1)
         )
@@ -10338,7 +10628,7 @@
     )
     (pin "1" (uuid 74473255-8e0c-4fd0-918a-39a24a4c2b52))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR017") (unit 1)
         )
@@ -10363,7 +10653,7 @@
     )
     (pin "1" (uuid 86202e04-1364-4256-b09a-d3847f0ec59b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR041") (unit 1)
         )
@@ -10394,7 +10684,7 @@
     (pin "3" (uuid a3c2ba0a-ed75-494e-9aba-d56e8fa086a9))
     (pin "4" (uuid f6cf19bd-1180-47eb-9c8d-2ff241aa5ab0))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS16") (unit 1)
         )
@@ -10418,7 +10708,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "H1") (unit 1)
         )
@@ -10449,7 +10739,7 @@
     (pin "3" (uuid ad8a0df2-1690-42fd-af13-23bcc9236f87))
     (pin "4" (uuid 5300016d-cb3f-4c80-a30b-201cedc1feb2))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS13") (unit 1)
         )
@@ -10474,9 +10764,34 @@
     )
     (pin "1" (uuid 0a4e90d4-0f88-4b4a-9e6d-8f4f59b42181))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR059") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 261.62 135.89 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 96c81a84-4cef-4ca8-9dd3-2aef3b566428)
+    (property "Reference" "#PWR070" (at 261.62 142.24 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 261.62 140.3334 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 261.62 135.89 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 261.62 135.89 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 1b5ec135-bfc0-4ee9-8174-c4440b5ff129))
+    (instances
+      (project "PaLampa_LED_H01"
+        (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
+          (reference "#PWR070") (unit 1)
         )
       )
     )
@@ -10499,7 +10814,7 @@
     )
     (pin "1" (uuid 750da8c3-fc2c-4a50-943b-473759dfc96e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR015") (unit 1)
         )
@@ -10529,7 +10844,7 @@
     (pin "2" (uuid 57af5520-ae6f-4521-98e9-a7a52393969d))
     (pin "3" (uuid 39e5dd6d-4e85-4668-aa8e-347aa424a84e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW14") (unit 1)
         )
@@ -10554,7 +10869,7 @@
     )
     (pin "1" (uuid 0a0bc96f-07e2-429d-bd2c-9fa4cbcd0ee9))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR05") (unit 1)
         )
@@ -10579,7 +10894,7 @@
     )
     (pin "1" (uuid 8811f908-347c-4b45-b44b-b9834fff0be1))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR021") (unit 1)
         )
@@ -10604,7 +10919,7 @@
     )
     (pin "1" (uuid 1265576a-d37d-4132-a375-ddbbc93d7bd7))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR056") (unit 1)
         )
@@ -10633,7 +10948,7 @@
     (pin "1" (uuid 985bfe05-afaa-4395-9857-4357d4f6b0ac))
     (pin "2" (uuid 21b93eb6-cf05-47d3-a065-ff6ec8a7b989))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS13") (unit 1)
         )
@@ -10658,7 +10973,7 @@
     )
     (pin "1" (uuid 1c55b8fd-d1bd-4c02-bd38-d2f62e61ebfe))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR063") (unit 1)
         )
@@ -10683,7 +10998,7 @@
     )
     (pin "1" (uuid e188a8b9-e5c6-451c-a910-ad61b92553bb))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR061") (unit 1)
         )
@@ -10708,7 +11023,7 @@
     )
     (pin "1" (uuid 264acc57-3b8e-4754-974f-2be9afea4c2a))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR01") (unit 1)
         )
@@ -10733,7 +11048,7 @@
     )
     (pin "1" (uuid a8985871-6c9b-4840-bd8d-45b844d61804))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR013") (unit 1)
         )
@@ -10763,7 +11078,7 @@
     (pin "2" (uuid 99f652a5-887d-4075-877b-d6631ada9ee6))
     (pin "3" (uuid 65a4787d-b4a5-4d65-bae6-055907b6cf74))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW12") (unit 1)
         )
@@ -10793,7 +11108,7 @@
     (pin "2" (uuid 47f65115-6892-489d-8982-4a4d392c31b0))
     (pin "3" (uuid f5d3d6f6-9ec8-411b-a8e1-81123a61d48b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW1") (unit 1)
         )
@@ -10818,7 +11133,7 @@
     )
     (pin "1" (uuid 4ccf4607-1ef9-495d-a215-b93b218a3098))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR047") (unit 1)
         )
@@ -10848,7 +11163,7 @@
     (pin "2" (uuid 63dbe1d7-0c96-454d-a985-582cc1228e32))
     (pin "3" (uuid 4a75fb8e-73a7-486b-8430-eddfc1920eb9))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW11") (unit 1)
         )
@@ -10873,7 +11188,7 @@
     )
     (pin "1" (uuid b03efd89-bbcb-4f44-95b6-50285218a4e8))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR018") (unit 1)
         )
@@ -10903,7 +11218,7 @@
     (pin "2" (uuid 416e14c7-2681-4e9f-b0a7-c2da73229536))
     (pin "3" (uuid a56c05a9-bcb9-4687-9722-91a846f61335))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW10") (unit 1)
         )
@@ -10933,7 +11248,7 @@
     (pin "2" (uuid dd8d17c5-72d9-4269-965a-691cd49b55fc))
     (pin "3" (uuid cfe6c841-3b02-4e49-a963-42257c05a33e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW3") (unit 1)
         )
@@ -10964,7 +11279,7 @@
     (pin "3" (uuid 63b75a94-79f0-4d60-8dbe-2c5c976ff480))
     (pin "4" (uuid 623be567-7123-4c03-8e28-18b97d59522b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS9") (unit 1)
         )
@@ -10993,7 +11308,7 @@
     (pin "1" (uuid 9064ca15-7716-4415-a0d5-3139e5de865e))
     (pin "2" (uuid 44bc74e0-3be9-4bef-b86b-81f7c27d1e07))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS4") (unit 1)
         )
@@ -11023,7 +11338,7 @@
     (pin "2" (uuid 2c57311b-2eed-46eb-86a4-f7e284ae43c3))
     (pin "3" (uuid b5b11135-973b-42a4-867d-2f58c5bde413))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW3") (unit 1)
         )
@@ -11052,7 +11367,7 @@
     (pin "1" (uuid 6e0e0901-2a8e-463b-b82b-7b4cfa4d8b3b))
     (pin "2" (uuid 474df39b-7971-4617-8fde-d3054f26f977))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS12") (unit 1)
         )
@@ -11077,7 +11392,7 @@
     )
     (pin "1" (uuid 7ccacec7-4b8e-4651-bfd9-b789d48a2c65))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR010") (unit 1)
         )
@@ -11108,7 +11423,7 @@
     (pin "3" (uuid fc6cf5b9-dd75-484b-88e0-35528590d497))
     (pin "4" (uuid 73bcda7f-18e7-4a4a-8e6d-e6df00e21a9d))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS7") (unit 1)
         )
@@ -11139,7 +11454,7 @@
     (pin "3" (uuid d3de4d26-0007-4dae-a134-57fb6ab6a41f))
     (pin "4" (uuid 6df406b3-aa7b-4189-9d8c-fd08196c9739))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS12") (unit 1)
         )
@@ -11171,7 +11486,7 @@
     (pin "7" (uuid 8f4b4fa6-b105-40ef-910c-42c7598e4df7))
     (pin "8" (uuid 958786c0-b036-4425-bb2f-438e858a2dac))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "J1") (unit 1)
         )
@@ -11196,7 +11511,7 @@
     )
     (pin "1" (uuid 9d7131ee-5024-46f8-b535-ed101e6e4fc1))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR014") (unit 1)
         )
@@ -11221,7 +11536,7 @@
     )
     (pin "1" (uuid 673017a0-52f5-41a6-b252-993ca6c65889))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR053") (unit 1)
         )
@@ -11246,7 +11561,7 @@
     )
     (pin "1" (uuid c77a530c-bc54-4d0e-8308-db619dcdaa25))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR09") (unit 1)
         )
@@ -11275,7 +11590,7 @@
     (pin "1" (uuid 7f7b7745-2ce8-4c40-b186-f2445b87d9ed))
     (pin "2" (uuid e9706e9a-8e4f-413b-a46e-db92bf355ba6))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS8") (unit 1)
         )
@@ -11305,7 +11620,7 @@
     (pin "2" (uuid 3b895801-110b-4cc6-a4e7-59436f54c5db))
     (pin "3" (uuid b3ca5cdc-64bd-445c-b499-ea32afbb188f))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW7") (unit 1)
         )
@@ -11335,7 +11650,7 @@
     (pin "2" (uuid ca458956-9187-4f65-a5ea-6aed66cd109e))
     (pin "3" (uuid 07b02c53-63a0-49ed-b5a4-69344b2ce491))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW8") (unit 1)
         )
@@ -11360,9 +11675,36 @@
     )
     (pin "1" (uuid 55431374-7380-4dd8-bf0b-a9fdeb932c7c))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR031") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Sensor_Temperature:DS18B20") (at 161.29 52.07 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid c6eb04ae-4892-45f4-8257-86fe822b9627)
+    (property "Reference" "U1" (at 155.4481 51.4263 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Value" "DS18B20" (at 155.4481 53.3473 0)
+      (effects (font (size 1.27 1.27)) (justify right) hide)
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 135.89 58.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf" (at 157.48 45.72 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 4fcf27b9-10cc-4129-97e4-69f24017e877))
+    (pin "2" (uuid be5d6198-032f-4f88-9fd4-cd0f17655252))
+    (pin "3" (uuid fca52af5-63c9-4104-a659-d39b7b738710))
+    (instances
+      (project "PaLampa_LED_H01"
+        (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
+          (reference "U1") (unit 1)
         )
       )
     )
@@ -11390,7 +11732,7 @@
     (pin "2" (uuid 7e8ffafd-df48-461e-a30c-8bfa62e1c4ef))
     (pin "3" (uuid 5d4b0f56-bfcd-45f1-b6f7-e26fc7fe4735))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW1") (unit 1)
         )
@@ -11419,7 +11761,7 @@
     (pin "1" (uuid 42d463bc-4c5a-42cb-8f91-42bec7ffcf65))
     (pin "2" (uuid cee25ef5-6cfa-4670-921c-6a22f59e749b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS10") (unit 1)
         )
@@ -11444,7 +11786,7 @@
     )
     (pin "1" (uuid de239a6c-50fa-433b-8c7e-13c572d07228))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR012") (unit 1)
         )
@@ -11474,7 +11816,7 @@
     (pin "2" (uuid 578a9130-d347-48a7-869c-4e4b4297e71a))
     (pin "3" (uuid 6e18d845-ba01-444b-97ee-4234f5c1931d))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW5") (unit 1)
         )
@@ -11499,7 +11841,7 @@
     )
     (pin "1" (uuid 8ebfc144-a93d-4017-ac0e-cfb63459cf79))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR011") (unit 1)
         )
@@ -11524,7 +11866,7 @@
     )
     (pin "1" (uuid b7f9662f-0822-446c-82eb-99d00efcdbe5))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR032") (unit 1)
         )
@@ -11555,7 +11897,7 @@
     (pin "3" (uuid 4bd330bf-dcb6-406d-bd05-3912356ab041))
     (pin "4" (uuid efb19446-e8b1-4972-a367-7da1331f7d29))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS15") (unit 1)
         )
@@ -11580,7 +11922,7 @@
     )
     (pin "1" (uuid 70f1af5e-e0dd-4564-9f00-109b2a8ff840))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR02") (unit 1)
         )
@@ -11610,7 +11952,7 @@
     (pin "2" (uuid b1f81674-015d-4d48-ab16-078c3f836445))
     (pin "3" (uuid d54ecbd1-555b-4ba9-b379-c5854a16d8b3))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW14") (unit 1)
         )
@@ -11627,14 +11969,14 @@
     (property "Value" "CoufalElektronika_logo" (at 223.52 180.8512 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Footprint" "PaLampa_Library:Coufal_elektronika_text_30x13mm" (at 223.52 173.99 0)
+    (property "Footprint" "PaLampa_Library:Coufal_elektronika_notext_10mm" (at 223.52 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 223.52 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "G1") (unit 1)
         )
@@ -11659,7 +12001,7 @@
     )
     (pin "1" (uuid 9b594d6f-f873-4f35-a381-1f90dc6b40cc))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR030") (unit 1)
         )
@@ -11690,9 +12032,36 @@
     (pin "3" (uuid 5006414e-0f34-4c50-b03f-bd0c800c78d1))
     (pin "4" (uuid 65ebdf30-0c5e-4915-b1ef-4361e1f7f0aa))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS4") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 266.7 133.35 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid d751b78e-0570-4879-8b86-5e5523958ad1)
+    (property "Reference" "J2" (at 268.732 132.7063 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "Conn_01x03" (at 268.732 134.6273 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Connector_JST:JST_XH_S3B-XH-A_1x03_P2.50mm_Horizontal" (at 266.7 133.35 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 266.7 133.35 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ecf76b21-5e3c-49c0-8b8f-9f24d231af0e))
+    (pin "2" (uuid 8a4446c2-646b-4259-8aa0-6fc80fba4aeb))
+    (pin "3" (uuid e531804c-9cc5-47aa-8ff1-65cc38d4376d))
+    (instances
+      (project "PaLampa_LED_H01"
+        (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
+          (reference "J2") (unit 1)
         )
       )
     )
@@ -11719,7 +12088,7 @@
     (pin "1" (uuid d1c8fc8c-d67a-483a-83ee-c63ef9955ff4))
     (pin "2" (uuid 27822507-b0bc-4260-9c8a-9512f7e4f4b8))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS14") (unit 1)
         )
@@ -11744,7 +12113,7 @@
     )
     (pin "1" (uuid de711538-0793-4401-b7bc-019506d33e6e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR07") (unit 1)
         )
@@ -11769,7 +12138,7 @@
     )
     (pin "1" (uuid bc7fe9ed-63c1-41f8-8322-36b16949539b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR055") (unit 1)
         )
@@ -11794,9 +12163,34 @@
     )
     (pin "1" (uuid 8833348d-ea32-45be-a2b5-e55b81efb72b))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR043") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+5V") (at 161.29 44.45 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid e14fd175-f189-40bc-9aa1-d93580a2fa7c)
+    (property "Reference" "#PWR068" (at 161.29 48.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+5V" (at 161.29 40.8742 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 161.29 44.45 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 161.29 44.45 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 69288a63-af42-4b24-bbd2-461db5fe5c37))
+    (instances
+      (project "PaLampa_LED_H01"
+        (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
+          (reference "#PWR068") (unit 1)
         )
       )
     )
@@ -11825,7 +12219,7 @@
     (pin "3" (uuid 0719f05c-3cb7-4880-a602-42e3d58e22b8))
     (pin "4" (uuid c37ac3b5-936d-4e11-bdaf-f3943da6bb6e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS2") (unit 1)
         )
@@ -11855,7 +12249,7 @@
     (pin "2" (uuid 5678f17e-14af-41de-989d-425a3311ef84))
     (pin "3" (uuid 04d03887-f0fa-465f-87ad-ee81501826b9))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW5") (unit 1)
         )
@@ -11886,7 +12280,7 @@
     (pin "3" (uuid c20fc269-5e92-4100-828b-ab892219b51e))
     (pin "4" (uuid a394923d-ab0b-4672-92b4-16b9e17ff659))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS6") (unit 1)
         )
@@ -11916,7 +12310,7 @@
     (pin "2" (uuid 8907b19a-ec63-4d4d-b755-3d77f5adac53))
     (pin "3" (uuid 2fd1a80a-bda1-415a-8bec-ac0483bafb9e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW9") (unit 1)
         )
@@ -11946,7 +12340,7 @@
     (pin "2" (uuid fe84071d-2bdd-4987-9656-78ebfed18f45))
     (pin "3" (uuid 3b9840e8-3733-4940-b4bf-f3f56a937c30))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CW16") (unit 1)
         )
@@ -11971,7 +12365,7 @@
     )
     (pin "1" (uuid 4aeecd2e-58e1-4945-826c-6ab4d2cb0899))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR0101") (unit 1)
         )
@@ -12001,7 +12395,7 @@
     (pin "2" (uuid 201b174e-4f09-4e0c-a768-4d7210d37746))
     (pin "3" (uuid a36c5a51-c389-4910-9908-4eabc517c94e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW15") (unit 1)
         )
@@ -12026,7 +12420,7 @@
     )
     (pin "1" (uuid 65ceab16-d508-463d-bdb1-92ff10904508))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR034") (unit 1)
         )
@@ -12051,7 +12445,7 @@
     )
     (pin "1" (uuid d932186a-a536-46c9-8657-006be867555e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR023") (unit 1)
         )
@@ -12076,7 +12470,7 @@
     )
     (pin "1" (uuid 8fc174c3-af6a-4d8a-8408-a5746fce053e))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR026") (unit 1)
         )
@@ -12101,7 +12495,7 @@
     )
     (pin "1" (uuid 3900ffce-35a4-4f95-bbd3-c8f9bc081fd5))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR028") (unit 1)
         )
@@ -12126,7 +12520,7 @@
     )
     (pin "1" (uuid a364979e-cfab-4ac4-96ae-fadd00298077))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR020") (unit 1)
         )
@@ -12155,7 +12549,7 @@
     (pin "1" (uuid 7a00d777-fe0c-4686-8ea9-b3eb2a5d12bd))
     (pin "2" (uuid c5e96987-bf47-4c19-b070-a94e17960269))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS1") (unit 1)
         )
@@ -12184,7 +12578,7 @@
     (pin "1" (uuid 099840fd-2656-4dba-b93c-49155f6fd098))
     (pin "2" (uuid b0fe85bd-1997-43d5-940d-d2161a607651))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "CWS5") (unit 1)
         )
@@ -12209,7 +12603,7 @@
     )
     (pin "1" (uuid 3097d8f6-b699-456c-8932-c018f46eec91))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR06") (unit 1)
         )
@@ -12234,7 +12628,7 @@
     )
     (pin "1" (uuid 97858fcd-e9ed-4d3e-9888-37372d035050))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR048") (unit 1)
         )
@@ -12264,7 +12658,7 @@
     (pin "2" (uuid cc2ce579-9528-484d-9f30-fc441c0bfcb1))
     (pin "3" (uuid 0e00ef96-da35-4a54-84e5-e66d0d4072a6))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW10") (unit 1)
         )
@@ -12289,7 +12683,7 @@
     )
     (pin "1" (uuid 78fc15b8-70ed-49b7-a129-099f5bcc401f))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR027") (unit 1)
         )
@@ -12318,7 +12712,7 @@
     (pin "1" (uuid e474cdaf-e0eb-47c0-aa8f-194bc6f1b50a))
     (pin "2" (uuid 8ca6c046-e4b5-4b89-a6d4-85ef76a6ea07))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "R1") (unit 1)
         )
@@ -12343,7 +12737,7 @@
     )
     (pin "1" (uuid 72ecdc22-37cd-4ff7-95c4-f5645e6d65d7))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR016") (unit 1)
         )
@@ -12368,7 +12762,7 @@
     )
     (pin "1" (uuid 13fe2b98-55dd-4b64-918a-6c389ffdec4c))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR057") (unit 1)
         )
@@ -12393,7 +12787,7 @@
     )
     (pin "1" (uuid 4349651e-1495-42c1-8169-0b5603c42be2))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR029") (unit 1)
         )
@@ -12423,7 +12817,7 @@
     (pin "2" (uuid f0fd17f3-bdd2-4cd3-875d-948f90059bbe))
     (pin "3" (uuid b24761c4-4a3c-4afb-afac-693119efd4e9))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW16") (unit 1)
         )
@@ -12448,7 +12842,7 @@
     )
     (pin "1" (uuid e507001b-63ed-4821-a284-5d6b191e2edd))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR033") (unit 1)
         )
@@ -12478,7 +12872,7 @@
     (pin "2" (uuid 1a80e9ff-c44d-4641-b944-e2d22308b100))
     (pin "3" (uuid c2762f66-cef4-4a09-a406-c889ad50069c))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW13") (unit 1)
         )
@@ -12509,7 +12903,7 @@
     (pin "3" (uuid d9945569-87cf-49f4-9ead-5e9243f2b264))
     (pin "4" (uuid 52cc4229-2131-43e8-8748-aced7434c6ea))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WS11") (unit 1)
         )
@@ -12539,7 +12933,7 @@
     (pin "2" (uuid 9d9524e8-7076-43a6-8c01-771319b3c189))
     (pin "3" (uuid fc0f877a-bf2e-4e1c-8470-eaeec837c9bd))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "WW4") (unit 1)
         )
@@ -12564,7 +12958,7 @@
     )
     (pin "1" (uuid 5b308307-4575-4148-8776-a787a1bb801c))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR040") (unit 1)
         )
@@ -12589,7 +12983,7 @@
     )
     (pin "1" (uuid 06051543-95e6-4b02-b84b-aa6d53921b18))
     (instances
-      (project "PaLampa_LED_H00"
+      (project "PaLampa_LED_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c"
           (reference "#PWR035") (unit 1)
         )

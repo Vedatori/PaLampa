@@ -457,9 +457,6 @@
   (junction (at 116.84 109.22) (diameter 0) (color 0 0 0 0)
     (uuid 41f21af6-b0cc-4b74-a433-d1c22a23072a)
   )
-  (junction (at 227.33 90.17) (diameter 0) (color 0 0 0 0)
-    (uuid 535b8470-5786-44c8-99f7-31e626ba22fb)
-  )
   (junction (at 132.08 109.22) (diameter 0) (color 0 0 0 0)
     (uuid 5a8b23c5-2ee6-4888-a7eb-b2ba8e18537b)
   )
@@ -501,6 +498,10 @@
     (stroke (width 0) (type default))
     (uuid 0e269b04-ef23-4d8d-88be-a99db73db70a)
   )
+  (wire (pts (xy 207.01 91.44) (xy 227.33 91.44))
+    (stroke (width 0) (type default))
+    (uuid 14ebbb0d-aff7-44b5-b3ac-7cd079a5bce3)
+  )
   (wire (pts (xy 88.9 66.04) (xy 116.84 66.04))
     (stroke (width 0) (type default))
     (uuid 18826497-f90e-4287-a7e4-ff74aa8c093b)
@@ -509,7 +510,7 @@
     (stroke (width 0) (type default))
     (uuid 1fc05e7c-5889-463f-91fc-a3c5fec26ab0)
   )
-  (wire (pts (xy 209.55 90.17) (xy 209.55 95.25))
+  (wire (pts (xy 209.55 88.9) (xy 209.55 95.25))
     (stroke (width 0) (type default))
     (uuid 2de61d74-2f4d-42ea-ae41-8270b37dab2d)
   )
@@ -553,10 +554,6 @@
     (stroke (width 0) (type default))
     (uuid 60d3003d-de80-4f2f-ab00-d9d143e53585)
   )
-  (wire (pts (xy 227.33 90.17) (xy 227.33 88.9))
-    (stroke (width 0) (type default))
-    (uuid 632ba8a6-7181-4b09-8d88-0a0abcb3477e)
-  )
   (wire (pts (xy 116.84 66.04) (xy 116.84 76.2))
     (stroke (width 0) (type default))
     (uuid 6a56fd77-b765-4f6f-b21f-79578998c23d)
@@ -568,10 +565,6 @@
   (wire (pts (xy 156.21 109.22) (xy 156.21 113.03))
     (stroke (width 0) (type default))
     (uuid 7926df75-73fc-4ade-9ff4-f6ea4b3c67e7)
-  )
-  (wire (pts (xy 227.33 91.44) (xy 227.33 90.17))
-    (stroke (width 0) (type default))
-    (uuid 7d290737-204f-4b18-9417-f1fa40300705)
   )
   (wire (pts (xy 132.08 119.38) (xy 132.08 109.22))
     (stroke (width 0) (type default))
@@ -645,7 +638,7 @@
     (stroke (width 0) (type default))
     (uuid eb4cf1c6-2b6b-4ed9-8c37-924cf71fc3e2)
   )
-  (wire (pts (xy 227.33 90.17) (xy 209.55 90.17))
+  (wire (pts (xy 227.33 88.9) (xy 209.55 88.9))
     (stroke (width 0) (type default))
     (uuid f4c44e88-4ae3-4572-9a21-3e7c1289ba9a)
   )
@@ -719,6 +712,10 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 91fa4741-070e-4282-b069-c5e09b186bba)
   )
+  (hierarchical_label "LED_TEMP" (shape bidirectional) (at 207.01 91.44 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid ebe7ba2d-c36d-4313-a175-096568672780)
+  )
   (hierarchical_label "WS2812_DATA" (shape input) (at 240.03 91.44 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid f3898cc6-07f4-488c-9de2-05b7b73dde2b)
@@ -741,7 +738,7 @@
     )
     (pin "1" (uuid 1e9609fd-0726-4410-92ab-7b176c6814b4))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0112") (unit 1)
         )
@@ -766,7 +763,7 @@
     )
     (pin "1" (uuid 1c7a9d9b-1ab7-44ca-bcba-5b60ef4e3346))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0119") (unit 1)
         )
@@ -795,7 +792,7 @@
     (pin "1" (uuid 923c95e9-f5bd-4988-b677-27302c9ea4fe))
     (pin "2" (uuid ce358e04-4634-4566-a89c-426ac66a12d3))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "L1") (unit 1)
         )
@@ -824,7 +821,7 @@
     (pin "1" (uuid 891b77f7-7c26-4fbb-86cb-35108404de01))
     (pin "2" (uuid acc64018-bc5a-464d-967d-4dede33b0a93))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "D6") (unit 1)
         )
@@ -853,7 +850,7 @@
     (pin "1" (uuid a6ccda22-91de-4d3d-ac74-f30303a4f44b))
     (pin "2" (uuid 97f461e9-45ae-48d9-96ea-c6328b744a9a))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "D5") (unit 1)
         )
@@ -878,7 +875,7 @@
     )
     (pin "1" (uuid cc0bcf35-98da-43b5-af16-3db1ccdbbc85))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0111") (unit 1)
         )
@@ -907,7 +904,7 @@
     (pin "1" (uuid f133cbe9-9531-4084-aacd-cae318e36ec7))
     (pin "2" (uuid 61ceadf2-e6b8-4443-9f13-36dddf2236e5))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "C20") (unit 1)
         )
@@ -936,7 +933,7 @@
     (pin "1" (uuid 4d07e533-169b-4537-a322-108de167d9aa))
     (pin "2" (uuid 069c1543-f10f-4324-a6ac-c4bc538de715))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "C10") (unit 1)
         )
@@ -968,7 +965,7 @@
     (pin "7" (uuid 0614972e-aff7-4439-b236-1921417ccf29))
     (pin "8" (uuid e7fa7c4e-1a33-49ad-9ece-75aa7ae15124))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "J2") (unit 1)
         )
@@ -993,7 +990,7 @@
     )
     (pin "1" (uuid edccebca-e55d-4e5f-bbc7-b702ec468a60))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0120") (unit 1)
         )
@@ -1022,7 +1019,7 @@
     (pin "1" (uuid 6b12c3f6-6909-4d2d-bd2b-2d2bf502d75e))
     (pin "2" (uuid 403d3b41-d997-4157-a6de-9c036b0c95e3))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "L2") (unit 1)
         )
@@ -1047,7 +1044,7 @@
     )
     (pin "1" (uuid 05691f13-c181-46d7-b553-8287e5436719))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0122") (unit 1)
         )
@@ -1081,7 +1078,7 @@
     (pin "8" (uuid f0e869c1-e883-4e43-a1c8-95fa8da60d7c))
     (pin "9" (uuid f013229a-fd75-49d0-9c58-0ee4b38f133f))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "U7") (unit 1)
         )
@@ -1110,7 +1107,7 @@
     (pin "1" (uuid 32089c4c-fb5c-46c5-a2ee-b71928d8a6a0))
     (pin "2" (uuid cf400d6c-f15e-4c7c-a032-c025ce830f23))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "C9") (unit 1)
         )
@@ -1135,7 +1132,7 @@
     )
     (pin "1" (uuid 76b7470f-a8f9-4001-81c1-81d7c6a416e4))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0121") (unit 1)
         )
@@ -1169,7 +1166,7 @@
     (pin "8" (uuid 45e82d87-e30f-4b1a-8359-c41a8871ecda))
     (pin "9" (uuid f8356217-6b7f-489a-9502-6d8fe52f8fc7))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "U6") (unit 1)
         )
@@ -1194,7 +1191,7 @@
     )
     (pin "1" (uuid 9cd96237-1f23-4bbf-bc21-fba1584ae9f6))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0114") (unit 1)
         )
@@ -1223,7 +1220,7 @@
     (pin "1" (uuid 110ace70-956b-4647-ab09-00ae2c4717d1))
     (pin "2" (uuid adf5d473-0ca1-41ce-be1c-839c835d955a))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "R4") (unit 1)
         )
@@ -1252,7 +1249,7 @@
     (pin "1" (uuid 7d88a329-c398-495f-a866-793cd5adfa72))
     (pin "2" (uuid d472c1af-10be-457f-a510-d40f729197e7))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "R5") (unit 1)
         )
@@ -1277,7 +1274,7 @@
     )
     (pin "1" (uuid e4df3035-7491-41ca-8cbb-19c83b5f6929))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0117") (unit 1)
         )
@@ -1302,7 +1299,7 @@
     )
     (pin "1" (uuid 1dfbc5b6-952b-400c-91ff-82205436a478))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0126") (unit 1)
         )
@@ -1327,7 +1324,7 @@
     )
     (pin "1" (uuid be034b45-3b57-4984-9ba9-aa95f5ab030b))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0127") (unit 1)
         )
@@ -1352,7 +1349,7 @@
     )
     (pin "1" (uuid 957ea8d2-c5c6-4595-8e3f-7d48f5a16db2))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0118") (unit 1)
         )
@@ -1381,7 +1378,7 @@
     (pin "1" (uuid ffdc1a48-021a-4bbe-af6c-cd758a0fcca1))
     (pin "2" (uuid 6d2e1b66-11a5-4ec1-9aff-8cd2d7e809f6))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "C8") (unit 1)
         )
@@ -1406,7 +1403,7 @@
     )
     (pin "1" (uuid 8eac5be5-e31b-469e-bd34-e84bf6d35d33))
     (instances
-      (project "PaLampa_MoBo_H00"
+      (project "PaLampa_MoBo_H01"
         (path "/68867493-9f89-4388-916e-56f5ada0ac5c/4ac9ab7b-b59d-4d9f-a955-f58805b17013"
           (reference "#PWR0113") (unit 1)
         )

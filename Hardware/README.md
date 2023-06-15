@@ -24,3 +24,4 @@
 + Move one photoresistor to the back, switch it with the electrolytic capacitor, move the second photoresistor somewhere near
 + Add "do not remove while running" text near connectors 
 + Add 2 pin JST for touch
++ move buzzer
