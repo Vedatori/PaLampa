@@ -4,8 +4,8 @@
 #include "DallasTemperature.h"
 #include "SPIFFS.h"
 
-OneWire oneWireBottom(PL::ONE_WIRE_BOTTOM_PIN);
-OneWire oneWireTop(PL::ONE_WIRE_TOP_PIN);
+OneWire oneWireBottom(PL::THERMOMETER_BOTTOM_PIN);
+OneWire oneWireTop(PL::THERMOMETER_TOP_PIN);
 DallasTemperature sensorsDown(&oneWireBottom);
 DallasTemperature sensorsUp(&oneWireTop);
 
@@ -17,7 +17,7 @@ Melody themeMelody(
 
 void PL::refreshTaskQuick(void * parameter) {
     for(;;) {
-        PaLampa.illumination.update();
+        PaLampa.photoresistor.update();
         delay(20);
     }
 }
@@ -56,8 +56,6 @@ void PL::refreshTaskSlow(void * parameter) {
 void PaLampa_class::begin() {
     beginCalled = true;
 
-
-    illumination.update();
     piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
 
 	weather.init(1000 * 60 * 15);
@@ -107,7 +105,7 @@ void PaLampa_class::printDiagnostics() {
         printf("btn%d: %d ", i, buttonRead(i));
     }
     
-    printf("illum: %s", illumination.getIlluminationText().c_str());
+    printf(photoresistor.getText().c_str());
 
     //printf("priority: %d ", uxTaskPriorityGet(NULL));
 
@@ -230,4 +228,4 @@ void PaLampa_class::commandDisp(String text) {
     commandSend("commandDisp", text);
 }
 
-PaLampa_class PaLampa;
+PaLampa_class PaLampa{};

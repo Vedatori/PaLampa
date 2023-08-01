@@ -1,12 +1,12 @@
-#ifndef _TOMAT_
-#define _TOMAT_
+#ifndef _PALAMPA_
+#define _PALAMPA_
 
 #include <Arduino.h>
 #include "Preferences.h"
 
 #include <ESP32Ping.h>
 
-#include "Illumination_module.h"
+#include "Photoresistor.h"
 #include "WiFiCaptain.h"
 #include <piezo/piezo.h>
 #include <weather/weatherApi.h>
@@ -16,17 +16,16 @@
 namespace PL {
 
 const int BUTTON_PIN[3] = {33, 25, 26};
-const int BUZZER_PIN = 13;
-const int BUZZER_CHANNEL = 3;
-const int ONE_WIRE_BOTTOM_PIN = 15;
-const int ONE_WIRE_TOP_PIN = 18;
+const int PHOTORESISTOR_UP_PIN = 34;
+const int PHOTORESISTOR_BACK_PIN = 35;
+const int THERMOMETER_BOTTOM_PIN = 15;
+const int THERMOMETER_TOP_PIN = 18;
 const int LED_WARM_PIN = 5, LED_WARM_CHANNEL = 0;
 const int LED_COLD_PIN = 17, LED_COLD_CHANNEL = 1;
 const int LED_FREQ = 20000;
-const int PHOTORES_UP_PIN = 34;
-const int PHOTORES_BACK_PIN = 35;
 const int LED_RGB_PIN = 16;
 const int LED_RGB_COUNT = 16;
+const int BUZZER_PIN = 13, BUZZER_CHANNEL = 3;
 
 const char STORAGE_NAMESPACE[] = "PaLampa";
 const uint16_t communicationTimeout = 1000;
@@ -38,6 +37,7 @@ const float idleCurrent = 0.1; // [A]
 
 void refreshTaskQuick(void * param);
 void refreshTaskSlow(void * param);
+
 }
 
 class PaLampa_class {
@@ -52,11 +52,12 @@ class PaLampa_class {
     float temperatureDown = 0.0;
 
 public:
-    Illumination_module illumination;
+    Photoresistor photoresistor{{PL::PHOTORESISTOR_UP_PIN, PL::PHOTORESISTOR_BACK_PIN}};
     Piezo piezo;
 	WeatherApi weather;
     USB_C_power_module power;
 	
+    //PaLampa_class() : photores({PL::PHOTORESISTOR_UP_PIN, PL::PHOTORESISTOR_BACK_PIN}) {}
     void begin();
     bool buttonRead(int buttonID);
     void updateTemperature();
@@ -79,4 +80,4 @@ public:
 extern PaLampa_class PaLampa;
 extern Melody themeMelody;
 
-#endif // _TOMAT_
+#endif // _PALAMPA_
