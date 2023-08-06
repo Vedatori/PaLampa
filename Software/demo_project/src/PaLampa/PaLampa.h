@@ -7,6 +7,7 @@
 #include <ESP32Ping.h>
 
 #include "Photoresistor.h"
+#include "Thermometer.h"
 #include "WiFiCaptain.h"
 #include <piezo/piezo.h>
 #include <weather/weatherApi.h>
@@ -16,10 +17,10 @@
 namespace PL {
 
 const int BUTTON_PIN[3] = {33, 25, 26};
-const int PHOTORESISTOR_UP_PIN = 34;
+const int PHOTORESISTOR_TOP_PIN = 34;
 const int PHOTORESISTOR_BACK_PIN = 35;
-const int THERMOMETER_BOTTOM_PIN = 15;
 const int THERMOMETER_TOP_PIN = 18;
+const int THERMOMETER_BOTTOM_PIN = 15;
 const int LED_WARM_PIN = 5, LED_WARM_CHANNEL = 0;
 const int LED_COLD_PIN = 17, LED_COLD_CHANNEL = 1;
 const int LED_FREQ = 20000;
@@ -52,16 +53,14 @@ class PaLampa_class {
     float temperatureDown = 0.0;
 
 public:
-    Photoresistor photoresistor{{PL::PHOTORESISTOR_UP_PIN, PL::PHOTORESISTOR_BACK_PIN}};
+    Photoresistor photoresistor{{PL::PHOTORESISTOR_TOP_PIN, PL::PHOTORESISTOR_BACK_PIN}};
+    Thermometer thermometer{{PL::THERMOMETER_TOP_PIN, PL::THERMOMETER_BOTTOM_PIN}};
     Piezo piezo;
 	WeatherApi weather;
     USB_C_power_module power;
 	
-    //PaLampa_class() : photores({PL::PHOTORESISTOR_UP_PIN, PL::PHOTORESISTOR_BACK_PIN}) {}
     void begin();
     bool buttonRead(int buttonID);
-    void updateTemperature();
-    float getTemperature();
 
     void printDiagnostics();
 

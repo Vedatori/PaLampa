@@ -5,32 +5,32 @@ Photoresistor::Photoresistor(std::vector<int> pinIDs) :
     _rawData(std::vector<int>(pinIDs.size(), 0)) {}
 
 void Photoresistor::update() {
-    for (int photoresID = 0; photoresID < _pinIDs.size(); ++photoresID) {
-        _rawData[photoresID] = analogRead(_pinIDs[photoresID]);
+    for (int index = 0; index < _pinIDs.size(); ++index) {
+        _rawData[index] = analogRead(_pinIDs[index]);
     }
 }
 
-int Photoresistor::getRaw(const int photoresID) const {
-    if (photoresID < 0 || photoresID >= _pinIDs.size()) {
-        printf("Invalid photores ID: %d\n", photoresID);
+int Photoresistor::getRaw(const int index) const {
+    if (index < 0 || index >= _pinIDs.size()) {
+        printf("Invalid photores ID: %d\n", index);
         return 0;
     }
-    return _rawData[photoresID];
+    return _rawData[index];
 }
 
-float Photoresistor::get(const int photoresID) const {
-    if (photoresID < 0 || photoresID >= _pinIDs.size()) {
-        printf("Invalid photores ID: %d\n", photoresID);
+float Photoresistor::get(const int index) const {
+    if (index < 0 || index >= _pinIDs.size()) {
+        printf("Invalid photores ID: %d\n", index);
         return 0;
     }
-    return float(_rawData[photoresID])/4095.0;
+    return float(_rawData[index])/4095.0;
 }
 
 String Photoresistor::getText() const {
     String out;
     char buffer[16];
-    for (int photoresID = 0; photoresID < _pinIDs.size(); ++photoresID) {
-        sprintf(buffer, "photo%d: %.2f ", photoresID, get(photoresID));
+    for (int index = 0; index < _pinIDs.size(); ++index) {
+        sprintf(buffer, "photo%d: %.2f ", index, get(index));
         out = out + String(buffer);
     }
     return out;

@@ -1,8 +1,7 @@
-#ifndef _PHOTORESISTOR_
-#define _PHOTORESISTOR_
+#pragma once
 
-#include "Arduino.h"
 #include <vector>
+#include "Arduino.h"
 
 class Photoresistor {
     std::vector<int> _pinIDs;
@@ -10,9 +9,7 @@ class Photoresistor {
 public:
     Photoresistor(std::vector<int> pinIDs);
     void update();
-    int getRaw(const int photoresID) const;
-    float get(const int photoresID) const;
+    int getRaw(const int index) const;
+    float get(const int index) const;
     String getText() const;
 };
-
-#endif // _PHOTORESISTOR_

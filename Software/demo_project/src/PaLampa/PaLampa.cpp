@@ -1,13 +1,6 @@
 #include "PaLampa.h"
 
-#include "OneWire.h"
-#include "DallasTemperature.h"
 #include "SPIFFS.h"
-
-OneWire oneWireBottom(PL::THERMOMETER_BOTTOM_PIN);
-OneWire oneWireTop(PL::THERMOMETER_TOP_PIN);
-DallasTemperature sensorsDown(&oneWireBottom);
-DallasTemperature sensorsUp(&oneWireTop);
 
 Melody themeMelody(
 	"TEMPO=140 " 
@@ -24,7 +17,7 @@ void PL::refreshTaskQuick(void * parameter) {
 
 void PL::refreshTaskSlow(void * parameter) {
     for(;;) {
-        PaLampa.updateTemperature();
+        PaLampa.thermometer.update();
 
         static uint32_t internetUpdateTime = 0;
         static uint32_t softApDisableTime = 0;
@@ -65,9 +58,6 @@ void PaLampa_class::begin() {
     for(int i = 0; i < 3; ++i) {
         pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
     }
-
-    sensorsDown.begin();
-    sensorsUp.begin();
     
     xTaskCreatePinnedToCore(PL::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
     xTaskCreatePinnedToCore(PL::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
@@ -81,25 +71,6 @@ bool PaLampa_class::buttonRead(int buttonID) {
     return !digitalRead(PL::BUTTON_PIN[buttonID]);  // 1 = pressed
 }
 
-void PaLampa_class::updateTemperature() {
-    sensorsDown.requestTemperatures();
-    sensorsUp.requestTemperatures();
-    float newTemp = sensorsDown.getTempCByIndex(0);
-    if(newTemp > -100.0) {
-        // Filter out nonsense measurements
-        temperatureDown = newTemp;
-    }
-    newTemp = sensorsUp.getTempCByIndex(0);
-    if(newTemp > -100.0) {
-        // Filter out nonsense measurements
-        temperatureUp = newTemp;
-    }
-}
-
-float PaLampa_class::getTemperature() {
-    return temperatureDown;
-}
-
 void PaLampa_class::printDiagnostics() {
     for(int i = 0; i <= 2; ++i) {
         printf("btn%d: %d ", i, buttonRead(i));
@@ -109,7 +80,7 @@ void PaLampa_class::printDiagnostics() {
 
     //printf("priority: %d ", uxTaskPriorityGet(NULL));
 
-    printf("temp: %f ", temperatureDown);
+    printf(thermometer.getText().c_str());
 
     printf("weather: %s \n", PaLampa.weather.getWeather().getWeatherString().c_str());
 
