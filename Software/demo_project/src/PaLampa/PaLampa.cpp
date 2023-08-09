@@ -49,6 +49,8 @@ void PL::refreshTaskSlow(void * parameter) {
 void PaLampa_class::begin() {
     beginCalled = true;
 
+    timeModule.begin();
+
     piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
 
 	weather.init(1000 * 60 * 15);
