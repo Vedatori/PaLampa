@@ -20,12 +20,21 @@ const char ntpServer2[] = "time.nist.gov";
 /// Other time zones available at https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
 const String defaultTimeZone = "CET-1CEST,M3.5.0,M10.5.0/3";
 
-///Default SNTP sync interval in ms
-const int defaultSyncInterval = 5*60*1000;
+///Default SNTP sync interval in seconds
+const int defaultSyncInterval = 5*60;
+
+///SNTP status:
+///OK - SNTP is running and last request was successful
+///FAILED - SNTP is running and last request failed
+///STOP - SNTP is disabled
+enum sntpStatus {OK, FAILED, STOP};
+
 }
 
 class Time_module {
-    int syncInterval;
+    bool beginCalled = false;
+    int ntpSyncInterval;
+    time_t ntpLastSync = -1;
 public:
     // ========================= Configuration
 
@@ -33,17 +42,61 @@ public:
     Time_module();
 
     /// @brief Constructor with user set syncInterval
-    /// @param syncInterval SNTP sync interval in milliseconds
+    /// @param syncInterval SNTP sync interval in seconds, min. 15 seconds
     Time_module(int syncInterval);
 
     /// @brief Initialization function, must be called before using any other methods
+    /// @param sntpEnabled If set to false, SNTP will be disabled
     /// @param sntpTimeout SNTP sync timeout in seconds
-    void begin(int sntpTimeout = -1);
+    void begin(bool sntpEnabled = true, int sntpTimeout = -1);
+
+    /// Enables/disables SNTP
+    /// Begin must be called before using this function
+    /// If you call setEnabled(true) and SNTP is already running, SNTP will be restarted.
+    void setEnabled(bool enabled);
+
+    /// Returns true if SNTP is enabled, false otherwise
+    bool isEnabled();
 
     /// @brief Sets the timezone
     /// @param timeZone Timezone in posix timezone format
     void setTimeZone(String timeZone);
 
+    /// @brief Sets time, use if SNTP fails or is disabled
+    /// @param newTime timeval structure (seconds & microseconds)
+    void setTime(struct timeval newTime);
+
+    /// @brief Sets time, use if SNTP fails or is disabled
+    /// @param newTime time.h tm structure
+    void setTime(struct tm newTime);
+
+    /// @brief Sets time, use if SNTP fails or is disabled, only sets hours and minutes
+    void setTime(int hours, int minutes);
+
+    /// @brief Shifts time by set ammount of minutes
+    void shiftMinutes(int minutes);
+
+    /// @brief Sets the SNTP sync interval
+    /// @param syncInterval Seconds, min. 15 seconds
+    void setSyncInterval(int syncInterval);
+
+
+
+    // ========================= Reading configuration/status
+
+    /// @brief Returns the SNTP sync interval
+    /// @return Seconds
+    int getSyncInterval();
+
+    ///SNTP status:
+    ///OK - SNTP is running and last request was successful
+    ///FAILED - SNTP is running and last request failed
+    ///STOP - SNTP is disabled
+    time_module::sntpStatus getSntpStatus();
+
+    /// @brief Returns the time of the last SNTP sync
+    /// @return time_t
+    time_t getLastSync();
     
     // ========================= Reading time
 
@@ -100,17 +153,6 @@ public:
     /// @param start Lower bound of the time interval whose length is calculated. If this describes a time point later than 'end', the result is negative.
     /// @return double
     double diffTime(time_t end, time_t start);
-    // 
-    /*
-
-settimeofday
-offline mode?
-npt status
-last update (time_t)
-set sync interval
-syncNow
-enable/disable ntp
-*/
 };
 
 #endif // _TIME_MODULE_

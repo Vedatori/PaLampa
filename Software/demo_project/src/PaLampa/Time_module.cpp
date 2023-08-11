@@ -6,41 +6,77 @@ Preferences timePreferences;
 using namespace time_module;
 
 Time_module::Time_module() {
-    syncInterval = defaultSyncInterval;
+    ntpSyncInterval = defaultSyncInterval;
 }
 Time_module::Time_module(int syncInterval) {
-    this->syncInterval = syncInterval;
+    this->ntpSyncInterval = syncInterval;
 }
 
-void Time_module::begin(int sntpTimeout) {
+void Time_module::begin(bool sntpEnabled, int sntpTimeout) {
+    //Begin already called check
+    if (beginCalled) {
+        printf("TimeModule: Begin already called, aborting!\n"); 
+        return; 
+    } 
+    beginCalled = true;
+    
+    //Load timezone
 	timePreferences.begin("timeMod", false);
 	setTimeZone(timePreferences.getString("timeZone", defaultTimeZone));
     timePreferences.end();
 
-    if (syncInterval < 15) syncInterval = 15;
+    //Invalid sync interval check
+    if (ntpSyncInterval < 15) ntpSyncInterval = 15;
 
+    //Config sntp
     sntp_set_sync_mode(SNTP_SYNC_MODE_IMMED);
-    sntp_set_sync_interval(syncInterval);
+    sntp_set_sync_interval(ntpSyncInterval*1000);
     sntp_setservername(1, ntpServer1);
     sntp_setservername(2, ntpServer2);
-    sntp_init();
 
-    if(sntpTimeout>0){
-        int sntpTimeoutMs = sntpTimeout*1000;
-        uint32_t start = millis();
-        bool syncFailed = true;
-        while((millis()-start) <= sntpTimeoutMs) {
-            sntp_sync_status_t syncStatus = sntp_get_sync_status();
-            if(syncStatus == SNTP_SYNC_STATUS_COMPLETED){
-                syncFailed = false;
-                break;
+    //Init sntp
+    if(sntpEnabled){
+        sntp_init();
+        
+        //Wait for first sync
+        if(sntpTimeout>0){
+            int sntpTimeoutMs = sntpTimeout*1000;
+            uint32_t start = millis();
+            bool syncFailed = true;
+            while((millis()-start) <= sntpTimeoutMs) {
+                if(getSntpStatus() == sntpStatus::OK){
+                    syncFailed = false;
+                    break;
+                }
+                vTaskDelay((int)(200/portTICK_PERIOD_MS));
             }
-            vTaskDelay(1);
-        }
-        if(syncFailed){
-            printf("Failed to synchronize SNTP within %d seconds\n", sntpTimeout);
+            if(syncFailed){
+                printf("Failed to synchronize SNTP within %d seconds\n", sntpTimeout);
+            }
         }
     }
+}
+
+void Time_module::setEnabled(bool enabled) {
+    if(!beginCalled){
+        printf("TimeModule: Can't call setEnabled without calling begin first!\n");
+        return;
+    }
+    if(enabled){
+        if(sntp_enabled()){
+            sntp_restart();
+        }else{
+            sntp_init();
+        }
+    }else{
+        if(sntp_enabled()){
+            sntp_stop();
+        }
+    }
+}
+
+bool Time_module::isEnabled() {
+    return sntp_enabled();
 }
 
 void Time_module::setTimeZone(String newTimeZone) {
@@ -50,6 +86,62 @@ void Time_module::setTimeZone(String newTimeZone) {
     timePreferences.begin("timeMod", false);
 	timePreferences.putString("timeZone", newTimeZone);
     timePreferences.end();
+}
+
+void Time_module::setTime(struct timeval newTime) {
+    settimeofday(&newTime, NULL);
+}
+
+void Time_module::setTime(struct tm newTime) {
+    setTime((struct timeval){tmToEpoch(newTime), 0});
+}
+
+void Time_module::setTime(int hours, int minutes) {
+    struct tm t = getTime();
+    t.tm_hour = hours;
+    t.tm_min = minutes;
+    setTime(t);
+}
+
+void Time_module::shiftMinutes(int minutes) {
+    time_t t = time(NULL);
+    t = t + minutes*60;
+    setTime(epochToTm(t));
+}
+
+void Time_module::setSyncInterval(int syncInterval) {
+    if (syncInterval < 15) syncInterval = 15;
+    ntpSyncInterval = syncInterval;
+    sntp_set_sync_interval(ntpSyncInterval*1000);
+    if(sntp_enabled()){
+        sntp_restart();
+    }
+}
+
+int Time_module::getSyncInterval() {
+    return sntp_get_sync_interval()/1000;
+}
+
+sntpStatus Time_module::getSntpStatus() {
+    if(!sntp_enabled()) return sntpStatus::STOP;
+
+    sntp_sync_status_t syncStatus = sntp_get_sync_status();
+    if(syncStatus = SNTP_SYNC_STATUS_COMPLETED){
+        ntpLastSync = time(NULL);
+        return sntpStatus::OK;
+    }
+
+    if(ntpLastSync == -1) return sntpStatus::FAILED;
+
+    if( (time(NULL)-ntpLastSync) < (ntpSyncInterval+15) ) {
+        return sntpStatus::OK;
+    }else{
+        return sntpStatus::FAILED;
+    }
+}
+
+time_t Time_module::getLastSync() {
+    return ntpLastSync;
 }
 
 time_t Time_module::getEpoch() {
