@@ -52,7 +52,7 @@ Zapájejte. Zakraťte vývody.
 ![alt](SupportFiles/IMG_4660.jpeg)
 ![alt](SupportFiles/IMG_4664.jpeg)
 
-VLožte do desky kondenzátor na místo označené C11. Pozor na polaritu, kratší vývod musí být zastrčený do poloviny kruhu, která je bíle vybarvená. Druhý kondenzátor vložte stejným způsobem na místo C19. Zapájejte, zakraťe vývody.
+Vložte do desky kondenzátor na místo označené C11. Pozor na polaritu, kratší vývod musí být zastrčený do poloviny kruhu, která je bíle vybarvená. Druhý kondenzátor vložte stejným způsobem na místo C19. Zapájejte, zakraťe vývody.
 ![alt](SupportFiles/IMG_4666.jpeg)
 ![alt](SupportFiles/IMG_4677.jpeg)
 
@@ -96,7 +96,7 @@ Usaďte do desky potenciometr.
  Zapájejte všechny vývody včetně velkých plochých. Zakraťte vývody.
 ![alt](SupportFiles/IMG_4718.jpeg)
 
-VLožte tlačítka do hlavního PCB. 
+Vložte tlačítka do hlavního PCB. 
 ![alt](SupportFiles/IMG_4721.jpeg)
 
 Na tlačítka nasuňte nástroj s děrami. Musí padnout na všechna zároveň.
@@ -104,7 +104,6 @@ Na tlačítka nasuňte nástroj s děrami. Musí padnout na všechna zároveň.
 ![alt](SupportFiles/IMG_4726.jpeg)
 
 Zapájejte tlačítka na hlavní PCB. Zakraťte vývody.
-![alt](SupportFiles/IMG_3330.jpeg)
 
 <!-- _________________________________________________________________ -->
 # <a name = meridla>Měřicí součástky</a>
