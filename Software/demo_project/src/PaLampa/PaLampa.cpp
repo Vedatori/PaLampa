@@ -11,12 +11,15 @@ Melody themeMelody(
 void PL::refreshTaskQuick(void * parameter) {
     for(;;) {
         paLampa.photoresistor.update();
+        paLampa.lights.update();
         delay(20);
     }
 }
 
 void PL::refreshTaskSlow(void * parameter) {
     for(;;) {
+        paLampa.power.update();
+        paLampa.lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
         paLampa.thermometer.update();
 
         static uint32_t internetUpdateTime = 0;
@@ -52,6 +55,7 @@ void PaLampa::begin() {
     //piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
 
     lights.begin();
+    lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
 	/*weather.init(1000 * 60 * 15);
 	weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
@@ -64,6 +68,8 @@ void PaLampa::begin() {
     
     xTaskCreatePinnedToCore(PL::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
     xTaskCreatePinnedToCore(PL::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
+
+    lights.setUpdateActive(true);
 }
 
 bool PaLampa::buttonRead(int buttonID) {
@@ -83,7 +89,7 @@ void PaLampa::printDiagnostics() {
         printf("btn%d: %d ", i, buttonRead(i));
     }
 
-    printf("pot: %d ", potentiometerRead());
+    printf("pot: %f ", potentiometerRead());
     
     printf(photoresistor.getText().c_str());
 

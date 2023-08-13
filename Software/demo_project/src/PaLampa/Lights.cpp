@@ -15,7 +15,9 @@ ColorRGB orange = {255, 165, 0};
 ColorRGB gold = {255, 215, 0};
 ColorRGB tomato = {255, 99, 71};
 
-
+PanelSelector all = {1, 1};
+PanelSelector top = {1, 0};
+PanelSelector back = {0, 1};
 
 ColorRGB dimColor(ColorRGB color, float brightness) {
     brightness = constrain(brightness, 0.0, 1.0);
@@ -158,16 +160,104 @@ ColorHSV RGBtoHSV(ColorRGB color) {
     return colorHSV;
 }
 
-Lights::Lights() {
-    //pixels = Adafruit_NeoPixel(16, 16, NEO_GRB + NEO_KHZ800);
+bool Lights::isPanelSelected(PanelSelector selector, int panelID) {
+    switch(panelID) {
+        case 0:
+            return selector.top;
+        case 1:
+            return selector.back;
+        default:
+            return false;
+    }
 }
 
+int Lights::getPanelID(int ledID) {
+    if(ledID < 0)
+        return -1;
+    if(ledID < 16)
+        return 0;
+    if(ledID < 23)
+        return 1;
+    else
+        return -1;
+}
+
+int Lights::getLedAbsID(int panelID, int ledID) {
+    if(panelID < 0 || panelID > 1)
+        return -1;
+    if(ledID < 0 || ledID > 15)
+        return -1;
+    
+    int ledAbsoluteID = 0;
+
+    // Top LEDs
+    if(panelID == 0)
+        ledAbsoluteID = ledID;
+
+    // Back LEDs
+    else if(panelID == 1) {
+        if(ledID > 6)
+            return -1;
+        ledAbsoluteID = 16 + ledID;
+    }
+
+    if(ledAbsoluteID < 0 || ledAbsoluteID > PL::LED_RGB_COUNT) {
+        return -1;
+    }
+    return ledAbsoluteID;
+}
+
+ColorRGB Lights::updateLedState(LedState & state, int timeStep) {
+    ColorRGB color = dimColor(state.targetColor, state.brightness);
+    uint8_t * colorPtr = (uint8_t *)&color;
+    
+    float deviation[3];
+    for(int ledID = 0; ledID < 3; ++ledID) {
+        deviation[ledID] = colorPtr[ledID] - state.currentColorF[ledID];
+    }
+
+    float step = 0;
+    switch(state.transitionType) {
+        case Linear: {
+            step = timeStep / 1000.0 * 441.7 / state.transitionTime;
+        } break;
+        case Exponential: {
+            float currentColorSize = pow(pow(state.currentColorF[0], 2) + pow(state.currentColorF[1], 2) + pow(state.currentColorF[2], 2), 0.5);
+            float beginStep = 0.015 * timeStep;
+            step = beginStep + currentColorSize * (pow(441.7 / beginStep, timeStep / 1000.0 / state.transitionTime) - 1.0);
+        } break;
+        case None:
+        default:
+            step = 441.7;    // Maximal step to cover full diagonal at once
+    }
+
+    float devSize = pow(pow(deviation[0], 2) + pow(deviation[1], 2) + pow(deviation[2], 2), 0.5);
+    for(int ledID = 0; ledID < 3; ++ledID) {
+        if(devSize < (step + PL::TRANS_END_THR)) {
+            state.currentColorF[ledID] = colorPtr[ledID];
+        }
+        else {
+            state.currentColorF[ledID] += deviation[ledID] / devSize * step;
+        }
+    }
+    state.updateNeeded = devSize > PL::TRANS_END_THR;
+    
+    state.currentColor.red = constrain(round(state.currentColorF[0]), 0, 255);
+    state.currentColor.green = constrain(round(state.currentColorF[1]), 0, 255);
+    state.currentColor.blue = constrain(round(state.currentColorF[2]), 0, 255);
+    return state.currentColor;
+}
+
+Lights::Lights() :
+    _ledState(std::vector<LedState>(PL::LED_RGB_COUNT)) {}
+
 void Lights::begin() {
-    /*pixels.begin();
-    pixels.setPixelColor(0, pixels.Color(100, 0, 0));
-    pixels.show();
+    pixels.begin();
+    setColorPanels(all, black);
+    setBrightness(all, 1.0);
+    setTransition(all, None, 1.0);
     update();
-    */
+    
     ledcSetup(PL::LED_WARM_CHANNEL, PL::LED_FREQ, PL::LED_RESOLUTION_BIT);
     ledcSetup(PL::LED_COLD_CHANNEL, PL::LED_FREQ, PL::LED_RESOLUTION_BIT);
     ledcAttachPin(PL::LED_WARM_PIN, PL::LED_WARM_CHANNEL);
@@ -175,19 +265,51 @@ void Lights::begin() {
 }
 
 void Lights::update() {
-    ;
+    int timeNow = millis();
+    static int timePrev = timeNow;
+    int timeStep = timeNow - timePrev;
+    timePrev = timeNow;
+
+    if(updateActive == false) {
+        return;
+    }
+
+    bool updateNeeded = false;
+    int sumRGB = 0;
+    for(uint8_t ledID = 0; ledID < PL::LED_RGB_COUNT; ++ledID) {
+        ColorRGB currentColor = updateLedState(_ledState[ledID], timeStep);
+        sumRGB += (currentColor.red + currentColor.green + currentColor.blue);
+        updateNeeded = updateNeeded || _ledState[ledID].updateNeeded;
+    }
+
+    if(sumRGB <= 0) {
+        sumRGB = 1; // prevent zero division
+    }
+    float ratio = currentLimit / (float(sumRGB) / 255.0 / float(PL::LED_RGB_COUNT) * 1.12);
+    currentLimitRatio = constrain(ratio, 0.0, 1.0);
+
+    for(uint8_t ledID = 0; ledID < PL::LED_RGB_COUNT; ++ledID) {
+        ColorRGB powerLimitColor = dimColor(_ledState[ledID].currentColor, currentLimitRatio);
+        uint32_t color = pixels.Color(powerLimitColor.red, powerLimitColor.green, powerLimitColor.blue);
+        pixels.setPixelColor(ledID, color);
+    }
+
+    if(updateNeeded) {
+        pixels.show();
+    }
 }
 
 void Lights::setUpdateActive(bool state) {
-    ;
+    updateActive = state;
 }
 
 void Lights::setCurrentLimit(float limit) {
-    ;
+    limit = constrain(limit, 0.0, 3.0);
+    currentLimit = limit;
 }
 
 float Lights::getCurrentLimitRatio() {
-    return 0.0;
+    return currentLimitRatio;
 }
 
 void Lights::setWarm(float brightness) {
@@ -200,4 +322,62 @@ void Lights::setCold(float brightness) {
     int brightnessInt = brightness * PL::LED_RESOLUTION_MAX_VAL;
     brightnessInt = constrain(brightnessInt, 0, PL::LED_RESOLUTION_MAX_VAL);
     ledcWrite(PL::LED_COLD_CHANNEL, brightnessInt);
+}
+
+void Lights::setColor(int panelID, int ledID, ColorRGB color) {
+    int ledAbsID = getLedAbsID(panelID, ledID);
+    _ledState[ledAbsID].targetColor = color;
+}
+
+void Lights::setColor(int panelID, int ledID, ColorHSV color) {
+    ColorRGB colorRGB = HSVtoRGB(color);
+    setColor(panelID, ledID, colorRGB);
+}
+
+void Lights::setColorPanel(int panelID, ColorRGB color) {
+    for(int i = 0; i < 16; ++i) {
+        setColor(panelID, i, color);
+    }
+}
+void Lights::setColorPanel(int panelID, ColorHSV color) {
+    ColorRGB colorRGB = HSVtoRGB(color);
+    setColorPanel(panelID, colorRGB);
+}
+
+void Lights::setColorPanels(PanelSelector selector, ColorRGB color) {
+    for(int i = 0; i < 2; ++i) {
+        if(isPanelSelected(selector, i) == true) {
+            setColorPanel(i, color);
+        }
+    }
+}
+
+void Lights::setColorPanels(PanelSelector selector, ColorHSV color) {
+    ColorRGB colorRGB = HSVtoRGB(color);
+    setColorPanels(selector, colorRGB);
+}
+
+void Lights::setBrightness(PanelSelector selector, float brightness) {
+    brightness = constrain(brightness, 0.0, 1.0);
+
+    for(int ledID = 0; ledID < PL::LED_RGB_COUNT; ++ledID) {
+        int panelID = getPanelID(ledID);
+        if(isPanelSelected(selector, panelID) == true) {
+            _ledState[ledID].brightness = brightness;
+        }
+    }
+}
+
+void Lights::setTransition(PanelSelector selector, TransitionType transition, float rate) {
+    if(rate < PL::MIN_TRANS_T) {
+        rate = PL::MIN_TRANS_T;
+    }
+
+    for(int ledID = 0; ledID < PL::LED_RGB_COUNT; ++ledID) {
+        int panelID = getPanelID(ledID);
+        if(isPanelSelected(selector, panelID) == true) {
+            _ledState[ledID].transitionType = transition;
+            _ledState[ledID].transitionTime = rate;
+        }
+    }
 }
