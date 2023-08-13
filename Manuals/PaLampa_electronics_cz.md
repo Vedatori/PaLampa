@@ -295,16 +295,13 @@ Výsledné zapojení
 * Záslepku pro dotykové tlačítko
 
 ## Postup:
-Ustřihněte si kusy měděné pásky o délce 11 mm a 20 mm. 
+Ustřihněte si kusy měděné pásky o délce 10 mm a 20 mm. 
 ![alt](SupportFiles/IMG_5641-min.jpg)
-
-11mm kusu zastřihněte kleštěmi rožky.
-![alt](SupportFiles/IMG_5646.jpeg)
 
 Na střed obou kusů naneste cín.
 ![alt](SupportFiles/IMG_5652-min.jpg)
 
-K 11mm kusu připájejte červený drátek z kabelu. Cu pásku pájejte kolmo ke kabelu.
+K 10mm kusu připájejte červený drátek z kabelu. Cu pásku pájejte kolmo ke kabelu.
 ![alt](SupportFiles/IMG_5656-min.jpg)
 ![alt](SupportFiles/IMG_5661-min.jpg)
 
