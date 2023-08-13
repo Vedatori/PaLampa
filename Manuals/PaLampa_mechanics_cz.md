@@ -21,10 +21,7 @@ ___
 * [Slepení krabičky](#krabice)
 * [Sestavení části s hexagony](#CastSHexagony)
 * [Sestavení podstavy](#spodek)
-* [Lakování krabičky](#lak)
-* [Druhá vrstva laku](#lak2)
-* [Vlepení lišty a fotorezistou](#vlepeni)
-* [Finální sestavení](#final)
+* [Sestavení kloubů](#klouby)
 ___
 
 <!-- _________________________________________________________________ -->
@@ -53,6 +50,7 @@ Protáhněte šroub jednou dírou v rohu dřeva. Igelit propíchněte šroubem.
 ![alt](SupportFiles/IMG_4908.jpeg)
 
 Na šroub dejte ohrádku na sádru tak, jak vidíte na obrázku. 
+
 ![alt](SupportFiles/IMG_4909.jpeg)
 
 Našroubujte matku, zcela neutahujte.
@@ -139,7 +137,7 @@ Pokud dřevo stále obsahuje nějaké části, které měly po vyřezání laser
 
 ![alt](SupportFiles/IMG_4871.jpeg)
 
-Pokud dřevo obsahuje nějaké otřepy a zbytky po vytlačení odpadních částí, odstaňte je buďto rukou, nožem nebo hrubým (žlutým) smirkem. Ten můžete kvůli tomu přehnout, ale přehněte pouze část u kraje.
+Pokud dřevo obsahuje nějaké otřepy a zbytky po vytlačení odpadních částí, odstaňte je buďto rukou, nožem nebo hrubým (žlutým) smirkem. Ten můžete kvůli tomu přehnout, ale přehněte pouze část u kraje. Dále podle obrázku níže zkoste nožem hranu asi do 1,5 cm od okraje, a to na obou stranách. 
 
 ![alt](SupportFiles/IMG_4895.jpeg)
 
@@ -383,11 +381,16 @@ Nechte lak dostatečně zaschnout.
 * Část spodního kloubu se širokou podstavou
 * Hlavní PCB 
 * Sestava krku
+* Menší 3D tištěný kruhový kryt fotorezistoru
+* Větší 3D tištěná plocha kapacitního tlačítka
 * Matky
 * 1x Šroub M3x8 
 * 2x šroub M3x12
 * 2x šroub M3x16
+* 4x šroub M3x30
 * 4x podložka M3
+* 4x gumová nožička
+* Lepidlo Pattex
 
 ![alt](SupportFiles/IMG_5024.jpeg)
 
@@ -449,10 +452,186 @@ Konektor přehnutého kabelu zasuňte do hlavní desky podle obrázku:
 
 ![alt](SupportFiles/IMG_5054.jpeg)
 
--- 5054 a dále smazáno -- 
+Připravte si červeno-černý kabel s konektorem a napájenými měděnými ploškami. Odlepte krycí fólii z plošky připojené k červenému kabelu. Plošku nalepte z vnitřní strany kruhového plastového dílku s **větším** průměrem. 
 
-Nyní si připravte kabel s napájenými měděnými ploškami. 
+Na okraj kapacitního tlačítka naneste malé množství lepidla na plasty Pattex. Konektor protáhněte otvorem a tlačítko vmáčkněte **zvěnčí** do připraveného otvoru, případné vyteklé lepidlo otřete papírovým ubrouskem.
 
-Nyní si připravte 4 kusy podložky M3 a dvě dvojice šroubů M3x12 a M3x16. 
+![alt](SupportFiles/IMG_5056.jpeg)
+
+Plošku tlačítka zarovnejte s plochou dřeva, jak je ukázání na obrázku:
+
+![alt](SupportFiles/IMG_5057.jpeg)
+
+Po zaschnutí lepidla na plasty naneste do vnitřku kapacitního tlačítka kapku z tavné pistole, aby byl spoj mezi měděnou ploškou a plastovým tělem tlačítka spolehlivější. Nechte zchládnout. 
+
+Po obvodu menšího 3D tištěného kruhového krytu fotorezistoru naneste malé množství lepidla Pattex a opět jej vmáčkněte z vnější strany krabičky dovnitř a zarovnejte plošku krytky s plochou dřeva. 
+
+![alt](SupportFiles/IMG_5060.jpeg)
+
+Černý kabel s měděnou ploškou umístěte libovolně po obvodu nebo vrchní straně krabičky. Tím vytvoříte vaše *tajné* tlačítko. 
+
+Ohnutý flex kabel a kabel kapacitních tlačítek připojte k hlavní PCB:
+
+![alt](SupportFiles/IMG_5062.jpeg)
+
+PCB vsuňte do krabičky tak, že nejprve nasunete fotorezistor do připraveného otvoru vedle otvoru pro USB a desku *"položíte"* dovnitř. 
+
+Nyní si připravte 4 kusy podložky M3 a dvě dvojice šroubů M3x12 a M3x16. Na každý šroub navlečte podložku. Kratšími šrouby nejprve zašroubujte zadní okraj desky (okraj dále od USB konektoru). Šrouby zatím neutahujte napevno. Zbylými dvěma delšími šrouby (M3x16) přišroubujte desku ve zbylých místech. Pokud se šrouby protáčí a nejde je zašroubovat, asi jste zapomněli vložit matky :-/.
+
+Nyní si připravte 4 šrouby M3x30, 4 gumové nožičky, díl vylitý sádrou a spodní díl krabičky.
+
+![alt](SupportFiles/IMG_5070.jpeg)
+
+Gumové podložky navlečte na šrouby. 
+
+![alt](SupportFiles/IMG_5072.jpeg)
+
+Nyní všechny šrouby protáhněte skrz spodní díl krabičky a sádrový výlitek tak, aby otvor v dřevěném dílu lícoval s otvorem v sádrovém výlitku. 
+
+![alt](SupportFiles/IMG_5077.jpeg)
+
+Sádrový výlitek má na jedné kratší straně zkosení kvůli fotorezistoru. Dřevěné dno se sádrovým výlitkem otočte zkosením k fotorezistoru. 
+
+Spodní díl krabičky zatím nešroubujte k kornímu dílu, pouze jej přitlačte. Pokud se vám některá nožička součástky obtiskla do sádry, vyškrábněte v tomto místě sádru a udělejte tak místo pro nožičku/nožičky. 
+
+![alt](SupportFiles/IMG_5083.jpeg)
+
+Tímto je spodek lampy sestavený. 
+
+<!-- _________________________________________________________________ -->
+# <a name = klouby>Sestavení kloubů</a>
+
+## Potřebujeme:
+* 4 tištěné díly kloubů
+* 2 šrouby M3x25
+* 2 samojistné matky (s gumovým kroužkem uvnitř)
+* 4 šrouby M3x12 se zápustnou hlavou 
+* 4 matky M3
+* 3 gumové O-kroužky
+
+## Postup: 
+Nejprve vytvořte z dílů kloubů správné dvojice - spodní kloub je z jedné strany tvořen zoubky. K němu najděte protikus, jehož zámečky do něj zapadají. Zbylé dva díly kloubů patří k sobě. 
+
+Nejprve sestavíme spodní kloub lampy. Díly kloubu nyní rozložte. Na díl s kruhovou drážkou nasaďte jeden z O-kroužků podle obrázku. 
+
+![alt](SupportFiles/IMG_5085.jpeg)
+
+Díl přitiskněte k dílu kloubu, který je již přištoubován v podtavci, viz obrázek níže:
+
+![alt](SupportFiles/IMG_5086.jpeg)
+
+Protikus se zoubky přilož k podstavcovému dílu z druhé strany, jak je ukázáno na obrázku tak, aby zoubky zapadly do sebe:
+
+![alt](SupportFiles/IMG_5087.jpeg)
+
+Nyní otáčením dílku s O-kroužkem zacvakni zámečky na dílech do sebe. Kloub by nyní měl vypadat takto:
+
+![alt](SupportFiles/IMG_5089.jpeg)
+
+Do dílku, ve kterém je šestiúhleníkový otvor vlož samojistnou matku. Šroub M3x25 prošroubuj z druhé strany a lehce dotáhni v matce. 
+
+![alt](SupportFiles/IMG_5091.jpeg)
+
+Slepený díl krku nyní nasuň na plastový kloub, který jsme právě vytvořili:
+
+![alt](SupportFiles/IMG_5095.jpeg)
+
+Do šestiúhleníkových otvorů ve dřevě nyní vlož matičky (obyčejné) 
+
+![alt](SupportFiles/IMG_5097.jpeg)
+
+Ty teď z druhé strany je zašroubuj dvěma šrouby M3x12. 
+
+![alt](SupportFiles/IMG_5099.jpeg)
+
+
+
+<!-- _________________________________________________________________ -->
+# <a name = klouby>Sestavení kloubů</a>
+
+## Potřebujeme:
+* PCB s LEDkami
+* 2 tenké 3D tištěné držáčky PCB
+* 3D tištěný držák dřevěného dílu vrchu (na obrázku níže)
+* složený dřevěný díl s šestiúhleníkovými otvory a rohovými držáky matek
+* Vnější 3D tištěný díl s kloubem
+* Držák plexiskla
+* Plexisklo
+* 4 šrouby M3x12 se zápustnou hlavou
+* 4 šrouby M3x20 se zápustnou hlavou
+* 8 matek M3 
+* Úzkou tištěnou sponu na kabely
+* Krytku konektoru
+* Lepidlo Herkules
+* Lepidlo Pattex
+
+![alt](SupportFiles/IMG_5100.jpeg)
+
+## Postup:
+Šedý flex kabel a tři barevné dráty vedoucí k LED pásku secvakněte pomocí tištěné spony podle obrázku níže:
+
+![alt](SupportFiles/IMG_5103.jpeg)
+
+Konektor flex kabelu provlečte krytkou konektoru, která je na obrázku níže. Krytku neche volně na kabelu, ten poté připojte a následně krytku přetáhněte přes spojené konektory. Krytka je zde kvůli tomu, aby se při velkém otočení krku lampy konektory nerozpojily.
+
+![alt](SupportFiles/IMG_4000.jpeg)
+
+Konektor LED pásku připojte k PCB s diodami:
+
+![alt](SupportFiles/IMG_5107.jpeg)
+
+Oběma otvory tenkého tištěného držáčku PCB protáhněte šrouby M3x12 se zápustnou hlavou podle obrázku:
+
+![alt](SupportFiles/IMG_5109.jpeg)
+
+Držáčky nyní nasaďte na PCB ze strany LED diod tak, aby výstupky na držáčcích směřovaly směrem *dovnitř* k LED diodám. Nyní na PCB nasaďte 3D tištěný držák dřevěného dílu tak, jak je zobrazeno na obrázku níže, tedy drážkou tak, aby jí prošly kabely:
+
+![alt](SupportFiles/IMG_5111.jpeg)
+
+![alt](SupportFiles/IMG_5112.jpeg)
+
+Pozn.: Na předchozích obrázcích není na spojení černých konektorů nasazená krytka, my ji tam ale správně máme :-). 
+
+Nyní do otvorů v rozích dřevěného slepeného dílu vložte 4 matky. Na každou z nich naneste trochu lepidla a nechte jej zaschnout.
+
+![alt](SupportFiles/IMG_5115.jpeg)
+
+Dřevěný díl s vlepenými matičkami vložte na plastový díl podle obrázku níže a zašroubujte šrouby do matiček:
+
+![alt](SupportFiles/IMG_5117.jpeg)
+
+Nyní si připravte: 
+* Vnější 3D tištěný díl s kloubem
+* Zbylou dvojici pantů
+* Plexisklo
+* Držák plexiskla
+* 4 matky M3
+* 4 šrouby M3x20
+* 1 šroub M3x25
+* Samojistnou matku
+
+![alt](SupportFiles/IMG_5124.jpeg)
+
+Do otvorů ve vnějším tištěném dílu s kloubem vložte 4 matky M3 a pojistěte je proti vypadnutí kapkou lepidla Pattex. Při vsazování do otvorů si můžete pomoct kleštěmi. 
+
+![alt](SupportFiles/IMG_5131.jpeg)
+
+Lepidlo nechte zaschnout.
+
+Plexisklo vsaďte do držáku plexiskla tak, aby držák plexiskla byl hladkou stranou směrem dolů a plexisklo leželo shora. 
+
+![alt](SupportFiles/IMG_5125.jpeg)
+
+Tento díl nyní nasuňte zespodu na dříve složenou část plexisklem k diodám a výřezem ke kabelu podle obrázku:
+
+![alt](SupportFiles/IMG_5135.jpeg)
+
+![alt](SupportFiles/IMG_5136.jpeg)
+
+Díly k sobě stlačte podle obrázku:
+
+![alt](SupportFiles/IMG_5139.jpeg)
+
+Na takto složený vrch lampy nyní shora nasuňte 
 
 <!-- _________________________________________________________________ -->
