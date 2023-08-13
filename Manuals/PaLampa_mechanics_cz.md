@@ -632,6 +632,44 @@ Díly k sobě stlačte podle obrázku:
 
 ![alt](SupportFiles/IMG_5139.jpeg)
 
-Na takto složený vrch lampy nyní shora nasuňte 
+Na takto složený vrch lampy nyní shora nasuňte vnější díl s výstupkem kloubu:
+
+![alt](SupportFiles/IMG_5140.jpeg)
+
+Nasazený díl zatlačte tak, aby byla jeho hrana zarovnaná s povrchem dřeva.
+
+Celý díl sešroubujte čtyřmi šrouby M3x20:
+
+![alt](SupportFiles/IMG_5147.jpeg)
+
+Nyní zbývá sestavit horní kloub lampy.
+
+Připravte si zbylé díly horního kloubu a dva O-kroužky. Jeden z nich vložte mezi výstup z vršku lampy a boční díl kloubu. 
+
+![alt](SupportFiles/IMG_5151.jpeg)
+
+Stejným způsobem zopakujte na druhé straně a otáčením jedním z bočních dílků zacvakněte zámečky do sebe.
+
+![alt](SupportFiles/IMG_5154.jpeg)
+
+![alt](SupportFiles/IMG_5158.jpeg)
+
+Do šestiúhleníkového otvoru vložte samojistnou matku a celý kloub prošroubujte šroubem M3x25. 
+
+![alt](SupportFiles/IMG_5161.jpeg)
+
+Stejně jako při stavbě spodního kloubu, vsuňte plastový díl do drážky v dřevěném krku lampy. 
+
+![alt](SupportFiles/IMG_5162.jpeg)
+
+Do šestiúhelníkových otvorů ze spodní strany krku vložte zbylé dvě matky M3 a z druhé strany je přišroubujte šrouby M3x12 se zápustnou hlavou, stejně jako na spodní straně krku. 
+
+V případě potřeby dotáhněte / povolte šrouby v kloubech.
+
+Gratulujeme - tímto je mechanická stavba hotová :-).
+
+
+
+
 
 <!-- _________________________________________________________________ -->
