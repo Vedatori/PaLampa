@@ -6,11 +6,13 @@
 
 namespace PL {
 
-const int LED_WARM_PIN = 5, LED_WARM_CHANNEL = 0;
-const int LED_COLD_PIN = 17, LED_COLD_CHANNEL = 1;
+const std::vector<int> LED_WHITE_PIN{5, 17};
+const std::vector<int> LED_WHITE_CHANNEL{0, 11};
+const int LED_WHITE_COUNT = 2;
 const int LED_FREQ = 20000;
 const int LED_RESOLUTION_BIT = 10;
 const int LED_RESOLUTION_MAX_VAL = 1<<LED_RESOLUTION_BIT;
+
 const int LED_RGB_PIN = 16;
 const int LED_RGB_COUNT = 23;
 
@@ -44,8 +46,8 @@ typedef struct panelSelector {
 typedef struct ledState {
     ColorRGB targetColor;
     ColorRGB currentColor;
-    float currentColorF[3];          // {red, green, blue} - True displayed color
-    float brightness;           // [0.0-1.0]
+    float currentColorF[3];  // {red, green, blue} - True displayed color
+    float brightness;        // [0.0-1.0]
     TransitionType transitionType;
     float transitionTime;           // [seconds/fullRange]
     bool updateNeeded;
@@ -76,10 +78,11 @@ extern PanelSelector top;
 extern PanelSelector back;
 
 class Lights {
-    std::vector<LedState> _ledState;
-    bool updateActive{};  // 0-not active, 1-active
-    float currentLimit{};                  // [A]
-    float currentLimitRatio{};
+    std::vector<LedState> _ledColorState;
+    std::vector<float> _ledWhiteState;
+    bool _updateActive{};  // 0-not active, 1-active
+    float _currentLimit{};                  // [A]
+    float _currentLimitRatio{};
 
     bool isPanelSelected(PanelSelector selector, int panelID);
     int getPanelID(int ledID);
@@ -95,8 +98,7 @@ public:
     void setCurrentLimit(float limit);
     float getCurrentLimitRatio();
 
-    void setWarm(float brightness);
-    void setCold(float brightness);
+    void setWhite(int ledID, float brightness);
 
     void setColor(int panelID, int ledID, ColorRGB color);
     void setColor(int panelID, int ledID, ColorHSV color);

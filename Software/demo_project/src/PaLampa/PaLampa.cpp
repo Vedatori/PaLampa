@@ -57,10 +57,9 @@ void PaLampa::begin() {
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
-	/*weather.init(1000 * 60 * 15);
+	weather.init(1000 * 60 * 15);
 	weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
 	weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
-    */
 
     for(int i = 0; i < 3; ++i) {
         pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
@@ -89,13 +88,15 @@ void PaLampa::printDiagnostics() {
         printf("btn%d: %d ", i, buttonRead(i));
     }
 
-    printf("pot: %f ", potentiometerRead());
+    printf("pot: %.2f ", potentiometerRead());
     
     printf(photoresistor.getText().c_str());
 
     //printf("priority: %d ", uxTaskPriorityGet(NULL));
 
     printf(thermometer.getText().c_str());
+
+    printf("powerR: %.2f ", paLampa.lights.getCurrentLimitRatio());
 
     printf("weather: %s \n", paLampa.weather.getWeather().getWeatherString().c_str());
 

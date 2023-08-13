@@ -2,21 +2,19 @@
 
 void setup() {
     paLampa.begin();
-
-    Serial.begin(115200);
+    paLampa.startWiFiCaptain("<your_name>");
 }
 
 void loop() {
     float potVal = paLampa.potentiometerRead();
     if (paLampa.buttonRead(0)) {
-        paLampa.lights.setWarm(potVal);
+        paLampa.lights.setWhite(0, potVal);
     }
     else if(paLampa.buttonRead(1)) {
-        paLampa.lights.setCold(potVal);
+        paLampa.lights.setWhite(1, potVal);
     }
     else if(paLampa.buttonRead(2)) {
-       ColorRGB color = {potVal*255.0, 0, 0};
-       //paLampa.lights.setColor(0, 0, color);
+       ColorRGB color = {uint8_t(potVal*255.0), 0, 0};
        paLampa.lights.setColorPanels(all, color);
     }
     
