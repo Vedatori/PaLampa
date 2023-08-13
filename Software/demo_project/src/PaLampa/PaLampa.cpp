@@ -10,32 +10,32 @@ Melody themeMelody(
 
 void PL::refreshTaskQuick(void * parameter) {
     for(;;) {
-        PaLampa.photoresistor.update();
+        paLampa.photoresistor.update();
         delay(20);
     }
 }
 
 void PL::refreshTaskSlow(void * parameter) {
     for(;;) {
-        PaLampa.thermometer.update();
+        paLampa.thermometer.update();
 
         static uint32_t internetUpdateTime = 0;
         static uint32_t softApDisableTime = 0;
         static bool softApEnabled = true;
 		if((millis() - internetUpdateTime) > PL::INTERNET_UPDATE_PERIOD || internetUpdateTime == 0) {
-			PaLampa.checkInternetConnected();
-            if(PaLampa.getInternetConnected()) {
+			paLampa.checkInternetConnected();
+            if(paLampa.getInternetConnected()) {
                 internetUpdateTime = millis();
                 if(softApEnabled) {
                     softApDisableTime = millis();
                 }
             }
-            else if(PaLampa.getWifiCaptStarted() && !softApEnabled) {
+            else if(paLampa.getWifiCaptStarted() && !softApEnabled) {
                 softApEnable();
             }
 		}
-        if(PaLampa.getInternetConnected()) {
-            PaLampa.weather.updateBothWF();
+        if(paLampa.getInternetConnected()) {
+            paLampa.weather.updateBothWF();
         }
         if(softApDisableTime != 0 && (millis() - softApDisableTime) > PL::SOFT_AP_DISABLE_TIMEOUT) {
             softApDisableTime = 0;
@@ -46,14 +46,17 @@ void PL::refreshTaskSlow(void * parameter) {
     }
 }
 
-void PaLampa_class::begin() {
+void PaLampa::begin() {
     beginCalled = true;
 
-    piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
+    //piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
 
-	weather.init(1000 * 60 * 15);
+    lights.begin();
+
+	/*weather.init(1000 * 60 * 15);
 	weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
 	weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
+    */
 
     for(int i = 0; i < 3; ++i) {
         pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
@@ -63,18 +66,24 @@ void PaLampa_class::begin() {
     xTaskCreatePinnedToCore(PL::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
 }
 
-bool PaLampa_class::buttonRead(int buttonID) {
+bool PaLampa::buttonRead(int buttonID) {
     if(buttonID < 0 || buttonID > 2) {
         printf("Invalid button ID: %d\n", buttonID);
         return 0;
     }
-    return !digitalRead(PL::BUTTON_PIN[buttonID]);  // 1 = pressed
+    return !digitalRead(PL::BUTTON_PIN[buttonID]);
 }
 
-void PaLampa_class::printDiagnostics() {
+float PaLampa::potentiometerRead() {
+    return (4095 - analogRead(PL::POTENTIOMETER_PIN)) / 4095.0;
+}
+
+void PaLampa::printDiagnostics() {
     for(int i = 0; i <= 2; ++i) {
         printf("btn%d: %d ", i, buttonRead(i));
     }
+
+    printf("pot: %d ", potentiometerRead());
     
     printf(photoresistor.getText().c_str());
 
@@ -82,21 +91,21 @@ void PaLampa_class::printDiagnostics() {
 
     printf(thermometer.getText().c_str());
 
-    printf("weather: %s \n", PaLampa.weather.getWeather().getWeatherString().c_str());
+    printf("weather: %s \n", paLampa.weather.getWeather().getWeatherString().c_str());
 
 }
 
 void handleWeatherConfig(){
 	String msg = "";
 	if(webserver.hasArg("apiKey")){
-		PaLampa.weather.setKey(webserver.arg("apiKey"));
-		msg = String("Api key set to: ") + PaLampa.weather.getKey();
+		paLampa.weather.setKey(webserver.arg("apiKey"));
+		msg = String("Api key set to: ") + paLampa.weather.getKey();
 	}else if(webserver.hasArg("geoLocatorLatitude")){
 		double latitude = webserver.arg("geoLocatorLatitude").toDouble();
 		double longitude = webserver.arg("geoLocatorLongitude").toDouble();
 		printf("%.10f %.10f",latitude, longitude);
-		PaLampa.weather.setPosition(latitude, longitude, "None");
-		msg = String("Postion set to: ")+String(PaLampa.weather.getPositionLatitude())+String(" ")+String(PaLampa.weather.getPositionLongitude());
+		paLampa.weather.setPosition(latitude, longitude, "None");
+		msg = String("Postion set to: ")+String(paLampa.weather.getPositionLatitude())+String(" ")+String(paLampa.weather.getPositionLongitude());
 	}else{
 		File f = SPIFFS.open("/weatherSetup.html", "r");
     	webserver.streamFile(f, "text/html");
@@ -112,7 +121,7 @@ void handleWeatherConfig(){
 	webserver.send(200, "text/html", Page);
 }
 
-void PaLampa_class::startWiFiCaptain(String name, String password) {
+void PaLampa::startWiFiCaptain(String name, String password) {
     wifiCaptStarted = true;
     if(!beginCalled) {
         begin();
@@ -134,11 +143,11 @@ void PaLampa_class::startWiFiCaptain(String name, String password) {
 }
 
 
-bool PaLampa_class::getWifiCaptStarted() {
+bool PaLampa::getWifiCaptStarted() {
     return wifiCaptStarted;
 }
 
-void PaLampa_class::checkConnection() {
+void PaLampa::checkConnection() {
     if(!connectionEnabled) {
         return;
     }
@@ -151,7 +160,7 @@ void PaLampa_class::checkConnection() {
 }
 
 
-void PaLampa_class::checkInternetConnected() {
+void PaLampa::checkInternetConnected() {
 	if(!WiFi.isConnected()) {
 		internetConnected = false;
 	}
@@ -163,17 +172,17 @@ void PaLampa_class::checkInternetConnected() {
     }
 }
 
-bool PaLampa_class::getInternetConnected() {
+bool PaLampa::getInternetConnected() {
     return internetConnected;
 }
 
-String PaLampa_class::commandGet() {
+String PaLampa::commandGet() {
     String command = String(commandGetCaptain());
     command.toLowerCase();
     return command;
 }
 
-String PaLampa_class::commandGetIndexed(uint8_t index) {
+String PaLampa::commandGetIndexed(uint8_t index) {
     char commandBuffer[64];
     sprintf(commandBuffer, commandGetCaptain());
     const char delimiter[2] = " ";
@@ -187,16 +196,16 @@ String PaLampa_class::commandGetIndexed(uint8_t index) {
     return command;
 }
 
-void PaLampa_class::commandClear() {
+void PaLampa::commandClear() {
     commandClearCaptain();
 }
 
-void PaLampa_class::commandSend(String type, String text) {
+void PaLampa::commandSend(String type, String text) {
     commandSendCaptain(type, text);
 }
 
-void PaLampa_class::commandDisp(String text) {
+void PaLampa::commandDisp(String text) {
     commandSend("commandDisp", text);
 }
 
-PaLampa_class PaLampa{};
+PaLampa paLampa{};

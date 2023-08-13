@@ -1,8 +1,4 @@
-#include "Lights_PL.h"
-
-#include "Adafruit_NeoPixel.h"
-
-//Adafruit_NeoPixel pixels(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+#include "Lights.h"
 
 ColorRGB red = {255, 0, 0};
 ColorRGB green = {0, 255, 0};
@@ -18,6 +14,8 @@ ColorRGB salmon = {250, 128, 114};
 ColorRGB orange = {255, 165, 0};
 ColorRGB gold = {255, 215, 0};
 ColorRGB tomato = {255, 99, 71};
+
+
 
 ColorRGB dimColor(ColorRGB color, float brightness) {
     brightness = constrain(brightness, 0.0, 1.0);
@@ -160,19 +158,46 @@ ColorHSV RGBtoHSV(ColorRGB color) {
     return colorHSV;
 }
 
-void Lights_PL::begin() {
-    //pixels.begin();
+Lights::Lights() {
+    //pixels = Adafruit_NeoPixel(16, 16, NEO_GRB + NEO_KHZ800);
+}
+
+void Lights::begin() {
+    /*pixels.begin();
+    pixels.setPixelColor(0, pixels.Color(100, 0, 0));
+    pixels.show();
     update();
+    */
+    ledcSetup(PL::LED_WARM_CHANNEL, PL::LED_FREQ, PL::LED_RESOLUTION_BIT);
+    ledcSetup(PL::LED_COLD_CHANNEL, PL::LED_FREQ, PL::LED_RESOLUTION_BIT);
+    ledcAttachPin(PL::LED_WARM_PIN, PL::LED_WARM_CHANNEL);
+    ledcAttachPin(PL::LED_COLD_PIN, PL::LED_COLD_CHANNEL);
 }
 
-void Lights_PL::update() {
+void Lights::update() {
     ;
 }
 
-void Lights_PL::setUpdateActive(bool state) {
+void Lights::setUpdateActive(bool state) {
     ;
 }
 
-void Lights_PL::setCurrentLimit(float limit) {
+void Lights::setCurrentLimit(float limit) {
     ;
+}
+
+float Lights::getCurrentLimitRatio() {
+    return 0.0;
+}
+
+void Lights::setWarm(float brightness) {
+    int brightnessInt = brightness * PL::LED_RESOLUTION_MAX_VAL;
+    brightnessInt = constrain(brightnessInt, 0, PL::LED_RESOLUTION_MAX_VAL);
+    ledcWrite(PL::LED_WARM_CHANNEL, brightnessInt);
+}
+
+void Lights::setCold(float brightness) {
+    int brightnessInt = brightness * PL::LED_RESOLUTION_MAX_VAL;
+    brightnessInt = constrain(brightnessInt, 0, PL::LED_RESOLUTION_MAX_VAL);
+    ledcWrite(PL::LED_COLD_CHANNEL, brightnessInt);
 }
