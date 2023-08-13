@@ -43,10 +43,10 @@ Vložte piezoměnič na jeho místo v desce, Dávejte pozor na polaritu, symbol 
 
 Zapájejete piezoměnič. Pomocí štípacích kleští zakraťte vývody.
 ![alt](SupportFiles/IMG_4649.jpeg)
-![alt](SupportFiles/IMG_4655 2.jpeg)
 
 Vložte do desky konektor JST.Pozor na orientaci, je důležité ho otočit přesně tak, jako je na obrázku.
-![alt](SupportFiles/IMG_4656.jpeg)
+![alt](SupportFiles/IMG_5635-min.jpg)
+![alt](SupportFiles/IMG_5636-min.jpg)
 
 Zapájejte. Zakraťte vývody.
 ![alt](SupportFiles/IMG_4660.jpeg)
@@ -114,7 +114,6 @@ Zapájejte tlačítka na hlavní PCB. Zakraťte vývody.
 * 2x fotorezistor
 * teplotní senzor
 * Distanční díl na fotorezistor
-* Distanční díl na teplotní senzor
 * štípací kleště
 * páječka
 
@@ -133,14 +132,14 @@ Druhý fotorezistor nasuňte do 3D tištěného distančního dílu. Zapájejte 
 Výsledný pohled na spodní fotorezistor.
 ![alt](SupportFiles/IMG_4761.jpeg)
 
-Teplotní senzor zasuňte do distančního dílu. Ten by měl zhruba kopírovat tvar senzoru, plochá část musí korepsondovat s plochou částí součástky.
-![alt](SupportFiles/IMG_3222.jpeg)
+Teplotní senzor zasuňte do desky pouze na několik milimetrů. 
+![alt](SupportFiles/IMG_5632-min.jpg)
 
-Vyhněte prostřední vývod teplotního senzoru.
-![alt](SupportFiles/IMG_3222.jpeg)
+Podložte si desku, aby se senzor při pájení neohnul.
+![alt](SupportFiles/IMG_5633-min.jpg)
 
-Vložte senzor s distančním dílem do PCB a zapájejte.
-![alt](SupportFiles/IMG_3266.jpeg)
+Zapájejte. Po zapájení jednoho vývodu ověřte, že je senzor postavený rovně. Pokud ne, tak si senzor ohněte do směru kolmého k desce.
+![alt](SupportFiles/IMG_5634-min.jpg)
 
 <!-- _________________________________________________________________ -->
 # <a name = displej>Vložení displeje</a>
@@ -154,7 +153,7 @@ Vložte senzor s distančním dílem do PCB a zapájejte.
 
 # Postup:
 Zastřihněte vývody kolíkové lišty vedoucí do displeje.
-![alt](SupportFiles/IMG_XXXX.jpeg)
+![alt](SupportFiles/IMG_5637-min.jpg)
 
 Opatrně vložte displej do držáku. Můžete ho mírně rozevřít, ale dávejte pozor, ať bok nevylomíte.
 ![alt](SupportFiles/IMG_4771.jpeg)
@@ -207,10 +206,7 @@ Do desky vložte 3pin bílý konektor. Připájejte a zaktaťte vývody.
 Desku z druhé strany podepřete nástrojem použitým v minulém kroku.
 ![alt](SupportFiles/IMG_4825.jpeg)
 
-Konektor připájejte.
-![alt](SupportFiles/IMG_48XX.jpeg)
-
-Výsledný pohled
+Konektor připájejte. Výsledný pohled
 ![alt](SupportFiles/IMG_4826.jpeg)
 
 <!-- _________________________________________________________________ -->
@@ -298,15 +294,18 @@ Výsledné zapojení
 * Měděná páska
 * Záslepku pro dotykové tlačítko
 
-
-![alt](SupportFiles/IMG_0000.jpeg)
-
 ## Postup:
-Ustřihněte si kusy měděné pásky o délce 11 mm a 20 mm.
-![alt](SupportFiles/IMG_0000.jpeg)
+Ustřihněte si kusy měděné pásky o délce 11 mm a 20 mm. 
+![alt](SupportFiles/IMG_5641-min.jpg)
+
+11mm kusu zastřihněte kleštěmi rožky.
+![alt](SupportFiles/IMG_5646.jpeg)
+
+Na střed obou kusů naneste cín.
+![alt](SupportFiles/IMG_5652-min.jpg)
 
 K 11mm kusu připájejte červený drátek z kabelu. Cu pásku pájejte kolmo ke kabelu.
-![alt](SupportFiles/IMG_0000.jpeg)
+![alt](SupportFiles/IMG_5656-min.jpg)
+![alt](SupportFiles/IMG_5661-min.jpg)
 
 Stejným způsobem připájejte i černý akbel k 20mm kusu pásky.
-![alt](SupportFiles/IMG_0000.jpeg)
