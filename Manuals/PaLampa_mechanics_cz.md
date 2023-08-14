@@ -166,7 +166,7 @@ Ukliďte si pracovní plochu po předchozích krocích, tj. setřete prach vznik
 ![alt](SupportFiles/IMG_4950.jpeg) 
 
 ## Postup:
-Na nepohledové straně dílu v místě naznačeném na obrázku seřízněte nožem vnitřní hranu. 
+Na nepohledové straně dílu v místě naznačeném na obrázku seřízněte nožem vnitřní hranu. Jedná se o hranu směrem k plastovému kloubu s kulatými okraji (bez zoubků).
 
 ![alt](SupportFiles/IMG_4961.jpeg)
 
@@ -200,7 +200,7 @@ Stejným způsobem přilepte druhou tyčku.
 
 ![alt](SupportFiles/IMG_4969.jpeg)
 
-Na okraje tenkého podpůrného dílu naneste lepilo podle následujícího obrázku a do otvoru vložte LED pásek tak, aby jeho kabely směřovaly směrem k vytvořenému výřezu:
+Na okraje tenkého podpůrného dílu naneste lepilo podle následujícího obrázku a do otvoru vložte LED pásek tak, aby jeho kabely směřovaly směrem k vytvořenému výřezu. Pozor, kabely LED pásku směřují k plastovému kloubu s kulatými okraji (bez zoubků), ne tak jako na obrázku (křížek) i dalších obrázcích.
 
 ![alt](SupportFiles/IMG_4974.jpeg)
 
