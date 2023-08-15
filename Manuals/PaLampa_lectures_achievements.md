@@ -37,6 +37,7 @@ Napište program, který rozsvítí teplé LED
 ## Úkol 2 - Rozsviť bílé LED
 Napište program, který rozsvítí bílé LED
 
+
 # Lekce 2
 Rozblikáme barevné LED na horním segmentu nebo LED pásku.
 
@@ -58,14 +59,16 @@ void loop() {
 }
 ```
 
-## Úkol 1 - Blikání LED (horní segmet RGB LED jenom jedna ledka)
+## Úkol 3 - Blikání LED (horní segmet RGB LED jenom jedna ledka)
 Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba svitu i doba zhasnutí je 300 ms.
 
-## Úkol 2 - Záblesky LED pásku (pásek ze zadu bude blikat v určitém intervalu)
+## Úkol 4 - Záblesky LED pásku (pásek ze zadu bude blikat v určitém intervalu)
 Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
 
 ## Úkol 3 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
 Napište program, který bude blikat jako železniční přejezd. Blikat budou první LED na levé a pravé straně horního segmentu, oba červenou barvou.
+## Úkol 5 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
+Napište program, který bude blikat jako železniční přejezd. Blikat budou 0. a 15. LED (LEDky jsou ve stejném řádku)
 
 # Lekce 3 (tlačítka 1 2 3)
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
@@ -90,13 +93,13 @@ void loop() {
 }
 ```
 
-## Úkol 4 - Manuální blikání LED (když tlačítko zmáčknuto LED svítí)
+## Úkol 6 - Manuální blikání LED (když tlačítko zmáčknuto LED svítí)
 Napište program, který bliká libovolnou LED pouze při stisknutém tlačítku nejblíž USB konektoru. Doba svícení je 200 ms. Doba zhasnutí je 200 ms.
 
-## Úkol 5 - Stabilní stav LED (když tlačítkou zmačknuto a následně pustěno LED zůstane svítit když znovu zmáčknuto LED se vypne)
+## Úkol 7 - Stabilní stav LED (když tlačítkou zmačknuto a následně pustěno LED zůstane svítit když znovu zmáčknuto LED se vypne)
 Napište program, který bude stiskem tlačítka přepínat svícení dvou různých segmentů na dvou různách digitech. Vždy bude svítit pouze jeden segment, stiskem tlačítka se tento segment vypne a zapne se ten druhý. Dalším stiskem tlačítka se znovu zapne pouze ten původní segment a proces lze opakovat.
 
-# Lekce č (piezo)
+# Lekce 4 (piezo)
 
 
 ## Výsledný kód
@@ -119,10 +122,10 @@ void loop() {
 }
 ```
 
-## Úkol 6 - dlouhé pííííííp (piezo dělá neustálí zvuk)
+## Úkol 8 - dlouhé pííííííp (piezo dělá neustálí zvuk)
 Napište program, který bude blikat libovolným segmentem a rychlost tohoto blikání se zvětší, když se sníží intenzita osvětlení na předním fotorezistoru (např. bude zakrytý prstem).
 
-## Úkol 7 - základní melodie (jednoduchá krátká melodie z pieza bonus přidání tlačítka)
+## Úkol 9 - základní melodie (jednoduchá krátká melodie z pieza bonus přidání tlačítka)
 Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
 
 # Lekce 5 (potenciometer)
@@ -150,10 +153,10 @@ void loop() {
 }
 ```
 
-## Úkol 8 - zesilování LED (zesílení nebo zeslabení LED za pomocí otáčení potenciometru)
+## Úkol 10 - zesilování LED (zesílení nebo zeslabení LED za pomocí otáčení potenciometru)
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
 
-## Úkol 9 - měnění RGB (otáčení potenciometru mění barvy RGB LED )
+## Úkol 11 - měnění RGB (otáčení potenciometru mění barvy RGB LED )
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
@@ -182,10 +185,10 @@ void loop() {
 }
 ```
 
-## Úkol 8 - Zvuková signaliazce tmy (pokud tma tak zviš jas)
+## Úkol 12 - Zvuková signaliazce tmy (pokud tma tak zviš jas)
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
 
-## Úkol 9 - Nastavení jasu LED po stisku tlačítka
+## Úkol 13 - Nastavení jasu LED po stisku tlačítka
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
@@ -208,9 +211,9 @@ void loop() {
 }
 ```
 
-## Úkol 10 - Vypsání hodnoty LED
+## Úkol 14 - Vypsání hodnoty LED
 Přepracujte úkol 9 tak, aby Time-O-Mat přes sériovou linku přenášel číslo LED, která právě svítí.
 
-## Úkol 11 - Vyslání času od startu Time-O-Mat bez funkce millis()
+## Úkol 15 - Vyslání času od startu Time-O-Mat bez funkce millis()
 Napište program, který bude vypisovat celočíselnou proměnnou každou vteřinu. Tuto proměnnou však každou milisekundu zvyšte o 1. Je chování tohoto programu stejné jako v případě použití funkce `millis()`?
 
