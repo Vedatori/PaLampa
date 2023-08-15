@@ -11,7 +11,7 @@ Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli na
 Pomocí kódu z manuálu rozsvítit LED.
 
 # Lekce 1
-Rozblikáme LED na digitech nebo LED pásku.
+Rozblikáme LED na horním segmentu nebo LED pásku.
 
 ## Výsledný kód
 
@@ -37,7 +37,7 @@ Napište program, který bude blikat druhou LED na nultém digitu. Doba svitu i 
 ## Úkol 2 - Záblesky LED
 Napište program, který každou vteřinu krátce zobrazí číslo 1 na posledním digitu. Doba zobrazení je 100 ms v každé vteřině.
 
-## Úkol 3 - Železniční přejezd
+## Úkol 3 - Železniční přejezd na horním segment
 Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
 
 # Lekce 2
@@ -70,7 +70,7 @@ Napište program, který bliká libovolnou LED pouze při stisknutém tlačítku
 Napište program, který bude stiskem tlačítka přepínat svícení dvou různých segmentů na dvou různách digitech. Vždy bude svítit pouze jeden segment, stiskem tlačítka se tento segment vypne a zapne se ten druhý. Dalším stiskem tlačítka se znovu zapne pouze ten původní segment a proces lze opakovat.
 
 # Lekce 3
-Přečteme hodnotu na fotorezistoru, ukážeme si číselnou proměnnou. Hodnotu výstupu z fotorezistoru si zobrazíme na LED.
+ps.potenciometr
 
 ## Výsledný kód
 
@@ -95,7 +95,7 @@ void loop() {
 ## Úkol 6 - Rychlost blikání
 Napište program, který bude blikat libovolným segmentem a rychlost tohoto blikání se zvětší, když se sníží intenzita osvětlení na předním fotorezistoru (např. bude zakrytý prstem).
 
-## Úkol 7 - Počítadlo stisků tlačítka
+## Úkol 7 - měnění
 Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
 
 # Lekce 4
