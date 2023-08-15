@@ -176,7 +176,8 @@ void loop() {
 ## Úkol 12 - Dotyk
 Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí touch sensoru.
 
-# Lekce 7
+
+# Lekce 7 (teploměr)
 Ukážeme si ja zjistit hodnotu teploměru.
 
 ## Výsledný kód
