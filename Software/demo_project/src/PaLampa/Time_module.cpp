@@ -57,7 +57,7 @@ void Time_module::begin(bool sntpEnabled, int sntpTimeout) {
     }
 }
 
-void Time_module::setEnabled(bool enabled) {
+void Time_module::setNtpEnabled(bool enabled) {
     if(!beginCalled){
         printf("TimeModule: Can't call setEnabled without calling begin first!\n");
         return;
@@ -75,7 +75,7 @@ void Time_module::setEnabled(bool enabled) {
     }
 }
 
-bool Time_module::isEnabled() {
+bool Time_module::isNtpEnabled() {
     return sntp_enabled();
 }
 
@@ -89,6 +89,7 @@ void Time_module::setTimeZone(String newTimeZone) {
 }
 
 void Time_module::setTime(struct timeval newTime) {
+    setNtpEnabled(false);
     settimeofday(&newTime, NULL);
 }
 
@@ -123,7 +124,7 @@ int Time_module::getSyncInterval() {
 }
 
 sntpStatus Time_module::getSntpStatus() {
-    if(!sntp_enabled()) return sntpStatus::STOP;
+    if(!sntp_enabled()) return sntpStatus::OFF;
 
     sntp_sync_status_t syncStatus = sntp_get_sync_status();
     if(syncStatus = SNTP_SYNC_STATUS_COMPLETED){
@@ -131,12 +132,12 @@ sntpStatus Time_module::getSntpStatus() {
         return sntpStatus::OK;
     }
 
-    if(ntpLastSync == -1) return sntpStatus::FAILED;
+    if(ntpLastSync == -1) return sntpStatus::FAIL;
 
     if( (time(NULL)-ntpLastSync) < (ntpSyncInterval+15) ) {
         return sntpStatus::OK;
     }else{
-        return sntpStatus::FAILED;
+        return sntpStatus::FAIL;
     }
 }
 
@@ -212,8 +213,4 @@ struct tm Time_module::epochToTm(time_t epoch) {
 
 time_t Time_module::tmToEpoch(struct tm time) {
     return mktime(&time);
-}
-
-double Time_module::diffTime(time_t end, time_t start) {
-    return difftime(end, start);
 }

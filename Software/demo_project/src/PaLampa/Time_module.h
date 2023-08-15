@@ -25,9 +25,9 @@ const int defaultSyncInterval = 5*60;
 
 ///SNTP status:
 ///OK - SNTP is running and last request was successful
-///FAILED - SNTP is running and last request failed
-///STOP - SNTP is disabled
-enum sntpStatus {OK, FAILED, STOP};
+///FAIL - SNTP is running and last request failed
+///OFF - SNTP is disabled
+enum sntpStatus {OK, FAIL, OFF};
 
 }
 
@@ -53,10 +53,10 @@ public:
     /// Enables/disables SNTP
     /// Begin must be called before using this function
     /// If you call setEnabled(true) and SNTP is already running, SNTP will be restarted.
-    void setEnabled(bool enabled);
+    void setNtpEnabled(bool enabled);
 
     /// Returns true if SNTP is enabled, false otherwise
-    bool isEnabled();
+    bool isNtpEnabled();
 
     /// @brief Sets the timezone
     /// @param timeZone Timezone in posix timezone format
@@ -145,14 +145,6 @@ public:
     /// @brief Converts tm struct to time_t epoch (local timezone)
     /// @return time_t epoch
     time_t tmToEpoch(struct tm time);
-
-    // ========================= Misc
-
-    /// @brief Calculates time difference between two time_t variables
-    /// @param end Higher bound of the time interval whose length is calculated.
-    /// @param start Lower bound of the time interval whose length is calculated. If this describes a time point later than 'end', the result is negative.
-    /// @return double
-    double diffTime(time_t end, time_t start);
 };
 
 #endif // _TIME_MODULE_
