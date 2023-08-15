@@ -1,19 +1,18 @@
 #include "Lights.h"
 
-ColorRGB red = {255, 0, 0};
-ColorRGB green = {0, 255, 0};
-ColorRGB blue = {0, 0, 255};
-ColorRGB cyan = {0, 255, 255};
-ColorRGB magenta = {255, 0, 255};
-ColorRGB yellow = {255, 255, 0};
+ColorRGB red = {1, 0, 0};
+ColorRGB green = {0, 1, 0};
+ColorRGB blue = {0, 0, 1};
+ColorRGB cyan = {0, 1, 1};
+ColorRGB magenta = {1, 0, 1};
+ColorRGB yellow = {1, 1, 0};
 ColorRGB black = {0, 0, 0};
-ColorRGB white = {255, 255, 255};
-ColorRGB pink = {255, 192, 203};
-ColorRGB brown = {165, 42, 42};
-ColorRGB salmon = {250, 128, 114};
-ColorRGB orange = {255, 165, 0};
-ColorRGB gold = {255, 215, 0};
-ColorRGB tomato = {255, 99, 71};
+ColorRGB white = {1, 1, 1};
+ColorRGB pink = {1, 0.75, 0.80};
+ColorRGB brown = {0.65, 0.16, 0.16};
+ColorRGB salmon = {0.98, 0.50, 0.45};
+ColorRGB orange = {1, 0.65, 0};
+ColorRGB gold = {1, 0.84, 0};
 
 PanelSelector all = {1, 1};
 PanelSelector top = {1, 0};
@@ -22,17 +21,17 @@ PanelSelector back = {0, 1};
 ColorRGB dimColor(ColorRGB color, float brightness) {
     brightness = constrain(brightness, 0.0, 1.0);
 
-    uint8_t * colorPtr = (uint8_t *)&color;
+    float * colorPtr = (float *)&color;
     for(int i = 0; i < 3; ++i) {
-        colorPtr[i] = constrain(colorPtr[i] * brightness, 0, 255);
+        colorPtr[i] = constrain(colorPtr[i] * brightness, 0, 1);
     }
     return color;
 }
 
 ColorRGB shiftColor(ColorRGB color, int red, int green, int blue) {
-    color.red = constrain(color.red + red, 0, 255);
-    color.green = constrain(color.green + green, 0, 255);
-    color.blue = constrain(color.blue + blue, 0, 255);
+    color.red = constrain(color.red + red, 0, 1);
+    color.green = constrain(color.green + green, 0, 1);
+    color.blue = constrain(color.blue + blue, 0, 1);
     return color;
 }
 
@@ -48,7 +47,7 @@ ColorRGB HSVtoRGB(ColorHSV color) {
     float v = constrain(color.value, 0, 1);
 
     float C = s*v;
-    float X = C* (1- fabs(fmod(H/ 60, 2)- 1));
+    float X = C* (1- fabs(fmod(H / 60, 2)- 1));
     float m = v-C;
     float r, g, b;
 
@@ -84,17 +83,17 @@ ColorRGB HSVtoRGB(ColorHSV color) {
     }
     
     ColorRGB colorRGB;
-    colorRGB.red = constrain(round((r+m)*255), 0, 255);
-    colorRGB.green = constrain(round((g+m)*255), 0, 255);
-    colorRGB.blue = constrain(round((b+m)*255), 0, 255);
+    colorRGB.red = constrain(round((r+m)), 0, 1);
+    colorRGB.green = constrain(round((g+m)), 0, 1);
+    colorRGB.blue = constrain(round((b+m)), 0, 1);
     return colorRGB;
 }
 
 ColorHSV RGBtoHSV(ColorRGB color) {
-    uint8_t * colorPtr = (uint8_t *)&color;
+    float * colorPtr = (float *)&color;
     float colorNorm[3];
     for(int colorID = 0; colorID < 3; ++colorID) {
-        colorNorm[colorID] = colorPtr[colorID] / 255.0;
+        colorNorm[colorID] = constrain(colorPtr[colorID], 0, 1);
     }
 
     int maxID = 0, minID = 0;  // 0-red, 1-green, 2-blue
@@ -207,44 +206,50 @@ int Lights::getLedAbsID(int panelID, int ledID) {
     return ledAbsoluteID;
 }
 
-ColorRGB Lights::updateLedState(LedState & state, int timeStep) {
-    ColorRGB color = dimColor(state.targetColor, state.brightness);
-    uint8_t * colorPtr = (uint8_t *)&color;
-    
+ColorRGB Lights::updateLedState(LedState& state, int timeStep) {
+    ColorRGB targetColorDim = dimColor(state.targetColor, state.brightness);
+    float * targetColorDimPtr = (float *)&targetColorDim;
+    float * currentColorPtr = (float *)&state.currentColor;
+
     float deviation[3];
     for(int ledID = 0; ledID < 3; ++ledID) {
-        deviation[ledID] = colorPtr[ledID] - state.currentColorF[ledID];
+        deviation[ledID] = targetColorDimPtr[ledID] - currentColorPtr[ledID];
     }
 
     float step = 0;
     switch(state.transitionType) {
         case Linear: {
-            step = timeStep / 1000.0 * 441.7 / state.transitionTime;
+            step = timeStep / 1000.0 * 1.732 / state.transitionTime;
         } break;
         case Exponential: {
-            float currentColorSize = pow(pow(state.currentColorF[0], 2) + pow(state.currentColorF[1], 2) + pow(state.currentColorF[2], 2), 0.5);
-            float beginStep = 0.015 * timeStep;
-            step = beginStep + currentColorSize * (pow(441.7 / beginStep, timeStep / 1000.0 / state.transitionTime) - 1.0);
+            float currentColorSize = pow(pow(currentColorPtr[0], 2) + pow(currentColorPtr[1], 2) + pow(currentColorPtr[2], 2), 0.5);
+            float beginStep = 0.000012 * timeStep;
+            step = beginStep + currentColorSize * (pow(1.732 / beginStep, timeStep / 1000.0 / state.transitionTime) - 1.0);
         } break;
         case None:
         default:
-            step = 441.7;    // Maximal step to cover full diagonal at once
+            step = 1.732;    // Maximal step to cover full diagonal at once
     }
 
     float devSize = pow(pow(deviation[0], 2) + pow(deviation[1], 2) + pow(deviation[2], 2), 0.5);
+    float newColor[3];
+    float * newColorPtr = (float *)&newColor;
     for(int ledID = 0; ledID < 3; ++ledID) {
         if(devSize < (step + PL::TRANS_END_THR)) {
-            state.currentColorF[ledID] = colorPtr[ledID];
+            newColorPtr[ledID] = targetColorDimPtr[ledID];
         }
         else {
-            state.currentColorF[ledID] += deviation[ledID] / devSize * step;
+            newColorPtr[ledID] = currentColorPtr[ledID] + deviation[ledID] / devSize * step;
         }
     }
-    state.updateNeeded = devSize > PL::TRANS_END_THR;
-    
-    state.currentColor.red = constrain(round(state.currentColorF[0]), 0, 255);
-    state.currentColor.green = constrain(round(state.currentColorF[1]), 0, 255);
-    state.currentColor.blue = constrain(round(state.currentColorF[2]), 0, 255);
+    state.updateNeeded = true;//devSize > PL::TRANS_END_THR;
+
+    for(int ledID = 0; ledID < 3; ++ledID) {
+        currentColorPtr[ledID] = constrain(newColorPtr[ledID], 0, 1);
+    }
+
+    //printf("%.2f %.2f %.2f %.2f %.2f\n", deviation[0], devSize, step, currentColorPtr[0], state.currentColor.red);
+
     return state.currentColor;
 }
 
@@ -276,14 +281,14 @@ void Lights::update() {
     }
 
     bool updateNeeded = false;
-    int sumColor = 0;
+    float sumColor = 0;
     for(uint8_t ledID = 0; ledID < PL::LED_RGB_COUNT; ++ledID) {
         ColorRGB currentColor = updateLedState(_ledColorState[ledID], timeStep);
         sumColor += (currentColor.red + currentColor.green + currentColor.blue);
         updateNeeded = updateNeeded || _ledColorState[ledID].updateNeeded;
     }
     if(sumColor <= 0) {
-        sumColor = 1; // prevent zero division
+        sumColor = 0.001; // prevent zero division
     }
 
     float sumWhite = 0.0;
@@ -291,20 +296,22 @@ void Lights::update() {
         sumWhite += _ledWhiteState[ledID];
     }
 
-    float currentTarget = float(sumColor) / 255.0 * 0.012 + sumWhite * 1.5;
+    float currentTarget = sumColor * 0.012 + sumWhite * 1.5;
     float ratio = _currentLimit / currentTarget;
     _currentLimitRatio = constrain(ratio, 0.0, 1.0);
 
+    //printf("%.2f\n", _ledColorState[0].currentColor.red);
+
     for(uint8_t ledID = 0; ledID < PL::LED_RGB_COUNT; ++ledID) {
         ColorRGB powerLimitColor = dimColor(_ledColorState[ledID].currentColor, _currentLimitRatio);
-        uint32_t color = pixels.Color(powerLimitColor.red, powerLimitColor.green, powerLimitColor.blue);
+        uint32_t color = pixels.Color(uint8_t(powerLimitColor.red * 255) , uint8_t(powerLimitColor.green * 255), uint8_t(powerLimitColor.blue * 255));
         pixels.setPixelColor(ledID, color);
     }
 
     for(int ledID = 0; ledID < PL::LED_WHITE_COUNT; ++ledID) {
-        int powerLimitBrightness = _ledWhiteState[ledID] * _currentLimitRatio * PL::LED_RESOLUTION_MAX_VAL;
-        powerLimitBrightness = constrain(powerLimitBrightness, 0, PL::LED_RESOLUTION_MAX_VAL);
-        ledcWrite(PL::LED_WHITE_CHANNEL[ledID], powerLimitBrightness);
+        int powerLimitWhite = _ledWhiteState[ledID] * _currentLimitRatio * PL::LED_RESOLUTION_MAX_VAL;
+        powerLimitWhite = constrain(powerLimitWhite, 0, PL::LED_RESOLUTION_MAX_VAL);
+        ledcWrite(PL::LED_WHITE_CHANNEL[ledID], powerLimitWhite);
     }
 
     if(updateNeeded) {
@@ -344,7 +351,18 @@ void Lights::setColor(int panelID, int ledID, ColorHSV color) {
 }
 
 void Lights::setColorPanel(int panelID, ColorRGB color) {
-    for(int i = 0; i < 16; ++i) {
+    int ledCount = 0;
+    if(panelID == 0) {
+        ledCount = 16;
+    }
+    else if(panelID == 1) {
+        ledCount = 7;
+    }
+    else {
+        return;
+    }
+
+    for(int i = 0; i < ledCount; ++i) {
         setColor(panelID, i, color);
     }
 }
@@ -377,16 +395,16 @@ void Lights::setBrightness(PanelSelector selector, float brightness) {
     }
 }
 
-void Lights::setTransition(PanelSelector selector, TransitionType transition, float rate) {
-    if(rate < PL::MIN_TRANS_T) {
-        rate = PL::MIN_TRANS_T;
+void Lights::setTransition(PanelSelector selector, TransitionType transition, float time) {
+    if(time < PL::MIN_TRANS_T) {
+        time = PL::MIN_TRANS_T;
     }
 
     for(int ledID = 0; ledID < PL::LED_RGB_COUNT; ++ledID) {
         int panelID = getPanelID(ledID);
         if(isPanelSelected(selector, panelID) == true) {
             _ledColorState[ledID].transitionType = transition;
-            _ledColorState[ledID].transitionTime = rate;
+            _ledColorState[ledID].transitionTime = time;
         }
     }
 }

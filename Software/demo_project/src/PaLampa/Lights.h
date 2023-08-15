@@ -17,7 +17,7 @@ const int LED_RGB_PIN = 16;
 const int LED_RGB_COUNT = 23;
 
 const float MIN_TRANS_T = 0.1;
-const float TRANS_END_THR = 0.1;
+const float TRANS_END_THR = 1/(LED_RESOLUTION_MAX_VAL + 1);
 }
 
 enum TransitionType {
@@ -27,9 +27,9 @@ enum TransitionType {
 };
 
 typedef struct colorRGB {
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
+    float red;
+    float green;
+    float blue;
 } ColorRGB;
 
 typedef struct colorHSV {
@@ -46,7 +46,6 @@ typedef struct panelSelector {
 typedef struct ledState {
     ColorRGB targetColor;
     ColorRGB currentColor;
-    float currentColorF[3];  // {red, green, blue} - True displayed color
     float brightness;        // [0.0-1.0]
     TransitionType transitionType;
     float transitionTime;           // [seconds/fullRange]
@@ -87,7 +86,7 @@ class Lights {
     bool isPanelSelected(PanelSelector selector, int panelID);
     int getPanelID(int ledID);
     int getLedAbsID(int panelID, int ledID);
-    ColorRGB updateLedState(LedState & state, int timeStep);
+    ColorRGB updateLedState(LedState& state, int timeStep);
 
     Adafruit_NeoPixel pixels{PL::LED_RGB_COUNT, PL::LED_RGB_PIN, NEO_GRB + NEO_KHZ800};
 public:
@@ -110,5 +109,5 @@ public:
     void setColorPanels(PanelSelector selector, ColorHSV color);
 
     void setBrightness(PanelSelector selector, float brightness);
-    void setTransition(PanelSelector selector, TransitionType aTransitionType, float apanelTransRate);
+    void setTransition(PanelSelector selector, TransitionType aTransitionType, float time);
 };

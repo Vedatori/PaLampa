@@ -469,10 +469,10 @@ Parametr `ledID` čísluje LEDky v jednotlivých digitech v následujícím poř
 * `0` až `6` pro zadní segment.
 
 Pro definování vlastní barvy použijeme kontrukci podobnou vytváření proměnných. Existují 2 formáty, pomocí kterých můžeme definovat vlastní barvu:
-* RGB (red-červená, green-zelená, blue-modrá) příkazem `ColorRGB cervena = {255, 0, 0};`
+* RGB (red-červená, green-zelená, blue-modrá) příkazem `ColorRGB cervena = {1, 0, 0};`
 * HSV (hue-chromatičnost, saturation-saturace, value-jas) příkazem `ColorHSV cervena = {0, 1, 1};`
 
-Oba formáty dokážou definovat jakoukoli barvu, kterou umí barevné LEDky vysvítit, ale každý má své výhody a nevýhody. RGB popisuje barvy podobně jako stroje, tj. jak intenzivně má svítit která barevná složka každé z LEDek. HSV naopak popisuje barvy podobně, jako lidé a je v mnoha případech pohodlnější k použití, např. pro změnu barvy při zachování jasu.
+Oba formáty dokážou definovat jakoukoli barvu, kterou umí barevné LEDky vysvítit, ale každý má své výhody a nevýhody. RGB popisuje barvy podobně jako stroje, tj. jak intenzivně má svítit která barevná složka každé z LEDek v rozsahu 0 až 1, např. 0.5. HSV naopak popisuje barvy podobně, jako lidé a je v mnoha případech pohodlnější k použití, např. pro změnu barvy při zachování jasu.
 
 Pomocí komentářů si v následujícím kódu vyberte jednu z definic barvy `cervena` a ověřte, že výsledkem je stejná červená barva.
 ```
@@ -481,7 +481,7 @@ Pomocí komentářů si v následujícím kódu vyberte jednu z definic barvy `c
 void setup() {
     PaLampa.begin();
 
-    ColorRGB cervena = {255, 0, 0};
+    ColorRGB cervena = {1, 0, 0};
     ColorHSV cervena = {0, 1, 1};
     PaLampa.lights.setColor(0, 0, cervena);
 }

@@ -14,7 +14,7 @@ void loop() {
         paLampa.lights.setWhite(1, potVal);
     }
     else if(paLampa.buttonRead(2)) {
-       ColorRGB color = {uint8_t(potVal*255.0), 0, 0};
+       ColorRGB color = {potVal, 0, 0};
        paLampa.lights.setColorPanels(all, color);
     }
     

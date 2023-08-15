@@ -20,8 +20,8 @@ const int BUTTON_PIN[3] = {33, 25, 26};
 const int POTENTIOMETER_PIN = 36;
 const int PHOTORESISTOR_TOP_PIN = 34;
 const int PHOTORESISTOR_BACK_PIN = 35;
-const int THERMOMETER_TOP_PIN = 18;
 const int THERMOMETER_BOTTOM_PIN = 15;
+const int THERMOMETER_TOP_PIN = 18;
 const int BUZZER_PIN = 13, BUZZER_CHANNEL = 3;
 
 const char STORAGE_NAMESPACE[] = "PaLampa";
@@ -50,7 +50,7 @@ class PaLampa {
 
 public:
     Photoresistor photoresistor{{PL::PHOTORESISTOR_TOP_PIN, PL::PHOTORESISTOR_BACK_PIN}};
-    Thermometer thermometer{{PL::THERMOMETER_TOP_PIN, PL::THERMOMETER_BOTTOM_PIN}};
+    Thermometer thermometer{{PL::THERMOMETER_BOTTOM_PIN, PL::THERMOMETER_TOP_PIN}};
     Lights lights{};
     Piezo piezo;
 	WeatherApi weather;
