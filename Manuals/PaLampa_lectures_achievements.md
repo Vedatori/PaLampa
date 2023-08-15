@@ -151,10 +151,10 @@ void loop() {
 ## Úkol 10 - Světelná signaliazce tmy
 Napište program, který zvíší jas pokoud vstoupíme s PaLampou do tmy. (Doporučuji dělit hodnotu z fotorezistoru číslem 3)
 
-## Úkol 11 - Noční světlo (sensor pod lampou hlídá jas aby nebyl moc silný)
+## Úkol 11 - Noční světlo
 napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit.
 
-# Lekce 6 (touch sensor)
+# Lekce 6 
 
 
 ```
@@ -173,11 +173,11 @@ void loop() {
 }
 ```
 
-## Úkol 12 - Dotyk (když se dotkneš lampa blikne čímkoliv)
-Přepracujte úkol 9 tak, aby Time-O-Mat přes sériovou linku přenášel číslo LED, která právě svítí.
+## Úkol 12 - Dotyk
+Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí touch sensoru.
 
 
-# Lekce 7 (teploměr)
+# Lekce 7
 Rozblikáme barevné LED na horním segmentu nebo LED pásku.
 
 ## Výsledný kód
