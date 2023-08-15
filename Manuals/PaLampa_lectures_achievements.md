@@ -240,3 +240,32 @@ Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba
 Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
 
 
+# Lekce 9 (displey)
+Rozblikáme barevné LED na horním segmentu nebo LED pásku.
+
+## Výsledný kód
+
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    ToMat.display.setLED(0, 5, blue);
+    delay(500);
+
+    ToMat.display.setLED(0, 5, black);
+    delay(500);    
+}
+```
+
+## Úkol 17 - TEXT (zobraz text)
+Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba svitu i doba zhasnutí je 300 ms.
+
+## Úkol 18 - Tvar (zobraz čtverec)
+Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
+
+## Úkol 19 - Obrázek (zobraz obrázek)
+Napište program, který bude blikat jako železniční přejezd. Blikat budou LED 0. a 15, oba červenou barvou.
