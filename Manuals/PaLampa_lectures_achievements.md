@@ -9,7 +9,7 @@ Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli na
 
 
 # Lekce 1
-Rozsviť teplou a studenou ledku na 10%.
+Rozsviť teplé ledky na 10%, po 5 sekudndách rozsviť i studenné ledky
 
 ## Výsledný kód
 
@@ -21,7 +21,10 @@ void setup() {
     // id panelu, (0 = warm, 1 = cool)
     // brightness, (0-1)
     paLampa.lights.setWhite(0, 0.1);
-    paLampa.lights.setWhite(0, 0.1);
+    
+    // delay(ms), 5000 ms = 5 s
+    delay(5000);
+    paLampa.lights.setWhite(1, 0.1);
 }
 
 void loop() {
@@ -71,20 +74,20 @@ Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na
 ## Výsledný kód
 
 ```
-#include "ToMat/ToMat.h"
+#include "PaLampa/PaLampa.h"
 
 void setup() {
-    ToMat.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    if(ToMat.buttonRead(0)) {
-        ToMat.piezo.tone(100);
+    // id, (0, 1, 2)
+    if(paLampa.buttonRead(0)){
+        paLampa.lights.setWhite(0, 0.1);
     }
-    else {
-        ToMat.piezo.stop();
+    else{
+        paLampa.lights.setWhite(0, 0);
     }
-    delay(20);
 }
 ```
 
