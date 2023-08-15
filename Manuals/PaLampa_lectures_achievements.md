@@ -6,37 +6,47 @@ V tomto dokumentu se nachází rozpis programovacích lekcí a zadání programo
 
 # Lekce 0
 Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do PaLampy z vašeho PC.
- 
-## Úkol 0 - Blikání LED
-Pomocí kódu z manuálu rozsvítit LED.
+
 
 # Lekce 1 (led)
+<<<<<<< Updated upstream
 Rozblikáme LED na horním segment.
+=======
+Rozsviť teplou a studenou ledku na 10%.
+>>>>>>> Stashed changes
 
 ## Výsledný kód
 
 ```
-#include "ToMat/ToMat.h"
+#include "PaLampa/PaLampa.h"
 
 void setup() {
-    ToMat.begin();
+    paLampa.begin();
+    // id panelu, (0 = warm, 1 = cool)
+    // brightness, (0-1)
+    paLampa.lights.setWhite(0, 0.1);
+    paLampa.lights.setWhite(0, 0.1);
 }
 
 void loop() {
-    ToMat.display.setLED(0, 5, blue);
-    delay(500);
-
-    ToMat.display.setLED(0, 5, black);
-    delay(500);    
 }
+
 ```
 
+<<<<<<< Updated upstream
 ## Úkol 1 - Rozsviť teplé LED
 Napište program, který rozsvítí teplé LED
 
 ## Úkol 2 - Rozsviť bílé LED
 Napište program, který rozsvítí bílé LED
 
+=======
+## Úkol 1 - Rozsviť teplé bílé LED
+Napište program, který každou vteřinu krátce rozsvítí. Doba zobrazení je 100 ms v každé vteřině.
+
+## Úkol 2 - Rozsviť studené bílé LED
+Napište program, který bude blikat jako železniční přejezd. Blikat budou střídavě studené ledky, a teplé ledky v 500 ms intervalu.
+>>>>>>> Stashed changes
 
 # Lekce 2
 Rozblikáme barevné LED na horním segmentu nebo LED pásku.
