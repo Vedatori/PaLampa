@@ -10,7 +10,7 @@ Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli na
 ## Úkol 0 - Blikání LED
 Pomocí kódu z manuálu rozsvítit LED.
 
-# Lekce 1 (led)
+# Lekce 1 
 Rozblikáme LED na horním segment.
 
 ## Výsledný kód
@@ -59,16 +59,16 @@ void loop() {
 }
 ```
 
-## Úkol 3 - Blikání LED (horní segmet RGB LED jenom jedna ledka)
+## Úkol 3 - Blikání LED
 Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba svitu i doba zhasnutí je 300 ms.
 
-## Úkol 4 - Záblesky LED pásku (pásek ze zadu bude blikat v určitém intervalu)
+## Úkol 4 - Záblesky LED pásku
 Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
 
-## Úkol 5 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
+## Úkol 5 - Železniční přejezd na horním segment
 Napište program, který bude blikat jako železniční přejezd. Blikat budou LED 0. a 15, oba červenou barvou.
 
-# Lekce 3 (tlačítka 1 2 3)
+# Lekce 3
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
 
 ## Výsledný kód
@@ -91,11 +91,11 @@ void loop() {
 }
 ```
 
-## Úkol 6 - Manuální blikání LED (když tlačítko zmáčknuto LED svítí)
-Napište program, který bliká libovolnou LED pouze při stisknutém tlačítku nejblíž USB konektoru. Doba svícení je 200 ms. Doba zhasnutí je 200 ms.
+## Úkol 6 - Manuální blikání LED 
+Napište program, který bliká libovolnou LED pouze při stisknutém pravého tlačítka. Doba svícení je 200 ms. Doba zhasnutí je 200 ms.
 
-## Úkol 7 - Stabilní stav LED (když tlačítkou zmačknuto a následně pustěno LED zůstane svítit když znovu zmáčknuto LED se vypne)
-Napište program, který bude stiskem tlačítka přepínat svícení dvou různých segmentů na dvou různách digitech. Vždy bude svítit pouze jeden segment, stiskem tlačítka se tento segment vypne a zapne se ten druhý. Dalším stiskem tlačítka se znovu zapne pouze ten původní segment a proces lze opakovat.
+## Úkol 7 - Stabilní stav LED
+Napište program, který bude stiskem tlačítka přepínat svícení dvou různých LED. Vždy bude svítit pouze jedena LED, stiskem tlačítka se jedna LED vypne a zapne se ta druhá. Dalším stiskem tlačítka se znovu zapne pouze ta původní LED a proces lze opakovat.
 
 # Lekce 4 (piezo)
 
