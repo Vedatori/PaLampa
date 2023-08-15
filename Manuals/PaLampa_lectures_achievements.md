@@ -41,7 +41,7 @@ Napište program, který každou vteřinu krátce zobrazí číslo 1 na posledn�
 Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
 
 # Lekce 2 (tlačítka 1 2 3)
-Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozezníme piezoakustický měnič.
+Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
 
 ## Výsledný kód
 
@@ -63,14 +63,14 @@ void loop() {
 }
 ```
 
-## Úkol 4 - Manuální blikání LED
+## Úkol 4 - Manuální blikání LED (když tlačítko zmáčknuto LED svítí)
 Napište program, který bliká libovolnou LED pouze při stisknutém tlačítku nejblíž USB konektoru. Doba svícení je 200 ms. Doba zhasnutí je 200 ms.
 
-## Úkol 5 - Stabilní stav LED
+## Úkol 5 - Stabilní stav LED (když tlačítkou zmačknuto a následně pustěno LED zůstane svítit když znovu zmáčknuto LED se vypne)
 Napište program, který bude stiskem tlačítka přepínat svícení dvou různých segmentů na dvou různách digitech. Vždy bude svítit pouze jeden segment, stiskem tlačítka se tento segment vypne a zapne se ten druhý. Dalším stiskem tlačítka se znovu zapne pouze ten původní segment a proces lze opakovat.
 
-# Lekce 3
-ps.potenciometr
+# Lekce 3 (piezo)
+
 
 ## Výsledný kód
 
@@ -92,10 +92,10 @@ void loop() {
 }
 ```
 
-## Úkol 6 - Rychlost blikání
+## Úkol 6 - dlouhé pííííííp (piezo dělá neustálí zvuk)
 Napište program, který bude blikat libovolným segmentem a rychlost tohoto blikání se zvětší, když se sníží intenzita osvětlení na předním fotorezistoru (např. bude zakrytý prstem).
 
-## Úkol 7 - měnění
+## Úkol 7 - základní melodie (jednoduchá krátká melodie z pieza bonus přidání tlačítka)
 Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
 
 # Lekce 4
