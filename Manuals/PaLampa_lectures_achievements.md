@@ -65,7 +65,7 @@ Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. 
 Napište program, který bude blikat jako železniční přejezd. Blikat budou LED 0. a 15, oba červenou barvou.
 
 
-# Lekce 3 (tlačítka 1 2 3)
+# Lekce 3
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
 
 ## Výsledný kód
@@ -118,11 +118,11 @@ void loop() {
 }
 ```
 
-## Úkol 8 - dlouhé pííííííp (piezo dělá neustálí zvuk)
-Napište program, který bude blikat libovolným segmentem a rychlost tohoto blikání se zvětší, když se sníží intenzita osvětlení na předním fotorezistoru (např. bude zakrytý prstem).
+## Úkol 8 - dlouhé pííp
+Napište program, který po stisknutí prostředního tlačítka zapne piezo
 
-## Úkol 9 - základní melodie (jednoduchá krátká melodie z pieza bonus přidání tlačítka)
-Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
+## Úkol 9 - základní melodie
+Napište program, který na piezu přehraje krátkou melodii po stisknutí tlačítka.
 
 
 # Lekce 5 (potenciometer)
