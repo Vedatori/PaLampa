@@ -126,11 +126,7 @@ void loop() {
 ## Úkol 8 - zesilování LED (zesílení nebo zeslabení LED za pomocí otáčení potenciometru)
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
 
-<<<<<<< Updated upstream
-## Úkol 9 - měnění RGB (otáčení potenciometru mění barvy RGB LED )
-=======
 ## Úkol 11 - měnění HSVs (otáčení potenciometru mění barvy RGB LED )
->>>>>>> Stashed changes
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
