@@ -10,7 +10,34 @@ Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli na
 ## Úkol 0 - Blikání LED
 Pomocí kódu z manuálu rozsvítit LED.
 
-# Lekce 1
+# Lekce 1 (led)
+Rozblikáme LED na horním segmentu nebo LED pásku.
+
+## Výsledný kód
+
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    ToMat.display.setLED(0, 5, blue);
+    delay(500);
+
+    ToMat.display.setLED(0, 5, black);
+    delay(500);    
+}
+```
+
+## Úkol 1 - Rozsviť teplé LED
+Napište program, který každou vteřinu krátce rozsvítí . Doba zobrazení je 100 ms v každé vteřině.
+
+## Úkol 2 - Rozsviť bílé LED
+Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
+
+# Lekce 2
 Rozblikáme LED na horním segmentu nebo LED pásku.
 
 ## Výsledný kód
@@ -40,7 +67,7 @@ Napište program, který každou vteřinu krátce rozsvítí . Doba zobrazení j
 ## Úkol 3 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
 Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
 
-# Lekce 2 (tlačítka 1 2 3)
+# Lekce 3 (tlačítka 1 2 3)
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
 
 ## Výsledný kód
@@ -69,7 +96,7 @@ Napište program, který bliká libovolnou LED pouze při stisknutém tlačítku
 ## Úkol 5 - Stabilní stav LED (když tlačítkou zmačknuto a následně pustěno LED zůstane svítit když znovu zmáčknuto LED se vypne)
 Napište program, který bude stiskem tlačítka přepínat svícení dvou různých segmentů na dvou různách digitech. Vždy bude svítit pouze jeden segment, stiskem tlačítka se tento segment vypne a zapne se ten druhý. Dalším stiskem tlačítka se znovu zapne pouze ten původní segment a proces lze opakovat.
 
-# Lekce 3 (piezo)
+# Lekce č (piezo)
 
 
 ## Výsledný kód
@@ -98,7 +125,7 @@ Napište program, který bude blikat libovolným segmentem a rychlost tohoto bli
 ## Úkol 7 - základní melodie (jednoduchá krátká melodie z pieza bonus přidání tlačítka)
 Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
 
-# Lekce 4 (potenciometer)
+# Lekce 5 (potenciometer)
 
 
 ```
@@ -130,7 +157,7 @@ Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vnes
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
-# Lekce 5 (světelný sensor)
+# Lekce 6 (světelný sensor)
 Ukážeme si podmínku "if" na příkladu s LED.
 
 ```
@@ -162,7 +189,7 @@ Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vnes
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
-# Lekce 6 (touch sensor)
+# Lekce 7 (touch sensor)
 Time-O-Mat začne komunikovat s počítačem pomocí sériové linky. Vyčteme okolní teplotu.
 
 ```
