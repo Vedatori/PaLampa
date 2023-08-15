@@ -95,37 +95,7 @@ Napište program, který bliká libovolnou LED pouze při stisknutém pravého t
 Napište program, který bude stiskem tlačítka přepínat svícení dvou různých LED. Vždy bude svítit pouze jedena LED, stiskem tlačítka se jedna LED vypne a zapne se ta druhá. Dalším stiskem tlačítka se znovu zapne pouze ta původní LED a proces lze opakovat.
 
 
-# Lekce 4 (piezo)
-
-
-## Výsledný kód
-
-```
-#include "ToMat/ToMat.h"
-
-void setup() {
-    ToMat.begin();
-}
-
-int x;
-
-void loop() {
-    ToMat.display.setFront(black);
-    x = (ToMat.illumination.getRaw(0)/205);
-    ToMat.display.setLED(0, x, blue);
-    printf("%d \n ", x);
-    delay(20);
-}
-```
-
-## Úkol 8 - dlouhé pííp
-Napište program, který po stisknutí prostředního tlačítka zapne piezo
-
-## Úkol 9 - základní melodie
-Napište program, který na piezu přehraje krátkou melodii po stisknutí tlačítka.
-
-
-# Lekce 5 (potenciometer)
+# Lekce 4 (potenciometer)
 
 
 ```
@@ -150,14 +120,14 @@ void loop() {
 }
 ```
 
-## Úkol 10 - zesilování LED (zesílení nebo zeslabení LED za pomocí otáčení potenciometru)
+## Úkol 8 - zesilování LED (zesílení nebo zeslabení LED za pomocí otáčení potenciometru)
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
 
-## Úkol 11 - měnění RGB (otáčení potenciometru mění barvy RGB LED )
+## Úkol 9 - měnění RGB (otáčení potenciometru mění barvy RGB LED )
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
-# Lekce 6 (světelný sensor)
+# Lekce 5 (světelný sensor)
 Ukážeme si podmínku "if" na příkladu s LED.
 
 ```
@@ -182,14 +152,14 @@ void loop() {
 }
 ```
 
-## Úkol 12 - Světelná signaliazce tmy (pokud tma tak zviš jas ps.světelný sensor za lampou)
+## Úkol 10 - Světelná signaliazce tmy (pokud tma tak zvyš jas ps.světelný sensor za lampou)
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
 
-## Úkol 13 - Noční světlo (sensor pod lampou hlídá jas aby nebyl moc silný)
+## Úkol 11 - Noční světlo (sensor pod lampou hlídá jas aby nebyl moc silný)
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
-# Lekce 7 (touch sensor)
+# Lekce 6 (touch sensor)
 Time-O-Mat začne komunikovat s počítačem pomocí sériové linky. Vyčteme okolní teplotu.
 
 ```
@@ -208,11 +178,11 @@ void loop() {
 }
 ```
 
-## Úkol 14 - Dotyk (když se dotkneš lampa blikne čímkoliv)
+## Úkol 12 - Dotyk (když se dotkneš lampa blikne čímkoliv)
 Přepracujte úkol 9 tak, aby Time-O-Mat přes sériovou linku přenášel číslo LED, která právě svítí.
 
 
-# Lekce 8 (teploměr)
+# Lekce 7 (teploměr)
 Rozblikáme barevné LED na horním segmentu nebo LED pásku.
 
 ## Výsledný kód
@@ -233,11 +203,41 @@ void loop() {
 }
 ```
 
-## Úkol 15 - Přehřívání (teploměr v horním segmentu hlídá teplotu proti přehřívání a vypne led)
+## Úkol 13 - Přehřívání (teploměr v horním segmentu hlídá teplotu proti přehřívání a vypne led)
 Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba svitu i doba zhasnutí je 300 ms.
 
-## Úkol 16 - Teplota okolí (teploměr pod lampou hlídá teplotu okolí a v závislosti na tom mění barvy led červená přes zelenou až po modrou (zelena je ok, červená je vedro, žlutá je mid, modrá je zima(modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus)))
+## Úkol 14 - Teplota okolí (teploměr pod lampou hlídá teplotu okolí a v závislosti na tom mění barvy led červená přes zelenou až po modrou (zelena je ok, červená je vedro, žlutá je mid, modrá je zima(modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus)))
 Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
+
+
+# Lekce 8 (piezo)
+
+
+## Výsledný kód
+
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+int x;
+
+void loop() {
+    ToMat.display.setFront(black);
+    x = (ToMat.illumination.getRaw(0)/205);
+    ToMat.display.setLED(0, x, blue);
+    printf("%d \n ", x);
+    delay(20);
+}
+```
+
+## Úkol 15 - dlouhé pííp
+Napište program, který po stisknutí prostředního tlačítka zapne piezo
+
+## Úkol 16 - základní melodie
+Napište program, který na piezu přehraje krátkou melodii po stisknutí tlačítka.
 
 
 # Lekce 9 (displey)
