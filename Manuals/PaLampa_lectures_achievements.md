@@ -8,7 +8,7 @@ V tomto dokumentu se nachází rozpis programovacích lekcí a zadání programo
 Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do PaLampy z vašeho PC.
 
 
-# Lekce 1 (led)
+# Lekce 1
 Rozsviť teplou a studenou ledku na 10%.
 
 ## Výsledný kód
@@ -26,32 +26,32 @@ void setup() {
 
 void loop() {
 }
-
 ```
 
-## Úkol 1 - Rozsviť teplé bílé LED
+## Úkol 1 - Rozsviť teplé ledky
 Napište program, který každou vteřinu krátce rozsvítí teplé bíle ledky. Doba zobrazení je 250 ms v každé vteřině.
 
-## Úkol 2 - Rozsviť studené bílé LED
+## Úkol 2 - Rozsviť studené a teplé ledky střídavě
 Napište program, který bude blikat jako železniční přejezd. Blikat budou střídavě studené ledky, a teplé ledky v 500 ms intervalu.
 
+
 # Lekce 2
-Rozblikáme 8. barevnou LED na horním segmentu.
+Rozsviť barevné LED na horním segmentu nebo LED pásku.
 
 ## Výsledný kód
-
 ```
 #include "PaLampa/PaLampa.h"
 
 void setup() {
     paLampa.begin();
+    // panel, (0 = top, 1 = strip)
+    // id, (0-15 top, 0-6 strip)
+    // color, (red, blue ...)
+    paLampa.lights.setColor(0,1,red);
+    paLampa.lights.setColor(1,0,blue);
 }
 
 void loop() {
-    paLampa.lights.setColor(0,8,red); // rozsvítí 8. LED červenou barvou
-    delay(300); //delay 300ms
-    paLampa.lights.setColor(0,8,black); // zhasne 8. LED
-    delay(300);
 }
 ```
 
@@ -64,7 +64,8 @@ Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. 
 ## Úkol 5 - Železniční přejezd na horním segment
 Napište program, který bude blikat jako železniční přejezd. Blikat budou LED 0. a 15, oba červenou barvou.
 
-# Lekce 3
+
+# Lekce 3 (tlačítka 1 2 3)
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
 
 ## Výsledný kód
