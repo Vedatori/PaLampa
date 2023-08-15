@@ -65,7 +65,7 @@ Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba
 Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
 
 ## Úkol 5 - Železniční přejezd na horním segment
-Napište program, který bude blikat jako železniční přejezd. Blikat budou LED 0. a 15, oba červenou barvou.
+Napište program, který bude blikat jako železniční přejezd. Blikat budou LED 0 a 15 na horním panelu, oba červenou barvou.
 
 
 # Lekce 3
@@ -124,7 +124,7 @@ Napište program, který bude při otočení potenciometru postupně mění barv
 
 
 # Lekce 5
-Ukážeme si fotorezistor a podmínku "if" na příkladu s LED.
+Ukážeme si fotorezistor a porovnání na příkladu s LED.
 
 ```
 #include "ToMat/ToMat.h"
@@ -152,10 +152,10 @@ void loop() {
 Napište program, který zvíší jas pokoud vstoupíme s PaLampou do tmy. (Doporučuji dělit hodnotu z fotorezistoru číslem 3)
 
 ## Úkol 11 - Noční světlo
-napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit.
+Napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit.
 
 # Lekce 6 
-
+Ukážeme si jak funguje dotykové tlačítko a funkce random();
 
 ```
 #include "ToMat/ToMat.h"
@@ -174,7 +174,7 @@ void loop() {
 ```
 
 ## Úkol 12 - Dotyk
-Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí touch sensoru.
+Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí horního touch sensoru a pomocí vašeho "secret" tlačítka změní barvu na nějakou náhodnou barvu pomocí funkce random.
 
 
 # Lekce 7 
