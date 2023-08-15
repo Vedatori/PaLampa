@@ -3,6 +3,7 @@
 void setup() {
     paLampa.begin();
     paLampa.startWiFiCaptain("<your_name>");
+    paLampa.lights.setTransition(all, Exponential, 2.0);
 }
 
 void loop() {

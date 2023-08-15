@@ -17,7 +17,7 @@ const int LED_RGB_PIN = 16;
 const int LED_RGB_COUNT = 23;
 
 const float MIN_TRANS_T = 0.1;
-const float TRANS_END_THR = 1/(LED_RESOLUTION_MAX_VAL + 1);
+const float TRANS_END_THR = 1 / (LED_RESOLUTION_MAX_VAL + 1);
 }
 
 enum TransitionType {
