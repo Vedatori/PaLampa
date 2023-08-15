@@ -30,7 +30,7 @@ void loop() {
 ```
 
 ## Úkol 1 - Rozsviť teplé bílé LED
-Napište program, který každou vteřinu krátce rozsvítí. Doba zobrazení je 100 ms v každé vteřině.
+Napište program, který každou vteřinu krátce rozsvítí teplé bíle ledky. Doba zobrazení je 250 ms v každé vteřině.
 
 ## Úkol 2 - Rozsviť studené bílé LED
 Napište program, který bude blikat jako železniční přejezd. Blikat budou střídavě studené ledky, a teplé ledky v 500 ms intervalu.
