@@ -62,7 +62,7 @@ void loop() {
 Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba svitu i doba zhasnutí je 300 ms.
 
 ## Úkol 2 - Záblesky LED pásku (pásek ze zadu bude blikat v určitém intervalu)
-Napište program, který každou vteřinu krátce rozsvítí . Doba zobrazení je 100 ms v každé vteřině.
+Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
 
 ## Úkol 3 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
 Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
