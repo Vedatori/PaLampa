@@ -66,7 +66,7 @@ Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba
 Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
 
 ## Úkol 5 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
-Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
+Napište program, který bude blikat jako železniční přejezd. Blikat budou 0. a 15. LED (LEDky jsou ve stejném řádku)
 
 # Lekce 3 (tlačítka 1 2 3)
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
