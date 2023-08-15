@@ -31,16 +31,16 @@ void loop() {
 }
 ```
 
-## Úkol 1 - Blikání LED
+## Úkol 1 - Blikání LED (horní segmet bílé LED)
 Napište program, který bude blikat druhou LED na nultém digitu. Doba svitu i doba zhasnutí je 300 ms.
 
-## Úkol 2 - Záblesky LED
+## Úkol 2 - Záblesky LED pásku (pásek ze zadu bude blikat v určitém intervalu)
 Napište program, který každou vteřinu krátce zobrazí číslo 1 na posledním digitu. Doba zobrazení je 100 ms v každé vteřině.
 
-## Úkol 3 - Železniční přejezd na horním segment
+## Úkol 3 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
 Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
 
-# Lekce 2
+# Lekce 2 (tlačítka 1 2 3)
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozezníme piezoakustický měnič.
 
 ## Výsledný kód
