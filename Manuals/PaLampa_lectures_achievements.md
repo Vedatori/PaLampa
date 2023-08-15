@@ -9,7 +9,7 @@ Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli na
 
 
 # Lekce 1
-Rozsviť teplou a studenou ledku na 10%.
+Rozsvícení teplé a studené LED, základní funkce.
 
 ## Výsledný kód
 
