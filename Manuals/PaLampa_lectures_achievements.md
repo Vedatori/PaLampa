@@ -183,10 +183,10 @@ void loop() {
 }
 ```
 
-## Úkol 12 - Zvuková signaliazce tmy (pokud tma tak zviš jas)
+## Úkol 12 - Světelná signaliazce tmy (pokud tma tak zviš jas ps.světelný sensor za lampou)
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
 
-## Úkol 13 - Nastavení jasu LED po stisku tlačítka
+## Úkol 13 - Noční světlo (sensor pod lampou hlídá jas aby nebyl moc silný)
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
@@ -209,9 +209,8 @@ void loop() {
 }
 ```
 
-## Úkol 14 - Vypsání hodnoty LED
+## Úkol 14 - Dotyk (když se dotkneš lampa blikne čímkoliv)
 Přepracujte úkol 9 tak, aby Time-O-Mat přes sériovou linku přenášel číslo LED, která právě svítí.
 
-## Úkol 15 - Vyslání času od startu Time-O-Mat bez funkce millis()
-Napište program, který bude vypisovat celočíselnou proměnnou každou vteřinu. Tuto proměnnou však každou milisekundu zvyšte o 1. Je chování tohoto programu stejné jako v případě použití funkce `millis()`?
+
 
