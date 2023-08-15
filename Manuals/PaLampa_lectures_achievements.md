@@ -11,7 +11,7 @@ Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli na
 Pomocí kódu z manuálu rozsvítit LED.
 
 # Lekce 1 (led)
-Rozblikáme LED na horním segmentu nebo LED pásku.
+Rozblikáme LED na horním segment.
 
 ## Výsledný kód
 
@@ -32,14 +32,14 @@ void loop() {
 ```
 
 ## Úkol 1 - Rozsviť teplé LED
-Napište program, který každou vteřinu krátce rozsvítí . Doba zobrazení je 100 ms v každé vteřině.
+Napište program, který rozsvítí teplé LED
 
 ## Úkol 2 - Rozsviť bílé LED
-Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
+Napište program, který rozsvítí bílé LED
 
 
 # Lekce 2
-Rozblikáme LED na horním segmentu nebo LED pásku.
+Rozblikáme barevné LED na horním segmentu nebo LED pásku.
 
 ## Výsledný kód
 
@@ -65,6 +65,8 @@ Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba
 ## Úkol 4 - Záblesky LED pásku (pásek ze zadu bude blikat v určitém intervalu)
 Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
 
+## Úkol 3 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
+Napište program, který bude blikat jako železniční přejezd. Blikat budou první LED na levé a pravé straně horního segmentu, oba červenou barvou.
 ## Úkol 5 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
 Napište program, který bude blikat jako železniční přejezd. Blikat budou 0. a 15. LED (LEDky jsou ve stejném řádku)
 
