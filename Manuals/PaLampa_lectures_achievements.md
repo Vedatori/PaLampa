@@ -155,14 +155,14 @@ void loop() {
 }
 ```
 
-## Úkol 8 - Zvuková signaliazce tmy
+## Úkol 8 - Zvuková signaliazce tmy (pokud tma tak zviš jas)
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
 
 ## Úkol 9 - Nastavení jasu LED po stisku tlačítka
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
-# Lekce 5
+# Lekce 6 (touch sensor)
 Time-O-Mat začne komunikovat s počítačem pomocí sériové linky. Vyčteme okolní teplotu.
 
 ```
