@@ -6,7 +6,7 @@ V tomto dokumentu se nachází rozpis programovacích lekcí a zadání programo
 
 # Lekce 0
 Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do Time-O-Mat z vašeho PC.
-
+ 
 ## Úkol 0 - Blikání LED
 Pomocí kódu z manuálu rozsvítit LED.
 
