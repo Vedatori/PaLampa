@@ -10,8 +10,10 @@ Melody themeMelody(
 
 void PL::refreshTaskQuick(void * parameter) {
     for(;;) {
+        paLampa.oled.sendClear(true);
         paLampa.photoresistor.update();
         paLampa.lights.update();
+        
         delay(20);
     }
 }
@@ -56,6 +58,8 @@ void PaLampa::begin() {
 
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
+
+    oled.begin();
 
 	weather.init(1000 * 60 * 15);
 	weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
