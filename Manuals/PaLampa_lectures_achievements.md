@@ -50,7 +50,7 @@ void setup() {
 void loop() {
     paLampa.lights.setColor(0,8,red); // rozsvítí 8. LED červenou barvou
     delay(300); //delay 300ms
-    paLampa.lights.setColor(0,8,black); // zhasne á. LED
+    paLampa.lights.setColor(0,8,black); // zhasne 8. LED
     delay(300);
 }
 ```
