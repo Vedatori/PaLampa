@@ -156,7 +156,7 @@ void loop() {
 ```
 
 ## Úkol 10 - Světelná signaliazce tmy (pokud tma tak zvyš jas ps.světelný sensor za lampou)
-Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
+Napište program, který sníží jas pokoud vstoupíme s PaLampou do tmy. (Doporučuji dělit hodnotu z fotorezistoru číslem 3)
 
 ## Úkol 11 - Noční světlo (sensor pod lampou hlídá jas aby nebyl moc silný)
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
