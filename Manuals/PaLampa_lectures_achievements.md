@@ -36,23 +36,22 @@ Napište program, který každou vteřinu krátce rozsvítí teplé bíle ledky.
 Napište program, který bude blikat jako železniční přejezd. Blikat budou střídavě studené ledky, a teplé ledky v 500 ms intervalu.
 
 # Lekce 2
-Rozblikáme barevné LED na horním segmentu nebo LED pásku.
+Rozblikáme 8. barevnou LED na horním segmentu.
 
 ## Výsledný kód
 
 ```
-#include "ToMat/ToMat.h"
+#include "PaLampa/PaLampa.h"
 
 void setup() {
-    ToMat.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    ToMat.display.setLED(0, 5, blue);
-    delay(500);
-
-    ToMat.display.setLED(0, 5, black);
-    delay(500);    
+    paLampa.lights.setColor(0,8,red); // rozsvítí 8. LED červenou barvou
+    delay(300); //delay 300ms
+    paLampa.lights.setColor(0,8,black); // zhasne 8. LED
+    delay(300);
 }
 ```
 
