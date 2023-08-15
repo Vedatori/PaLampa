@@ -112,7 +112,7 @@ void setup() {
 
 void loop() {
     paLampa.lights.setColorPanel(0, ColorRGB{paLampa.potentiometerRead(), 0, 0});
-    delay(50);
+    delay(100);
 }
 ```
 
