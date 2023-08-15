@@ -177,7 +177,7 @@ void loop() {
 Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí touch sensoru.
 
 
-# Lekce 7 (teploměr)
+# Lekce 7 
 Ukážeme si ja zjistit hodnotu teploměru.
 
 ## Výsledný kód
@@ -198,14 +198,14 @@ void loop() {
 }
 ```
 
-## Úkol 13 - Přehřívání (teploměr v horním segmentu hlídá teplotu proti přehřívání a vypne led)
+## Úkol 13 - Přehřívání 
 Napište program, který bude hlídat teplotu horního segmentu za pomoci teploměru a když teplota přesáhne 50°C tak vypne LED světla.
 
-## Úkol 14 - Teplota okolí (teploměr pod lampou hlídá teplotu okolí a v závislosti na tom mění barvy led červená přes zelenou až po modrou (zelena je ok, červená je vedro, žlutá je mid, modrá je zima(modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus)))
+## Úkol 14 - Teplota okolí 
 Napište program, který bude hlídat teplotu zadního teploměru a podle ní bude měnit barvu RGB podle zadání. Modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus.
 
 
-# Lekce 8 (piezo)
+# Lekce 8 
 Ukážeme si jak rozeznít piezo.
 
 ## Výsledný kód
@@ -235,7 +235,7 @@ Napište program, který po stisknutí prostředního tlačítka zapne piezo
 Napište program, který na piezu přehraje krátkou melodii po stisknutí tlačítka.
 
 
-# Lekce 9 (displey)
+# Lekce 9 
 Rozblikáme barevné LED na horním segmentu nebo LED pásku.
 
 ## Výsledný kód
@@ -256,11 +256,11 @@ void loop() {
 }
 ```
 
-## Úkol 17 - TEXT (zobraz text)
+## Úkol 17 - TEXT 
 Zobrazte na displeji libovolný krátký text text.
 
-## Úkol 18 - Tvar (zobraz čtverec)
+## Úkol 18 - Tvar 
 Zobrazte na displeji čtverec.
 
-## Úkol 19 - Obrázek (zobraz obrázek)
+## Úkol 19 - Obrázek 
 Zobrazte na displeji obrázek libovolného výběru.
