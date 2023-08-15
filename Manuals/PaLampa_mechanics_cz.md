@@ -452,7 +452,13 @@ Konektor přehnutého kabelu zasuňte do hlavní desky podle obrázku:
 
 ![alt](SupportFiles/IMG_5054.jpeg)
 
-Připravte si červeno-černý kabel s konektorem a napájenými měděnými ploškami. Odlepte krycí fólii z plošky připojené k červenému kabelu. Plošku nalepte z vnitřní strany kruhového plastového dílku s **větším** průměrem. 
+Připravte si červeno-černý dvoužilový kabel s konektorem a napájenými měděnými ploškami. Dále si připravte plastový díl kapacitního tlačítka (kruhový plastový díl s **větším** průměrem). Přiložte menší měděnou plošku od červeného kabelu z vnitřní strany k plastovém dílu a zastřihněte její rohy tak, aby se vešla dovnitř.
+
+![alt](SupportFiles/IMG_5749.jpeg)
+
+Odlepte krycí fólii této zastřižené plošky a nalepte ji dovnitř plastového dílu.
+
+![alt](SupportFiles/IMG_5750.jpeg)
 
 Na okraj kapacitního tlačítka naneste malé množství lepidla na plasty Pattex. Konektor protáhněte otvorem a tlačítko vmáčkněte **zvěnčí** do připraveného otvoru, případné vyteklé lepidlo otřete papírovým ubrouskem.
 
@@ -665,6 +671,14 @@ Stejně jako při stavbě spodního kloubu, vsuňte plastový díl do drážky v
 Do šestiúhelníkových otvorů ze spodní strany krku vložte zbylé dvě matky M3 a z druhé strany je přišroubujte šrouby M3x12 se zápustnou hlavou, stejně jako na spodní straně krku. 
 
 V případě potřeby dotáhněte / povolte šrouby v kloubech.
+
+Natočte potenciometr úplně doleva (na minimum). Přiložte krytku potenciometru tak, aby její značka byla vlevo dole.
+
+![alt](SupportFiles/IMG_5745.jpeg)
+
+Nasaďte takto natočenou krytku na potenciometr a zatlačte tak, aby se na něj zasunula až na doraz.
+
+![alt](SupportFiles/IMG_5746.jpeg)
 
 Gratulujeme - tímto je mechanická stavba hotová :-).
 
