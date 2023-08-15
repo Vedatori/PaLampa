@@ -5,7 +5,7 @@ V tomto dokumentu se nachází rozpis programovacích lekcí a zadání programo
 **Programovací úkoly** jsou úkoly, které budete řešit samostatně. Ke každému úkolu potřebujete soubor znalostí, který je obsažen v některých z lekcí. Úkoly je však možné řešit i jen pomocí programovacího manuálu (pro pokročilé). Splnění úkolu bude kontrolovat vedoucí a odmění ho 2 - 4 Chotěcoiny. Po splnění úkolu si v tabulce na vašem řádku zaznačte křížkem jeho splnění. 
 
 # Lekce 0
-Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do Time-O-Mat z vašeho PC.
+Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do PaLampy z vašeho PC.
  
 ## Úkol 0 - Blikání LED
 Pomocí kódu z manuálu rozsvítit LED.
