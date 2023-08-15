@@ -40,9 +40,6 @@ Napište program, který každou vteřinu krátce zobrazí číslo 1 na posledn�
 ## Úkol 3 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
 Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
 
-## Úkol 4 - Železniční přejezd na horním segment (měnění mezi teplou LED a Bílou LED)
-Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
-
 # Lekce 2 (tlačítka 1 2 3)
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
 
@@ -101,8 +98,40 @@ Napište program, který bude blikat libovolným segmentem a rychlost tohoto bli
 ## Úkol 7 - základní melodie (jednoduchá krátká melodie z pieza bonus přidání tlačítka)
 Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
 
-# Lekce 4
-Ukážeme si podmínku "if" na příkladu s LED. Pro ovládání se naučíme použít dotykovou lištu. 
+# Lekce 4 (potenciometer)
+
+
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    ToMat.display.setFront(black);
+    if(ToMat.touchBar.getPressed(2)) {
+        ToMat.display.setLED(1, 0, green);
+    }
+    else if(ToMat.touchBar.getPressed(3)) {
+        ToMat.display.setLED(1, 2, green);
+    }
+    else {
+        ToMat.display.setLED(1, 1, red);
+    }
+    delay(20);
+}
+```
+
+## Úkol 8 - zesilování LED (zesílení nebo zeslabení LED za pomocí otáčení potenciometru)
+Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
+
+## Úkol 9 - měnění RGB (otáčení potenciometru mění barvy RGB LED )
+Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
+
+
+# Lekce 5 (světelný sensor)
+Ukážeme si podmínku "if" na příkladu s LED.
 
 ```
 #include "ToMat/ToMat.h"
@@ -131,6 +160,7 @@ Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vnes
 
 ## Úkol 9 - Nastavení jasu LED po stisku tlačítka
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
+
 
 # Lekce 5
 Time-O-Mat začne komunikovat s počítačem pomocí sériové linky. Vyčteme okolní teplotu.
