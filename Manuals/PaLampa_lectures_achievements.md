@@ -117,7 +117,7 @@ void loop() {
 ```
 
 ## Úkol 8 - zesilování LED
-Napište program, který bude zesilovat/zeslabovat bílé nebo teplé LED pomocí potenciometru
+Napište program, který bude zesilovat/zeslabovat studené nebo teplé LED pomocí potenciometru
 
 ## Úkol 9 - měnění HSVs
 Napište program, který bude při otočení potenciometru postupně mění barvy rgb LED
