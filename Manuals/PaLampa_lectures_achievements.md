@@ -99,34 +99,27 @@ Napište program, který bude stiskem tlačítka přepínat svícení dvou různ
 
 
 # Lekce 4 (potenciometer)
+Přečteme stav potenciometru a zapíšeme ho do červeného kanálu na horním rgb panelu.
 
+Vlastní rgb barvy si můžeme vytvořít pomocí ColorRGB{R, G, B} (hodnoty R, B a B zaměňte za hodnoty 0-1 které chcete nastavit)
 
 ```
-#include "ToMat/ToMat.h"
+#include "PaLampa/PaLampa.h"
 
 void setup() {
-    ToMat.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    ToMat.display.setFront(black);
-    if(ToMat.touchBar.getPressed(2)) {
-        ToMat.display.setLED(1, 0, green);
-    }
-    else if(ToMat.touchBar.getPressed(3)) {
-        ToMat.display.setLED(1, 2, green);
-    }
-    else {
-        ToMat.display.setLED(1, 1, red);
-    }
-    delay(20);
+    paLampa.lights.setColorPanel(0, ColorRGB{paLampa.potentiometerRead(), 0, 0});
+    delay(50);
 }
 ```
 
 ## Úkol 8 - zesilování LED (zesílení nebo zeslabení LED za pomocí otáčení potenciometru)
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
 
-## Úkol 11 - měnění HSVs (otáčení potenciometru mění barvy RGB LED )
+## Úkol 9 - měnění HSVs (otáčení potenciometru mění barvy RGB LED )
 Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
 
 
