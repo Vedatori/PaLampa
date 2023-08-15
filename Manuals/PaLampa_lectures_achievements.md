@@ -176,9 +176,8 @@ void loop() {
 ## Úkol 12 - Dotyk
 Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí touch sensoru.
 
-
 # Lekce 7
-Rozblikáme barevné LED na horním segmentu nebo LED pásku.
+Ukážeme si ja zjistit hodnotu teploměru.
 
 ## Výsledný kód
 
@@ -199,14 +198,14 @@ void loop() {
 ```
 
 ## Úkol 13 - Přehřívání (teploměr v horním segmentu hlídá teplotu proti přehřívání a vypne led)
-Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba svitu i doba zhasnutí je 300 ms.
+Napište program, který bude hlídat teplotu horního segmentu za pomoci teploměru a když teplota přesáhne 50°C tak vypne LED světla.
 
 ## Úkol 14 - Teplota okolí (teploměr pod lampou hlídá teplotu okolí a v závislosti na tom mění barvy led červená přes zelenou až po modrou (zelena je ok, červená je vedro, žlutá je mid, modrá je zima(modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus)))
-Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
+Napište program, který bude hlídat teplotu zadního teploměru a podle ní bude měnit barvu RGB podle zadání. Modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus.
 
 
 # Lekce 8 (piezo)
-
+Ukážeme si jak rozeznít piezo.
 
 ## Výsledný kód
 
@@ -257,10 +256,10 @@ void loop() {
 ```
 
 ## Úkol 17 - TEXT (zobraz text)
-Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba svitu i doba zhasnutí je 300 ms.
+Zobrazte na displeji libovolný krátký text text.
 
 ## Úkol 18 - Tvar (zobraz čtverec)
-Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
+Zobrazte na displeji čtverec.
 
 ## Úkol 19 - Obrázek (zobraz obrázek)
-Napište program, který bude blikat jako železniční přejezd. Blikat budou LED 0. a 15, oba červenou barvou.
+Zobrazte na displeji obrázek libovolného výběru.
