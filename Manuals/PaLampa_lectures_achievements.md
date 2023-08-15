@@ -98,7 +98,7 @@ Napište program, který bliká libovolnou LED pouze při stisknutém pravého t
 Napište program, který bude stiskem tlačítka přepínat svícení dvou různých LED. Vždy bude svítit pouze jedena LED, stiskem tlačítka se jedna LED vypne a zapne se ta druhá. Dalším stiskem tlačítka se znovu zapne pouze ta původní LED a proces lze opakovat.
 
 
-# Lekce 4 (potenciometer)
+# Lekce 4
 Přečteme stav potenciometru a zapíšeme ho do červeného kanálu na horním rgb panelu.
 
 Vlastní rgb barvy si můžeme vytvořít pomocí ColorRGB{R, G, B} (hodnoty R, B a B zaměňte za hodnoty 0-1 které chcete nastavit)
@@ -112,19 +112,19 @@ void setup() {
 
 void loop() {
     paLampa.lights.setColorPanel(0, ColorRGB{paLampa.potentiometerRead(), 0, 0});
-    delay(50);
+    delay(100);
 }
 ```
 
-## Úkol 8 - zesilování LED (zesílení nebo zeslabení LED za pomocí otáčení potenciometru)
-Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
+## Úkol 8 - zesilování LED
+Napište program, který bude zesilovat/zeslabovat bílé nebo teplé LED pomocí potenciometru
 
-## Úkol 9 - měnění HSVs (otáčení potenciometru mění barvy RGB LED )
-Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
+## Úkol 9 - měnění HSVs
+Napište program, který bude při otočení potenciometru postupně mění barvy rgb LED
 
 
-# Lekce 5 (světelný sensor)
-Ukážeme si podmínku "if" na příkladu s LED.
+# Lekce 5
+Ukážeme si fotorezistor a podmínku "if" na příkladu s LED.
 
 ```
 #include "ToMat/ToMat.h"
@@ -148,15 +148,14 @@ void loop() {
 }
 ```
 
-## Úkol 10 - Světelná signaliazce tmy (pokud tma tak zvyš jas ps.světelný sensor za lampou)
-Napište program, který sníží jas pokoud vstoupíme s PaLampou do tmy. (Doporučuji dělit hodnotu z fotorezistoru číslem 3)
+## Úkol 10 - Světelná signaliazce tmy
+Napište program, který zvíší jas pokoud vstoupíme s PaLampou do tmy. (Doporučuji dělit hodnotu z fotorezistoru číslem 3)
 
 ## Úkol 11 - Noční světlo (sensor pod lampou hlídá jas aby nebyl moc silný)
-Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
-
+napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit.
 
 # Lekce 6 (touch sensor)
-Time-O-Mat začne komunikovat s počítačem pomocí sériové linky. Vyčteme okolní teplotu.
+
 
 ```
 #include "ToMat/ToMat.h"
