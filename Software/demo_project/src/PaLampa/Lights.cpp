@@ -223,7 +223,7 @@ ColorRGB Lights::updateLedState(LedState& state, int timeStep) {
         } break;
         case Exponential: {
             float currentColorSize = pow(pow(currentColorPtr[0], 2) + pow(currentColorPtr[1], 2) + pow(currentColorPtr[2], 2), 0.5);
-            float beginStep = 0.000012 * timeStep;
+            float beginStep = 0.00006 * timeStep;
             step = beginStep + currentColorSize * (pow(1.732 / beginStep, timeStep / 1000.0 / state.transitionTime) - 1.0);
         } break;
         case None:
@@ -242,7 +242,7 @@ ColorRGB Lights::updateLedState(LedState& state, int timeStep) {
             newColorPtr[ledID] = currentColorPtr[ledID] + deviation[ledID] / devSize * step;
         }
     }
-    state.updateNeeded = true;//devSize > PL::TRANS_END_THR;
+    state.updateNeeded = devSize > PL::TRANS_END_THR;
 
     for(int ledID = 0; ledID < 3; ++ledID) {
         currentColorPtr[ledID] = constrain(newColorPtr[ledID], 0, 1);
@@ -299,8 +299,6 @@ void Lights::update() {
     float currentTarget = sumColor * 0.012 + sumWhite * 1.5;
     float ratio = _currentLimit / currentTarget;
     _currentLimitRatio = constrain(ratio, 0.0, 1.0);
-
-    //printf("%.2f\n", _ledColorState[0].currentColor.red);
 
     for(uint8_t ledID = 0; ledID < PL::LED_RGB_COUNT; ++ledID) {
         ColorRGB powerLimitColor = dimColor(_ledColorState[ledID].currentColor, _currentLimitRatio);
