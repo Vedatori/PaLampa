@@ -146,6 +146,9 @@ Napište program, který zvíší jas pokoud vstoupíme s PaLampou do tmy. (Dopo
 Napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit.
 
 # Lekce 6 
+
+PaLampa ještě nemá hotovou funkci na kapacitní tlačítka = tato lekce nelze udělat.
+
 Ukážeme si jak funguje dotykové tlačítko a funkce random();
 
 ```
