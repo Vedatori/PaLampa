@@ -158,24 +158,27 @@ Napište program, který upravuje svítivost LED podle okolního osvětlení. Č
 Ukážeme si jak funguje dotykové tlačítko a funkce random();
 
 ```
-#include "ToMat/ToMat.h"
+#include "PaLampa/PaLampa.h"
 
-void setup() {
-    ToMat.begin();
+void setup()
+{
+    paLampa.begin();
 }
 
-int teplota;
-
-void loop() {
-    teplota = ToMat.getTemperature();
-    printf("%d\n", teplota);
-    delay(200);
+void loop()
+{
+    if(paLampa.touch.getButton(/*id, (0 = upper, 1 = secret)*/)){
+        //nastavíme celý led pásek na černou
+        paLampa.lights.setColorPanel(1, black);
+        //nastavíme náhodný pixel na červenou
+        paLampa.lights.setColor(1, random(7), red);
+        delay(500);
+    }
 }
 ```
 
 ## Úkol 12 - Dotyk
 Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí horního touch sensoru a pomocí vašeho "secret" tlačítka změní barvu na nějakou náhodnou barvu pomocí funkce random.
-
 
 # Lekce 7 
 Ukážeme si ja zjistit hodnotu teploměru.
