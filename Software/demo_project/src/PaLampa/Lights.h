@@ -43,17 +43,25 @@ typedef struct panelSelector {
     bool back;
 } PanelSelector;
 
-typedef struct ledState {
+typedef struct ledColorState {
     ColorRGB targetColor;
     ColorRGB currentColor;
     float brightness;        // [0.0-1.0]
     TransitionType transitionType;
     float transitionTime;           // [seconds/fullRange]
     bool updateNeeded;
-} LedState;
+} LedColorState;
+
+typedef struct ledWhiteState {
+    float targetBrightness;        // [0.0-1.0]
+    float currentBrightness;        // [0.0-1.0]
+    TransitionType transitionType;
+    float transitionTime;           // [seconds/fullRange]
+    bool updateNeeded;
+} LedWhiteState;
 
 ColorRGB dimColor(ColorRGB color, float brightness);
-ColorRGB shiftColor(ColorRGB color, int red, int green, int blue);
+ColorRGB shiftColor(ColorRGB color, float red, float green, float blue);
 ColorRGB HSVtoRGB(ColorHSV color);
 ColorHSV RGBtoHSV(ColorRGB color);
 
@@ -77,8 +85,8 @@ extern PanelSelector top;
 extern PanelSelector back;
 
 class Lights {
-    std::vector<LedState> _ledColorState;
-    std::vector<float> _ledWhiteState;
+    std::vector<LedColorState> _ledColorState;
+    std::vector<LedWhiteState> _ledWhiteState;
     bool _updateActive{};  // 0-not active, 1-active
     float _currentLimit{};                  // [A]
     float _currentLimitRatio{};
@@ -86,7 +94,8 @@ class Lights {
     bool isPanelSelected(PanelSelector selector, int panelID);
     int getPanelID(int ledID);
     int getLedAbsID(int panelID, int ledID);
-    ColorRGB updateLedState(LedState& state, int timeStep);
+    ColorRGB updateLedColorState(LedColorState& state, int timeStep);
+    float updateLedWhiteState(LedWhiteState& state, int timeStep);
 
     Adafruit_NeoPixel pixels{PL::LED_RGB_COUNT, PL::LED_RGB_PIN, NEO_GRB + NEO_KHZ800};
 public:
@@ -108,6 +117,8 @@ public:
     void setColorPanels(PanelSelector selector, ColorRGB color);
     void setColorPanels(PanelSelector selector, ColorHSV color);
 
-    void setBrightness(PanelSelector selector, float brightness);
-    void setTransition(PanelSelector selector, TransitionType aTransitionType, float time);
+    void setColorBrightness(PanelSelector selector, float brightness);
+
+    void setWhiteTransition(std::vector<bool> selectLed, TransitionType aTransitionType, float time);
+    void setColorTransition(PanelSelector selector, TransitionType aTransitionType, float time);
 };

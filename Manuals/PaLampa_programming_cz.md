@@ -773,14 +773,16 @@ Parametr `selector` zde nabývá následujících hodnot:
 * `top` - Svítí všechny LED na horním panelu.
 * `back` - Svítí všechny LED na zadním LED pásku.
 
-Příkaz `paLampa.lights.setBrightness(SegmentSelector selector, float brightness);` nastaví jas všech LED na vybraných segmentech. Všechny následující příkazy nastavující barvu LED vybraných segmentů budou nastavovat barvu se sníženým jasem. Jedná se o volání funkce s parametry:
+Příkaz `paLampa.lights.setColorBrightness(SegmentSelector selector, float brightness);` nastaví jas všech barevných LED na vybraných segmentech. Všechny následující příkazy nastavující barvu LED vybraných segmentů budou nastavovat barvu se sníženým jasem. Jedná se o volání funkce s parametry:
 * `selector` udává výběr segmentů pro provedení nastavení.
 * `brightness` nastavuje hodnotu jasu v rozsahu 0.0 (nesvítí vůbec) po 1.0 (svítí naplno).
 
-Příkaz `paLampa.lights.setTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
+Příkaz `paLampa.lights.setColorTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací barevných LED, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
 * `selector` udává výběr segmentů pro provedení nastavení.
 * `aTransitionType` udává druh přechodové animace. Možnosti jsou `Linear` a `Exponential`, kde 2. varianta je vizuálně přirozenější.
 * `aTransitionTime` udává dobu trvání přechodové animace ve vteřinách. Např. `1.0` odpovídá přechodu plného rozsahu z tmy až do plného bílého svitu přechodem trvajícím 1 vteřinu.
+
+Podobně lze použít příkaz `paLampa.lights.setWhiteTransition(std::vector<bool> selectLed, TransitionType aTransitionType, float aTransitionRate);` pro nastavení přechodových animací bílých LED. Prvním parametrem je vektor udávající, kterých bílých LED se příkaz týká, čili např hodnota parametru `{1, 1}` zvolí obě bílé LED (teplou i studenou). Zbylé parametry jsou shodné s předchozí funkcí `setColorTransition()`.
 
 Následující příklad nastaví jas předního displeje na `0.5`, plynulý přechod s rychlostí `2.0`.
 ```
@@ -788,8 +790,8 @@ Následující příklad nastaví jas předního displeje na `0.5`, plynulý př
 
 void setup() {
     PaLampa.begin();
-    PaLampa.display.setBrightness(front, 0.5);
-    PaLampa.display.setTransition(front, linear, 2.0);)
+    PaLampa.display.setColorBrightness(all, 0.5);
+    PaLampa.display.setColorTransition(all, linear, 2.0);)
 }
 
 void loop() {}
