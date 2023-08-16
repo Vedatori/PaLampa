@@ -127,24 +127,14 @@ Napište program, který bude při otočení potenciometru postupně mění barv
 Ukážeme si fotorezistor a porovnání na příkladu s LED.
 
 ```
-#include "ToMat/ToMat.h"
+#include "PaLampa/PaLampa.h"
 
 void setup() {
-    ToMat.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    ToMat.display.setFront(black);
-    if(ToMat.touchBar.getPressed(2)) {
-        ToMat.display.setLED(1, 0, green);
-    }
-    else if(ToMat.touchBar.getPressed(3)) {
-        ToMat.display.setLED(1, 2, green);
-    }
-    else {
-        ToMat.display.setLED(1, 1, red);
-    }
-    delay(20);
+    float Temperature = paLampa.thermometer.get(0); //0 = teplomer dole, 1 = teplomer nahore u LEDek
 }
 ```
 
