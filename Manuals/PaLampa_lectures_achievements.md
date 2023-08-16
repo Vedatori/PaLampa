@@ -134,7 +134,8 @@ void setup() {
 }
 
 void loop() {
-    float Temperature = paLampa.thermometer.get(0); //0 = teplomer dole, 1 = teplomer nahore u LEDek
+    paLampa.photoresistor.update();
+    Photoresistor = paLampa.photoresistor.get(0);
 }
 ```
 
