@@ -5,13 +5,177 @@ V tomto dokumentu se nachází rozpis programovacích lekcí a zadání programo
 **Programovací úkoly** jsou úkoly, které budete řešit samostatně. Ke každému úkolu potřebujete soubor znalostí, který je obsažen v některých z lekcí. Úkoly je však možné řešit i jen pomocí programovacího manuálu (pro pokročilé). Splnění úkolu bude kontrolovat vedoucí a odmění ho 2 - 4 Chotěcoiny. Po splnění úkolu si v tabulce na vašem řádku zaznačte křížkem jeho splnění. 
 
 # Lekce 0
-Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do Time-O-Mat z vašeho PC.
+Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do PaLampy z vašeho PC.
 
-## Úkol 0 - Blikání LED
-Pomocí kódu z manuálu rozsvítit LED.
 
 # Lekce 1
-Rozblikáme LED na digitech nebo LED pásku.
+Rozsviť teplé ledky na 10%, po 5 sekudndách rozsviť i studenné ledky
+
+## Výsledný kód
+
+```
+#include "PaLampa/PaLampa.h"
+
+void setup() {
+    paLampa.begin();
+    // id panelu, (0 = warm, 1 = cool)
+    // brightness, (0-1)
+    paLampa.lights.setWhite(0, 0.1);
+    
+    // delay(ms), 5000 ms = 5 s
+    delay(5000);
+    paLampa.lights.setWhite(1, 0.1);
+}
+
+void loop() {
+}
+```
+
+## Úkol 1 - Rozsviť teplé ledky
+Napište program, který každou vteřinu krátce rozsvítí teplé bíle ledky. Doba zobrazení je 250 ms v každé vteřině.
+
+## Úkol 2 - Rozsviť studené a teplé ledky střídavě
+Napište program, který bude blikat jako železniční přejezd. Blikat budou střídavě studené ledky, a teplé ledky v 500 ms intervalu.
+
+
+# Lekce 2
+Rozsviť barevné LED na horním segmentu nebo LED pásku.
+
+## Výsledný kód
+```
+#include "PaLampa/PaLampa.h"
+
+void setup() {
+    paLampa.begin();
+    // panel, (0 = top, 1 = strip)
+    // id, (0-15 top, 0-6 strip)
+    // color, (red, blue ...)
+    paLampa.lights.setColor(0,1,red);
+    paLampa.lights.setColor(1,0,blue);
+}
+
+void loop() {
+}
+```
+
+## Úkol 3 - Blikání LED
+Napište program, který bude blikat třetí barevnou LED červenou barvou. Doba svitu i doba zhasnutí je 300 ms.
+
+## Úkol 4 - Záblesky LED pásku
+Napište program, který každou vteřinu krátce rozsvítí zadní LED pásek. Doba svitu je 100 ms v každé vteřině.
+
+## Úkol 5 - Železniční přejezd na horním segment
+Napište program, který bude blikat jako železniční přejezd. Blikat budou LED 0 a 15 na horním panelu, oba červenou barvou.
+
+
+# Lekce 3
+Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozesvítíme LED.
+
+## Výsledný kód
+
+```
+#include "PaLampa/PaLampa.h"
+
+void setup() {
+    paLampa.begin();
+}
+
+void loop() {
+    // id, (0, 1, 2)
+    if(paLampa.buttonRead(0)){
+        paLampa.lights.setWhite(0, 0.1);
+    }
+    else{
+        paLampa.lights.setWhite(0, 0);
+    }
+}
+```
+
+## Úkol 6 - Manuální blikání LED 
+Napište program, který bliká libovolnou LED pouze při stisknutém pravého tlačítka. Doba svícení je 200 ms. Doba zhasnutí je 200 ms.
+
+## Úkol 7 - Stabilní stav LED
+Napište program, který bude stiskem tlačítka přepínat svícení dvou různých LED. Vždy bude svítit pouze jedena LED, stiskem tlačítka se jedna LED vypne a zapne se ta druhá. Dalším stiskem tlačítka se znovu zapne pouze ta původní LED a proces lze opakovat.
+
+
+# Lekce 4
+Přečteme stav potenciometru a zapíšeme ho do červeného kanálu na horním rgb panelu.
+
+Vlastní rgb barvy si můžeme vytvořít pomocí ColorRGB{R, G, B} (hodnoty R, B a B zaměňte za hodnoty 0-1 které chcete nastavit)
+
+```
+#include "PaLampa/PaLampa.h"
+
+void setup() {
+    paLampa.begin();
+}
+
+void loop() {
+    paLampa.lights.setColorPanel(0, ColorRGB{paLampa.potentiometerRead(), 0, 0});
+    delay(100);
+}
+```
+
+## Úkol 8 - zesilování LED
+Napište program, který bude zesilovat/zeslabovat studené nebo teplé LED pomocí potenciometru
+
+## Úkol 9 - měnění HSVs
+Napište program, který bude při otočení potenciometru postupně mění barvy rgb LED
+
+
+# Lekce 5
+Ukážeme si fotorezistor a porovnání na příkladu s LED.
+
+```
+#include "PaLampa/PaLampa.h"
+
+void setup() {
+    paLampa.begin();
+}
+
+void loop() {
+    paLampa.photoresistor.update();
+    Photoresistor = paLampa.photoresistor.get(0);
+}
+```
+
+## Úkol 10 - Světelná signaliazce tmy
+Napište program, který zvíší jas pokoud vstoupíme s PaLampou do tmy. (Doporučuji dělit hodnotu z fotorezistoru číslem 3)
+
+## Úkol 11 - Noční světlo
+Napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit.
+
+# Lekce 6 
+
+PaLampa ještě nemá hotovou funkci na kapacitní tlačítka = tato lekce nelze udělat.
+
+Ukážeme si jak funguje dotykové tlačítko a funkce random();
+
+```
+#include "PaLampa/PaLampa.h"
+
+void setup()
+{
+    paLampa.begin();
+}
+
+void loop()
+{
+    if(paLampa.touch.getButton(/*id, (0 = upper, 1 = secret)*/)){
+        //nastavíme celý led pásek na černou
+        paLampa.lights.setColorPanel(1, black);
+        //nastavíme náhodný pixel na červenou
+        paLampa.lights.setColor(1, random(7), red);
+        delay(500);
+    }
+}
+```
+
+## Úkol 12 - Dotyk
+Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí horního touch sensoru a pomocí vašeho "secret" tlačítka změní barvu na nějakou náhodnou barvu pomocí funkce random.
+
+# Lekce 7 
+Ukážeme si ja zjistit hodnotu teploměru.
 
 ## Výsledný kód
 
@@ -31,46 +195,15 @@ void loop() {
 }
 ```
 
-## Úkol 1 - Blikání LED
-Napište program, který bude blikat druhou LED na nultém digitu. Doba svitu i doba zhasnutí je 300 ms.
+## Úkol 13 - Přehřívání 
+Napište program, který bude hlídat teplotu horního segmentu za pomoci teploměru a když teplota přesáhne 50°C tak vypne LED světla.
 
-## Úkol 2 - Záblesky LED
-Napište program, který každou vteřinu krátce zobrazí číslo 1 na posledním digitu. Doba zobrazení je 100 ms v každé vteřině.
+## Úkol 14 - Teplota okolí 
+Napište program, který bude hlídat teplotu zadního teploměru a podle ní bude měnit barvu RGB podle zadání. Modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus.
 
-## Úkol 3 - Železniční přejezd
-Napište program, který bude blikat jako železniční přejezd. Blikat budou levý a pravý horní segment na jednom digitu, oba červenou barvou.
 
-# Lekce 2
-Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozezníme piezoakustický měnič.
-
-## Výsledný kód
-
-```
-#include "ToMat/ToMat.h"
-
-void setup() {
-    ToMat.begin();
-}
-
-void loop() {
-    if(ToMat.buttonRead(0)) {
-        ToMat.piezo.tone(100);
-    }
-    else {
-        ToMat.piezo.stop();
-    }
-    delay(20);
-}
-```
-
-## Úkol 4 - Manuální blikání LED
-Napište program, který bliká libovolnou LED pouze při stisknutém tlačítku nejblíž USB konektoru. Doba svícení je 200 ms. Doba zhasnutí je 200 ms.
-
-## Úkol 5 - Stabilní stav LED
-Napište program, který bude stiskem tlačítka přepínat svícení dvou různých segmentů na dvou různách digitech. Vždy bude svítit pouze jeden segment, stiskem tlačítka se tento segment vypne a zapne se ten druhý. Dalším stiskem tlačítka se znovu zapne pouze ten původní segment a proces lze opakovat.
-
-# Lekce 3
-Přečteme hodnotu na fotorezistoru, ukážeme si číselnou proměnnou. Hodnotu výstupu z fotorezistoru si zobrazíme na LED.
+# Lekce 8 
+Ukážeme si jak rozeznít piezo.
 
 ## Výsledný kód
 
@@ -91,15 +224,19 @@ void loop() {
     delay(20);
 }
 ```
+## V paLampa.cpp je zakomentovane piezo.begin 
 
-## Úkol 6 - Rychlost blikání
-Napište program, který bude blikat libovolným segmentem a rychlost tohoto blikání se zvětší, když se sníží intenzita osvětlení na předním fotorezistoru (např. bude zakrytý prstem).
+## Úkol 15 - dlouhé pííp
+Napište program, který po stisknutí prostředního tlačítka zapne piezo
 
-## Úkol 7 - Počítadlo stisků tlačítka
-Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
+## Úkol 16 - základní melodie
+Napište program, který na piezu přehraje krátkou melodii po stisknutí tlačítka.
 
-# Lekce 4
-Ukážeme si podmínku "if" na příkladu s LED. Pro ovládání se naučíme použít dotykovou lištu. 
+
+# Lekce 9 
+Rozblikáme barevné LED na horním segmentu nebo LED pásku.
+
+## Výsledný kód
 
 ```
 #include "ToMat/ToMat.h"
@@ -109,48 +246,19 @@ void setup() {
 }
 
 void loop() {
-    ToMat.display.setFront(black);
-    if(ToMat.touchBar.getPressed(2)) {
-        ToMat.display.setLED(1, 0, green);
-    }
-    else if(ToMat.touchBar.getPressed(3)) {
-        ToMat.display.setLED(1, 2, green);
-    }
-    else {
-        ToMat.display.setLED(1, 1, red);
-    }
-    delay(20);
+    ToMat.display.setLED(0, 5, blue);
+    delay(500);
+
+    ToMat.display.setLED(0, 5, black);
+    delay(500);    
 }
 ```
 
-## Úkol 8 - Zvuková signaliazce tmy
-Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
+## Úkol 17 - TEXT 
+Zobrazte na displeji libovolný krátký text text.
 
-## Úkol 9 - Nastavení jasu LED po stisku tlačítka
-Napište program, který při každém stisku jednoho z tlačítek na dotykové liště rozsvítí další LED v rámci jednoho segmentu a původní LED zhasne - "posune" světlo na LED na další pozici(začne se LED s indexem 0 a vždy se zvyšuje o 1). Po dosažení poslední LED se znovu rozsvítí nultá LED a proces se opakuje. Pokud není tlačítlo stisknuto, pořád svítí stejná LED.
+## Úkol 18 - Tvar 
+Zobrazte na displeji čtverec.
 
-# Lekce 5
-Time-O-Mat začne komunikovat s počítačem pomocí sériové linky. Vyčteme okolní teplotu.
-
-```
-#include "ToMat/ToMat.h"
-
-void setup() {
-    ToMat.begin();
-}
-
-int teplota;
-
-void loop() {
-    teplota = ToMat.getTemperature();
-    printf("%d\n", teplota);
-    delay(200);
-}
-```
-
-## Úkol 10 - Vypsání hodnoty LED
-Přepracujte úkol 9 tak, aby Time-O-Mat přes sériovou linku přenášel číslo LED, která právě svítí.
-
-## Úkol 11 - Vyslání času od startu Time-O-Mat bez funkce millis()
-Napište program, který bude vypisovat celočíselnou proměnnou každou vteřinu. Tuto proměnnou však každou milisekundu zvyšte o 1. Je chování tohoto programu stejné jako v případě použití funkce `millis()`?
-
+## Úkol 19 - Obrázek 
+Zobrazte na displeji obrázek libovolného výběru.
