@@ -227,7 +227,7 @@ void handleClients(void * param) {
 
 void wifiCaptInit() {
     if(strlen(apCredentials.ssid) == 0) {
-        sprintf(apCredentials.ssid, "Time-O-Mat");
+        sprintf(apCredentials.ssid, "PaLampa");
     }
     softApEnable();
     

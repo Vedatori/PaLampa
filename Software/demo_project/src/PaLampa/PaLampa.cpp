@@ -52,18 +52,18 @@ void PL::refreshTaskSlow(void * parameter) {
 void PaLampa::begin() {
     beginCalled = true;
 
-    //piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
+    for(int i = 0; i < 3; ++i) {
+        pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
+    }
 
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
+    piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
+
 	weather.init(1000 * 60 * 15);
 	weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
 	weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
-
-    for(int i = 0; i < 3; ++i) {
-        pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
-    }
     
     xTaskCreatePinnedToCore(PL::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
     xTaskCreatePinnedToCore(PL::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);

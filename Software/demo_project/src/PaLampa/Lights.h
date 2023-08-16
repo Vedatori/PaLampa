@@ -7,7 +7,7 @@
 namespace PL {
 
 const std::vector<int> LED_WHITE_PIN{5, 17};
-const std::vector<int> LED_WHITE_CHANNEL{0, 11};
+const std::vector<int> LED_WHITE_CHANNEL{0, 1};
 const int LED_WHITE_COUNT = 2;
 const int LED_FREQ = 20000;
 const int LED_RESOLUTION_BIT = 10;
