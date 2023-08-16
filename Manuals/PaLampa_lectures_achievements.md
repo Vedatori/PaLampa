@@ -227,6 +227,7 @@ void loop() {
     delay(20);
 }
 ```
+## V paLampa.cpp je zakomentovane piezo.begin 
 
 ## Úkol 15 - dlouhé pííp
 Napište program, který po stisknutí prostředního tlačítka zapne piezo
