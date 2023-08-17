@@ -59,6 +59,8 @@ void PaLampa::begin() {
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
+    capButton.begin();    
+
     piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
 
 	weather.init(1000 * 60 * 15);
@@ -86,6 +88,10 @@ float PaLampa::potentiometerRead() {
 void PaLampa::printDiagnostics() {
     for(int i = 0; i <= 2; ++i) {
         printf("btn%d: %d ", i, buttonRead(i));
+    }
+
+    for(int i = 0; i < 2; i++){
+        printf("CapBtn%d: %d ", i, capButton.getPadPressed(i));
     }
 
     printf("pot: %.2f ", potentiometerRead());
