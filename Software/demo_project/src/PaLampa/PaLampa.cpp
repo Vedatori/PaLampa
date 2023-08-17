@@ -60,6 +60,7 @@ void PaLampa::begin() {
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
     capButton.begin();    
+    capButton.setThreshold({5.0f, 2.0f});
 
     piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
 

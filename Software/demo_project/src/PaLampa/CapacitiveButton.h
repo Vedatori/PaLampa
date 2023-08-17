@@ -13,12 +13,11 @@ class CapButton {
     float rawDataIIR[2];
     bool digitalData[2];
     float coefIIR = 0.01;
-    float digitalThreshold[2]= {5.0, 2.0};
 public:
     CapButton(std::vector<int> pinIDs);  // std::vector<float> threshold
     void begin();
     void update();
-    void setThreshold(float TH1, float TH2);
+    void setThreshold(std::vector<float> threshold);
     uint16_t getPadRaw(int padID);
     float getPadRawIIR(int padID);
     bool getPadPressed(int padID);
