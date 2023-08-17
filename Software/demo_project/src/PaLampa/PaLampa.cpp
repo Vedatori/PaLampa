@@ -59,6 +59,8 @@ void PaLampa::begin() {
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
+    timeModule.begin();
+
     piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
 
 	weather.init(1000 * 60 * 15);
