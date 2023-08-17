@@ -25,7 +25,7 @@ void PL::refreshTaskSlow(void * parameter) {
             lightCurrentLimit = 0.9;
             printf("Error reading top light temperature. Limiting max current to default.\n");
         }
-        if(paLampa.thermometer.get(1) > PL::TEMP_LIMIT_TOP) {
+        else if(paLampa.thermometer.get(1) > PL::TEMP_LIMIT_TOP) {
             lightCurrentLimit = 0.0;
             printf("Maximum light temperature exceeded. Turning light off.\n");
         }
@@ -35,10 +35,6 @@ void PL::refreshTaskSlow(void * parameter) {
             printf("Light temperature is getting too high. Reducing light current to %.2f A.\n", lightCurrentLimit);
         }
         paLampa.lights.setCurrentLimit(lightCurrentLimit);
-
-        char text[30];
-        sprintf(text, "%.1f %.1f", paLampa.thermometer.get(1), lightCurrentLimit);
-        paLampa.commandDisp(text);
 
         static uint32_t internetUpdateTime = 0;
         static uint32_t softApDisableTime = 0;
