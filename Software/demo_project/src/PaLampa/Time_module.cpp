@@ -127,7 +127,8 @@ sntpStatus Time_module::getSntpStatus() {
     if(!sntp_enabled()) return sntpStatus::OFF;
 
     sntp_sync_status_t syncStatus = sntp_get_sync_status();
-    if(syncStatus = SNTP_SYNC_STATUS_COMPLETED){
+    if(syncStatus == SNTP_SYNC_STATUS_COMPLETED){
+        //printf("NTP Synced!");
         ntpLastSync = time(NULL);
         return sntpStatus::OK;
     }
