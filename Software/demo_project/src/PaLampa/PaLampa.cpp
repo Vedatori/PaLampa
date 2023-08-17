@@ -3,9 +3,8 @@
 #include "SPIFFS.h"
 
 Melody themeMelody(
-	"TEMPO=140 " 
-	"R/2 R/8 D5#/8 E5#/8 F5#/8 F5#/8 E5#/8 D5#/8 R/4 G5#/4 G5#/4 F5#/8 E5#/8 R/8 D5#/8 R/8 D5#/4 R/8 D5#/4* R/8 R/4 R/4 R/4* D5#/8 E5#/8 F5#/8 F5#/8 F5#/4 F5#/4 F5#/4 F5#/4 E5#4 E5#/4 D5#/4 D5#/4 "
-    "R/2 R/8 D5#/8 E5#/8 F5#/8 F5#/8 E5#/8 D5#/8 R/4 G5#/4 G5#/4 F5#/8 E5#/8 R/8 D5#/8 R/8 D5#/4 R/8 D5#/4* R/8 R/4 R/4 R/4* D5#/8 E5#/8 F5#/8 F5#/8 F5#/4 F5#/4 F5#/4 F5#/4 E5#4 E5#/4 D5#/4 D5#/4 "
+	"TEMPO=150 " 
+	"e4/4 e4/4 h3/4 e4/8 f#4/8 R/8 h3/8 R/2 g#4/8 R/4 R/16 e4/8 f#4/8 f#4/8 g#4/8 a4/4 e4/8 R/4 R/2 f#4/4 f#4/4 e4/4 d#4/8 e4/8 e4/8 f#4/8 R/4 R/8 e4/8 d#4/8 e4/8 e4/2 e4/2 e4/2"
 );
 
 void PL::refreshTaskQuick(void * parameter) {
