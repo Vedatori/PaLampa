@@ -100,6 +100,8 @@ void PaLampa::printDiagnostics() {
 
     printf("powerR: %.2f ", paLampa.lights.getCurrentLimitRatio());
 
+    printf("time: %s ", timeModule.getClockText().c_str());
+
     printf("weather: %s \n", paLampa.weather.getWeather().getWeatherString().c_str());
 
 }
