@@ -13,6 +13,7 @@
 #include <piezo/piezo.h>
 #include <weather/weatherApi.h>
 #include "USB_C_power_module.h"
+#include "Time_module.h"
 
 
 namespace PL {
@@ -56,6 +57,7 @@ public:
     Photoresistor photoresistor{{PL::PHOTORESISTOR_TOP_PIN, PL::PHOTORESISTOR_BACK_PIN}};
     Thermometer thermometer{{PL::THERMOMETER_BOTTOM_PIN, PL::THERMOMETER_TOP_PIN}};
     Lights lights{};
+    Time_module timeModule{15*60};
     Piezo piezo;
 	WeatherApi weather;
     USB_C_power_module power;

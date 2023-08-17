@@ -132,6 +132,7 @@ Napište program, který bude regulovat jas teplé LED pomocí potenciometru.
 ## Úkol 9 - Barevný formát HSV
 Napište program, který bude při otočení potenciometru postupně měnit barvy barevné LED.
 
+
 # Lekce 5
 Ukážeme si fotorezistor a hodnotu jeho výstupu si zobrazíme na LED.
 
@@ -144,7 +145,7 @@ void setup() {
 
 void loop() {
     float illumination = paLampa.photoresistor.get(1);
-    paLampa.light.setWhite(0, illumination / 2)
+    paLampa.light.setWhite(0, illumination / 2);
 }
 ```
 
@@ -154,7 +155,39 @@ Napište program, který zvýší jas pokud vstoupíme s PaLampou do tmy. Doporu
 ## Úkol 11 - Noční světlo
 Napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit.
 
-# Lekce 6 
+
+# Lekce 6
+Ukážeme si ja zjistit hodnotu teploměru a jak se pracuje se sériovou linkou
+
+## Výsledný kód
+
+```
+#include "PaLampa/PaLampa.h"
+
+void setup() {
+    paLampa.begin();
+}
+
+void loop() {
+    float topTemp = paLampa.thermometer.get(1 /*0 = bottom, 1 = top*/);
+    float bottomTemp = paLampa.thermometer.get(0);
+    Serial.print("top = ");
+    Serial.print(topTemp);
+    Serial.print("°C, bottom = ");
+    Serial.print(bottomTemp);
+    Serial.println("°C");
+    delay(500);
+}
+
+```
+
+## Úkol 13 - Přehřívání 
+Napište program, který bude hlídat teplotu horního segmentu za pomoci teploměru a když teplota přesáhne 30°C tak vypne LED světla.
+
+## Úkol 14 - Teplota okolí 
+Napište program, který bude hlídat teplotu zadního teploměru a podle ní bude měnit barvu RGB podle zadání. Modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus.
+
+# Lekce 7
 PaLampa ještě nemá hotovou funkci na kapacitní tlačítka = tato lekce nelze udělat.
 
 Ukážeme si jak funguje dotykové tlačítko a funkce random();
@@ -182,32 +215,6 @@ void loop()
 ## Úkol 12 - Dotyk
 Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí horního dotykového tlačítka a pomocí vašeho tajného tlačítka změní barvu na náhodnou barvu pomocí funkce random.
 
-
-
-# Lekce 7 
-Ukážeme si ja zjistit hodnotu teploměru
-
-## Výsledný kód
-
-```
-#include "PaLampa/PaLampa.h"
-
-void setup() {
-    PaLampa.begin();
-}
-
-void loop() {
-    ToMat.thermometer.get(0)
-    delay(500);
-}
-```
-
-## Úkol 13 - Přehřívání 
-Napište program, který bude hlídat teplotu horního segmentu za pomoci teploměru a když teplota přesáhne 30°C tak vypne LED světla.
-
-## Úkol 14 - Teplota okolí 
-Napište program, který bude hlídat teplotu zadního teploměru a podle ní bude měnit barvu RGB podle zadání. Modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus.
-
 # Lekce 8 
 Ukážeme si jak rozeznít piezo.
 
@@ -217,15 +224,16 @@ Ukážeme si jak rozeznít piezo.
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
+    paLampa.piezo.begin(3, 13);
 }
 
 void loop() {
-    if(PaLampa.buttonRead(0)) {
-        PaLampa.piezo.tone(100);
+    if(paLampa.buttonRead(0)) {
+        paLampa.piezo.tone(100);
     }
     else {
-        PaLampa.piezo.stop();
+        paLampa.piezo.stop();
     }
     delay(20);
 }
@@ -239,6 +247,9 @@ Napište program, který na piezu přehraje krátkou melodii po stisknutí libov
 
 # Lekce 9 
 Ukážeme si jak ovládat obrazovku.
+
+PaLampa ještě nemá hotové funkce na displej = tato lekce nelze udělat.
+
 
 ## Výsledný kód
 
