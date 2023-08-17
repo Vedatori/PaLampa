@@ -15,11 +15,10 @@
 #include "USB_C_power_module.h"
 #include "Time_module.h"
 
-
 namespace PL {
 
 const int BUTTON_PIN[3] = {33, 25, 26};
-const int CAP_BUTTON_PIN[2] = {12,14};
+const int CAP_BUTTON_PIN[2] = {12, 14};
 const float CAP_BUTTON_THRESHOLD[2] = {5.0, 2.0};
 const int POTENTIOMETER_PIN = 36;
 const int PHOTORESISTOR_TOP_PIN = 34;
@@ -35,6 +34,8 @@ const char WEATHER_API_KEY[] = "bde361c7c969906b9a9571a8f4a14c06";
 const uint32_t INTERNET_UPDATE_PERIOD = 1000 * 60 * 15; // [ms]
 const uint32_t SOFT_AP_DISABLE_TIMEOUT = 1000 * 60 * 5; // [ms]
 const float IDLE_CURRENT = 0.1; // [A]
+const float TEMP_LIMIT_BOTTOM = 60.0;  // [°C]
+const float TEMP_LIMIT_TOP = 75.0;  // [°C]
 
 void refreshTaskQuick(void * param);
 void refreshTaskSlow(void * param);
@@ -48,9 +49,6 @@ class PaLampa {
     uint32_t prevCommunicationTime = 0;
     bool internetConnected = false;
     bool wifiCaptStarted = false;
-
-    float temperatureUp = 0.0;
-    float temperatureDown = 0.0;
 
 public:
     CapButton capButton{{PL::CAP_BUTTON_PIN[0], PL::CAP_BUTTON_PIN[1]}};  //  {PL::CAP_BUTTON_THRESHOLD[0], PL::CAP_BUTTON_THRESHOLD[1]}

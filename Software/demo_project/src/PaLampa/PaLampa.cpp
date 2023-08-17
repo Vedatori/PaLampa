@@ -18,8 +18,27 @@ void PL::refreshTaskQuick(void * parameter) {
 void PL::refreshTaskSlow(void * parameter) {
     for(;;) {
         paLampa.power.update();
-        paLampa.lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
         paLampa.thermometer.update();
+
+        float lightCurrentLimit = paLampa.power.getLimitA() - PL::IDLE_CURRENT;
+        if(paLampa.thermometer.get(1) == 0.0) {
+            lightCurrentLimit = 0.9;
+            printf("Error reading top light temperature. Limiting max current to default.\n");
+        }
+        if(paLampa.thermometer.get(1) > PL::TEMP_LIMIT_TOP) {
+            lightCurrentLimit = 0.0;
+            printf("Maximum light temperature exceeded. Turning light off.\n");
+        }
+        else if(paLampa.thermometer.get(1) > PL::TEMP_LIMIT_BOTTOM) {
+            float reductionRatio = (paLampa.thermometer.get(1) - PL::TEMP_LIMIT_BOTTOM) / (PL::TEMP_LIMIT_TOP - PL::TEMP_LIMIT_BOTTOM);
+            lightCurrentLimit = lightCurrentLimit * (1 - reductionRatio);
+            printf("Light temperature is getting too high. Reducing light current to %.2f A.\n", lightCurrentLimit);
+        }
+        paLampa.lights.setCurrentLimit(lightCurrentLimit);
+
+        char text[30];
+        sprintf(text, "%.1f %.1f", paLampa.thermometer.get(1), lightCurrentLimit);
+        paLampa.commandDisp(text);
 
         static uint32_t internetUpdateTime = 0;
         static uint32_t softApDisableTime = 0;
