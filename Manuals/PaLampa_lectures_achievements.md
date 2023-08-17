@@ -145,7 +145,7 @@ void setup() {
 
 void loop() {
     float illumination = paLampa.photoresistor.get(1);
-    paLampa.light.setWhite(0, illumination / 2)
+    paLampa.light.setWhite(0, illumination / 2);
 }
 ```
 
@@ -166,18 +166,16 @@ Ukážeme si ja zjistit hodnotu teploměru a jak se pracuje se sériovou linkou
 
 void setup() {
     paLampa.begin();
-    Serial.begin(115200); // 115200 je rychlost komunikace
 }
 
 void loop() {
-    paLampa.thermometer.update();
-    float TopTemp = paLampa.thermometer.get(1 /*0 = bottom, 1 = top*/);
-    float BottomTemp = paLampa.thermometer.get(0);
+    float topTemp = paLampa.thermometer.get(1 /*0 = bottom, 1 = top*/);
+    float bottomTemp = paLampa.thermometer.get(0);
     Serial.print("top = ");
-    Serial.print(Toptemp);
+    Serial.print(topTemp);
     Serial.print("°C, bottom = ");
-    Serial.print(BottomTemp);
-    Serial.println("°C")
+    Serial.print(bottomTemp);
+    Serial.println("°C");
     delay(500);
 }
 
