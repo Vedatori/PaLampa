@@ -5,6 +5,7 @@
 
 #include <ESP32Ping.h>
 
+#include "CapacitiveButton.h"
 #include "Photoresistor.h"
 #include "Thermometer.h"
 #include "Lights.h"
@@ -18,6 +19,8 @@
 namespace PL {
 
 const int BUTTON_PIN[3] = {33, 25, 26};
+const int CAP_BUTTON_PIN[2] = {12,14};
+const float CAP_BUTTON_THRESHOLD[2] = {5.0, 2.0};
 const int POTENTIOMETER_PIN = 36;
 const int PHOTORESISTOR_TOP_PIN = 34;
 const int PHOTORESISTOR_BACK_PIN = 35;
@@ -50,6 +53,7 @@ class PaLampa {
     float temperatureDown = 0.0;
 
 public:
+    CapButton capButton{{PL::CAP_BUTTON_PIN[0], PL::CAP_BUTTON_PIN[1]}};  //  {PL::CAP_BUTTON_THRESHOLD[0], PL::CAP_BUTTON_THRESHOLD[1]}
     Photoresistor photoresistor{{PL::PHOTORESISTOR_TOP_PIN, PL::PHOTORESISTOR_BACK_PIN}};
     Thermometer thermometer{{PL::THERMOMETER_BOTTOM_PIN, PL::THERMOMETER_TOP_PIN}};
     Lights lights{};

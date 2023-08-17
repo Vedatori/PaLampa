@@ -51,20 +51,23 @@ void PL::refreshTaskSlow(void * parameter) {
 void PaLampa::begin() {
     beginCalled = true;
 
-    for(int i = 0; i < 3; ++i) {
-        pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
-    }
-
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
+
+    capButton.begin();    
+    capButton.setThreshold({5.0f, 2.0f});
 
     timeModule.begin();
 
     piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
 
-	weather.init(1000 * 60 * 15);
-	weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
-	weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
+    weather.init(1000 * 60 * 15);
+    weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
+    weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
+  
+    for(int i = 0; i < 3; ++i) {
+        pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
+    }
     
     xTaskCreatePinnedToCore(PL::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
     xTaskCreatePinnedToCore(PL::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
@@ -87,6 +90,10 @@ float PaLampa::potentiometerRead() {
 void PaLampa::printDiagnostics() {
     for(int i = 0; i <= 2; ++i) {
         printf("btn%d: %d ", i, buttonRead(i));
+    }
+
+    for(int i = 0; i < 2; i++){
+        printf("CapBtn%d: %d ", i, capButton.getPadPressed(i));
     }
 
     printf("pot: %.2f ", potentiometerRead());

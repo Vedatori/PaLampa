@@ -17,6 +17,7 @@ ___
 * [Funkce](#funkce)
 * [LEDky](#ledky)
 * [Tlačítka](#tlacitka)
+* [Kapacitní tlačítka](#kapacitní-tlačítka)
 * [Piezoakustický měnič](#piezo)
 * [Fotorezistory](#fotorezistory)
 * [Dotyková lišta](#lista)
@@ -503,6 +504,31 @@ void setup() {
 
 void loop() {
     if(paLampa.buttonRead(0)) {
+        paLampa.lights.setColor(0, 0, white);
+    }
+    else {
+        paLampa.lights.setColor(0, 0, black);
+    }
+    delay(20);
+}
+```
+
+<!-- _________________________________________________________________ -->
+# <a name = KapacitniTlacitka>Kapacitní tlačítka</a>
+Pro získaní stavu tlačítka voláme funkci paLampa.capButton.getPadPressed(pinID);
+pinID může mít hodnotu 0 = viditelné tlačítko vedle displeje, a hodnotu 1 = vámi skryté tlačítko.
+
+Příklad: Tento program rozsvítí LED při stisku kapacitního tlačítka 0.
+```
+#include "PaLampa/PaLampa.h"
+
+void setup() {
+    paLampa.begin();
+}
+
+void loop() {
+    paLampa.capButton.update(); // update hodnoty tlačítka.
+    if(paLampa.capButton.getPadPressed(0)) { // zjištění stavu tlačítka
         paLampa.lights.setColor(0, 0, white);
     }
     else {
