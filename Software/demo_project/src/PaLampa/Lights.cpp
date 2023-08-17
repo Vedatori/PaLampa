@@ -331,6 +331,7 @@ void Lights::update() {
         sumWhite += updateLedWhiteState(_ledWhiteState[ledID], timeStep);
     }
 
+    _prevCurrentLimitRatio = _currentLimitRatio;
     float currentTarget = sumColor * 0.012 + sumWhite * 1.5;
     float ratio = _currentLimit / currentTarget;
     _currentLimitRatio = constrain(ratio, 0.0, 1.0);
@@ -340,12 +341,12 @@ void Lights::update() {
         uint32_t color = pixels.Color(uint8_t(powerLimitColor.red * 255) , uint8_t(powerLimitColor.green * 255), uint8_t(powerLimitColor.blue * 255));
         pixels.setPixelColor(ledID, color);
     }
-    if(updateColorNeeded) {
+    if(updateColorNeeded || _currentLimitRatio != _prevCurrentLimitRatio) {
         pixels.show();
     }
 
     for(int ledID = 0; ledID < PL::LED_WHITE_COUNT; ++ledID) {
-        if(_ledWhiteState[ledID].updateNeeded) {
+        if(_ledWhiteState[ledID].updateNeeded || _currentLimitRatio != _prevCurrentLimitRatio) {
             int powerLimitWhite = _ledWhiteState[ledID].currentBrightness * _currentLimitRatio * PL::LED_RESOLUTION_MAX_VAL;
             powerLimitWhite = constrain(powerLimitWhite, 0, PL::LED_RESOLUTION_MAX_VAL);
             ledcWrite(PL::LED_WHITE_CHANNEL[ledID], powerLimitWhite);

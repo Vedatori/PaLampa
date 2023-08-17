@@ -27,7 +27,7 @@ float USB_C_power_module::getLimitA() {
         case High_3000mA:
             return 3.0;
         case Automatic: {
-            return 0.9;
+            return 0.5;
         }
         default:
             mode = USB2_500mA;

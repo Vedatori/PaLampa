@@ -88,8 +88,9 @@ class Lights {
     std::vector<LedColorState> _ledColorState;
     std::vector<LedWhiteState> _ledWhiteState;
     bool _updateActive{};  // 0-not active, 1-active
-    float _currentLimit{};                  // [A]
+    float _currentLimit{};  // [A]
     float _currentLimitRatio{};
+    float _prevCurrentLimitRatio{};
 
     bool isPanelSelected(PanelSelector selector, int panelID);
     int getPanelID(int ledID);
