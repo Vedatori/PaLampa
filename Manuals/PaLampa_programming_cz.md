@@ -17,7 +17,7 @@ ___
 * [Funkce](#funkce)
 * [LEDky](#ledky)
 * [Tlačítka](#tlacitka)
-* [Kapacitní tlačítka](#KapacitniTlacitka)
+* [Kapacitní tlačítka](#kapacitní-tlačítka)
 * [Piezoakustický měnič](#piezo)
 * [Fotorezistory](#fotorezistory)
 * [Dotyková lišta](#lista)
