@@ -193,13 +193,16 @@ Ukážeme si ja zjistit hodnotu teploměru
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    ToMat.thermometer.get(0)
+    paLampa.thermometer.update();
+    float Temperature = paLampa.thermometer.get(1 /*0 = botton, 1 = top*/);
+    // nějaký kód který bude pracovat s teplotou
     delay(500);
 }
+
 ```
 
 ## Úkol 13 - Přehřívání 
@@ -217,15 +220,16 @@ Ukážeme si jak rozeznít piezo.
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
+    paLampa.piezo.begin(3, 13);
 }
 
 void loop() {
-    if(PaLampa.buttonRead(0)) {
-        PaLampa.piezo.tone(100);
+    if(paLampa.buttonRead(0)) {
+        paLampa.piezo.tone(100);
     }
     else {
-        PaLampa.piezo.stop();
+        paLampa.piezo.stop();
     }
     delay(20);
 }
@@ -239,6 +243,9 @@ Napište program, který na piezu přehraje krátkou melodii po stisknutí libov
 
 # Lekce 9 
 Ukážeme si jak ovládat obrazovku.
+
+PaLampa ještě nemá hotové funkce na displej = tato lekce nelze udělat.
+
 
 ## Výsledný kód
 
