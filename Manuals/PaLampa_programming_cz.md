@@ -133,7 +133,7 @@ Vytvořte si na disku svého PC složku pro vaše budoucí programy, například
 Do této nové složky překopírujte soubor ze stáhnutého repozitáře *Software/demo_project/src/main.cpp* ze stáhnutého repozitáře *PaLampa-main*. V nové složec si soubor přejmenujte třeba na *original.cpp*. Tento soubor bude obsahovat původně poskytnutý kód pro výrobek, přesněji jeho hlavní, uživatelskou část v *main.cpp*. Podobným způsobem si budete ukládat další své vlastní programy, vždy jako nový textový soubor *nazev_programu.cpp" v nově vytvořené složce. Pro práci na daném programu a jeho nahrání do výrobku si obsah daného textového souboru překopírujete do *main.cpp* ve stáhnutém repozitáři. 
 
 Ve VS Code otevřete soubor *main.cpp* ve stáhnutém repozitáři a nahraďte jeho obsah následujícím kódem šablony:
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -170,7 +170,7 @@ Nahrajte program do PaLampa a počkejte, až se LED rozsvítí. Gratulujeme, tot
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -191,7 +191,7 @@ V jazyce C++ máme 2 typy komentářů:
 1. Víceřádkový komentář je uvozen lomítkem a hvězdičkou `/*`. Ukončen je hvězdičkou a lomítkem `*/`. Veškerý text mezi je považován za komentář. Začátek a konec mohou být na různých řádcích.
 
 Příklad: Tento program rozsvítí LED a nechá ji rozsvícenou.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -242,7 +242,7 @@ nazev_promenne = hodnota;
 Číselné proměnné můžeme sčítat (+), odečítat (-), násobit (*) a dělit (/). 
 
 Příklad:
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -365,7 +365,7 @@ if(cele_cislo < 5 && cele_cislo > -5) {
 Při programování se nám často stane, že potřebujeme některé úkony vykonat vícekrát. Případně vykonat velké množství podobných úkonů. K tomuto budeme používat *cykly*, které nám umožní opakovaně vykonávat úseky kódu.
 
 Pro jedno bliknutí LEDkou poslouží tento program:
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -381,7 +381,7 @@ void loop() {}
 V tomto programu používáme příkaz *delay()* pro čekání na místu v kódu o určitý čas. Tento čas čekání je určen v milisekundách (1000 ms = 1s).
 
 Pro 2 bliknutí LEDkou poslouží tento program, ve kterém jsme pouze zopakovali příkazy z minulého:
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -476,7 +476,7 @@ Pro definování vlastní barvy použijeme kontrukci podobnou vytváření prom�
 Oba formáty dokážou definovat jakoukoli barvu, kterou umí barevné LEDky vysvítit, ale každý má své výhody a nevýhody. RGB popisuje barvy podobně jako stroje, tj. jak intenzivně má svítit která barevná složka každé z LEDek v rozsahu 0 až 1, např. 0.5. HSV naopak popisuje barvy podobně, jako lidé a je v mnoha případech pohodlnější k použití, např. pro změnu barvy při zachování jasu.
 
 Pomocí komentářů si v následujícím kódu vyberte jednu z definic barvy `cervena` a ověřte, že výsledkem je stejná červená barva.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -495,7 +495,7 @@ void loop() {}
 Nejjednodušším způsobem, jak můžete PaLampa ovládat je pomocí tlačítek, která najdete na podstavě pod obrazovkou. Pro zjištění jestli je tlačítko zmáčknuto, budeme používat příkaz `PaLampa.buttonRead(int buttonID)`. Parametrem `buttonID` určujeme, na které tlačítko se ptáme. Tlačítka jsou číslována od 0 (vlevo) po 2 (vpravo).
 
 Příklad: Tento program rozsvítí LED při stisku tlačítka 0.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -519,7 +519,7 @@ Pro získaní stavu tlačítka voláme funkci paLampa.capButton.getPadPressed(pi
 pinID může mít hodnotu 0 = viditelné tlačítko vedle displeje, a hodnotu 1 = vámi skryté tlačítko.
 
 Příklad: Tento program rozsvítí LED při stisku kapacitního tlačítka 0.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -547,7 +547,7 @@ PaLampa obsahuje tzv. piezoakustický měnič, pomocí kterého dokáže vydáva
 * Veškerý zvuk vypneme pomocí `paLampa.piezo.stop();`.
 
 Následující příklad přerušovaně "pípá" na frekvenci 1kHz.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -573,7 +573,7 @@ Melodii poté přehrajete pomocí `paLampa.piezo.playMelody(melody, sizeof(melod
 
 Následující příklad zahraje melodi Nokie.
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 // Zkopírováno z Arduino songs
@@ -627,7 +627,7 @@ Ale pozor! `nazevMelodie.tempo = 180;` lze volat pouze uvnitř funkce (`void set
 Vlastní melodii přehrajeme pomocí `paLampa.piezo.playMelody(nazevMelodie);`.
 
 Příklad:
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 Melody melodyTest("TEMPO=180 c3/4 d3/4 e3/4 f3/4 g3/4 g3/4 a3/4 h3/4 c4/2* c4#/1*");
@@ -657,7 +657,7 @@ Pro snímání úrovně osvětlení v okolí výrobku slouží fotorezistory. V�
 Pro zjištění úrovně osvitu jednotlivých fotorezistorů použijeme příkaz `paLampa.photoresistor.get(int photoresID);`, kde `photoresID` udává index fotorezistoru. Vrácena je nám celočíselná hodnota v rozsahu 0.0 (tma) až 1.0 (světlo).
 
 Následující příklad zjistí hodnotu osvitu fotorezistoru 0 a nastaví podle něj červený jas LED.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -678,7 +678,7 @@ void loop() {
 Pro pohodlné zapínání a vypínání výrobku slouží dotykové tlačítko umístěné napravo od obrazovky. Pro zjištění, jestli je zmáčknuto, použijeme příkaz `paLampa.touchBar.getPressed(int buttonID);`. Vrácena je binární hodnota 0 (nezmáčknuto) nebo 1 (zmáčknuto).
 
 Následující příklad rozsvítí LED při zmáčknutí dotykového tlačítka.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -704,7 +704,7 @@ Pro zjištění teploty v okolí je výrobek vybaven dvěma teploměry DS18B20. 
 * `1` pro horní teploměr měřící teplotu LED panelu za účelem zabránění přehřátí.
 
 Následující příklad zjistí teplotu okolního vzduchu, uloží ji do proměnné `teplota` a rozsvítí červenou LED pokud je vyšší než 25.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -731,7 +731,7 @@ Při programování výrobků se často stane, že potřebujete s programem ve v
 
 ## Program pro výpis textu na sériové lince
 Pro výpis textu na sériové lince budeme používat příkaz `printf`. Abyste na sériové lince jedenkrát vypsali text *Hello World!*, použijte následující program:
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -766,7 +766,7 @@ printf("%d\n", cele_cislo);
 ```
 
 Příklad: Pro opakovaný výpis času od startu PaLampa použijeme následující program. Hodnota času je uvedena v milisekundách:
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -811,7 +811,7 @@ Příkaz `paLampa.lights.setColorTransition(SegmentSelector selector, Transition
 Podobně lze použít příkaz `paLampa.lights.setWhiteTransition(std::vector<bool> selectLed, TransitionType aTransitionType, float aTransitionRate);` pro nastavení přechodových animací bílých LED. Prvním parametrem je vektor udávající, kterých bílých LED se příkaz týká, čili např hodnota parametru `{1, 1}` zvolí obě bílé LED (teplou i studenou). Zbylé parametry jsou shodné s předchozí funkcí `setColorTransition()`.
 
 Následující příklad nastaví jas předního displeje na `0.5`, plynulý přechod s rychlostí `2.0`.
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -846,7 +846,7 @@ Pro dálkové ovládání PaLampa můžete použít i textové příkazy. Ty bud
 * `paLampa.commandClear()` - vymaže obsah celého aktuálně přijatého příkazu.
 
 Příklad: Následující program blikne LED po obdržení příkazu "blink":
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -869,7 +869,7 @@ PaLampa umožňuje textovou komunikaci i opačným směrem, tedy z PaLampa do we
 * `paLampa.commandDisp(command)` - odešle textový příkaz *command* z PaLampa a zobrazí ho šedě v poli *Command entry*.
 
 Příklad: Následující program bude v textovém poli *Command entry* vypisovat stav tlačítka 1 na PaLampa:
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {

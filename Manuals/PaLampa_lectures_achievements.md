@@ -15,7 +15,7 @@ Blikneme LED světlem ve funkci `setup` a budeme jím blikat ve funci `loop`.
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -48,7 +48,7 @@ Napište program, který bude blikat jako železniční přejezd. Blikat budou s
 Rozsviť barevné LED na horním a zadním segmentu.
 
 ## Výsledný kód
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -82,7 +82,7 @@ Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -111,7 +111,7 @@ Přečteme stav potenciometru a zapíšeme ho do červeného kanálu na horním 
 
 Vlastní rgb barvy si můžeme vytvořít pomocí ColorRGB{R, G, B}. Hodnoty R, G a B zaměňte za hodnoty 0-1 které chcete nastavit.
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -136,7 +136,7 @@ Napište program, který bude při otočení potenciometru postupně měnit barv
 # Lekce 5
 Ukážeme si fotorezistor a hodnotu jeho výstupu si zobrazíme na LED.
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -152,8 +152,8 @@ void loop() {
 ## Úkol 10 - Světelná signaliazce tmy
 Napište program, který zvýší jas pokud vstoupíme s PaLampou do tmy. Doporučuji dělit hodnotu z fotorezistoru číslem 3.
 
-## Úkol 11 - Noční světlo
-Napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit.
+## Úkol 11 - Automatické světlo
+Napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit, a čím světlejší tím bude lampa méně svítit. Doporučuji použít zadní fotorezistor.
 
 
 # Lekce 6
@@ -161,7 +161,7 @@ Ukážeme si ja zjistit hodnotu teploměru a jak se pracuje se sériovou linkou
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -188,11 +188,10 @@ Napište program, který bude hlídat teplotu horního segmentu za pomoci teplom
 Napište program, který bude hlídat teplotu zadního teploměru a podle ní bude měnit barvu RGB podle zadání. Modrá je pod 25°C, zelená je 25°C až 28°C, žlutá 28°C až 30°C, červená je 30°C plus.
 
 # Lekce 7
-PaLampa ještě nemá hotovou funkci na kapacitní tlačítka = tato lekce nelze udělat.
 
 Ukážeme si jak funguje dotykové tlačítko a funkce random();
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup()
@@ -202,17 +201,20 @@ void setup()
 
 void loop()
 {
-    if(paLampa.touch.getButton(/*id, (0 = upper, 1 = secret)*/)){
+    paLampa.capButton.update(); // update hodnoty tlačítka.
+
+    if(paLampa.capButton.getPadPressed(0/*id, (0 = upper, 1 = secret)*/)){
         //nastavíme celý led pásek na černou
         paLampa.lights.setColorPanel(1, black);
         //nastavíme náhodný pixel na červenou
         paLampa.lights.setColor(1, random(7), red);
         delay(500);
     }
+    delay(20)
 }
 ```
 
-## Úkol 12 - Dotyk
+## Úkol 14 - Dotyk
 Napiš program, který zapne a vypne jakoukoliv sadu LED pomocí horního dotykového tlačítka a pomocí vašeho tajného tlačítka změní barvu na náhodnou barvu pomocí funkce random.
 
 # Lekce 8 
@@ -220,7 +222,7 @@ Ukážeme si jak rozeznít piezo.
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -253,7 +255,7 @@ PaLampa ještě nemá hotové funkce na displej = tato lekce nelze udělat.
 
 ## Výsledný kód
 
-```
+```cpp
 #include "ToMat/ToMat.h"
 
 void setup() {
