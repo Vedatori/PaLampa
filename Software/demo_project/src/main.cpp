@@ -7,7 +7,7 @@ void setup() {
     paLampa.lights.setWhiteTransition({1, 1}, Exponential, 2.0);
 }
 
-void loop() {
+void loop() {   
     float potVal = paLampa.potentiometerRead();
     if (paLampa.buttonRead(0)) {
         paLampa.lights.setWhite(0, potVal);

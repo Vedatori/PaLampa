@@ -15,7 +15,7 @@ Blikneme LED světlem ve funkci `setup` a budeme jím blikat ve funci `loop`.
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -48,7 +48,7 @@ Napište program, který bude blikat jako železniční přejezd. Blikat budou s
 Rozsviť barevné LED na horním a zadním segmentu.
 
 ## Výsledný kód
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -82,7 +82,7 @@ Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -111,7 +111,7 @@ Přečteme stav potenciometru a zapíšeme ho do červeného kanálu na horním 
 
 Vlastní rgb barvy si můžeme vytvořít pomocí ColorRGB{R, G, B}. Hodnoty R, G a B zaměňte za hodnoty 0-1 které chcete nastavit.
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -136,7 +136,7 @@ Napište program, který bude při otočení potenciometru postupně měnit barv
 # Lekce 5
 Ukážeme si fotorezistor a hodnotu jeho výstupu si zobrazíme na LED.
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -161,7 +161,7 @@ Ukážeme si ja zjistit hodnotu teploměru a jak se pracuje se sériovou linkou
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -192,7 +192,7 @@ PaLampa ještě nemá hotovou funkci na kapacitní tlačítka = tato lekce nelze
 
 Ukážeme si jak funguje dotykové tlačítko a funkce random();
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup()
@@ -220,7 +220,7 @@ Ukážeme si jak rozeznít piezo.
 
 ## Výsledný kód
 
-```
+```cpp
 #include "PaLampa/PaLampa.h"
 
 void setup() {
@@ -253,7 +253,7 @@ PaLampa ještě nemá hotové funkce na displej = tato lekce nelze udělat.
 
 ## Výsledný kód
 
-```
+```cpp
 #include "ToMat/ToMat.h"
 
 void setup() {
