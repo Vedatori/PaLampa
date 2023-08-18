@@ -8,7 +8,7 @@ void setup() {
     paLampa.lights.setWhiteTransition({1, 1}, Exponential, 2.0);
 }
 
-void loop() {   
+void loop() {
     float potVal = paLampa.potentiometerRead();
     if(paLampa.buttonRead(0) && paLampa.buttonRead(1)){
         paLampa.piezo.playMelody(themeMelody);

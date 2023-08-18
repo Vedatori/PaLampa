@@ -24,6 +24,7 @@ ___
 * [Teploměr](#teplomer)
 * [Sériová linka](#seriovka)
 * [Pokročilé ovládání LED](#ledky2)
+* [Obrazovka](#obrazovka)
 * [WiFi](#wifi)
 * [Vzdálený příkazový řádek](#prikazy)
 ___
@@ -831,6 +832,11 @@ Jas LED je shora omezen maximálním elektrickým proudem, který je možné ude
 * `Automatic` - Automatické nastavení
 
 Tuto funkci stačí zavolat pouze jednou a to umístěním do funkce `setup(){}`.
+
+<!-- _________________________________________________________________ -->
+# <a name = obrazovka>Obrazovka</a>
+
+Pro základní ovládání OLED obrazovky je možné použít přímo knihovnu [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library). Objekt obrazovky této knihovny je možné získat příkazem `PaLampa.oled.getDisplay()`. Přidáním další tečky můžeme připojovat a provádět příkazy z knihovny Adafruit GFX.
 
 <!-- _________________________________________________________________ -->
 # <a name = wifi>WiFi</a>
