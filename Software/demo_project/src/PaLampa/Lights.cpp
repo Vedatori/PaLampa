@@ -374,6 +374,18 @@ void Lights::setWhite(int ledID, float brightness) {
     _ledWhiteState[ledID].targetBrightness = brightness;
 }
 
+void Lights::setWhiteMix(float brightness, float mix){
+    mix = constrain(mix, 0, 1);
+    setWhite(1, (1-mix)*brightness);
+    setWhite(0, (mix)*brightness);
+}
+
+void Lights::setWhiteTemp(float brightness, float temperature) {    // 2700 - 5200
+    temperature = constrain(temperature, 2700, 5200);
+    setWhite(1, ((1-((temperature-2700)/2500))*brightness));
+    setWhite(0, ((temperature-2700)/2500)*brightness);
+}
+
 void Lights::setColor(int panelID, int ledID, ColorRGB color) {
     int ledAbsID = getLedAbsID(panelID, ledID);
     _ledColorState[ledAbsID].targetColor = color;
@@ -459,3 +471,4 @@ void Lights::setColorTransition(PanelSelector selector, TransitionType transitio
         }
     }
 }
+

@@ -107,6 +107,9 @@ public:
     float getCurrentLimitRatio();
 
     void setWhite(int ledID, float brightness);
+    void setWhiteMix(float whitemix, float brightness);
+    void setWhiteTemp(float temperature, float brightness); // v rozmezi 2700 - 5200
+
 
     void setColor(int panelID, int ledID, ColorRGB color);
     void setColor(int panelID, int ledID, ColorHSV color);
