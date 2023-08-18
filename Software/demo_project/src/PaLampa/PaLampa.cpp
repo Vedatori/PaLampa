@@ -3,9 +3,8 @@
 #include "SPIFFS.h"
 
 Melody themeMelody(
-	"TEMPO=140 " 
-	"R/2 R/8 D5#/8 E5#/8 F5#/8 F5#/8 E5#/8 D5#/8 R/4 G5#/4 G5#/4 F5#/8 E5#/8 R/8 D5#/8 R/8 D5#/4 R/8 D5#/4* R/8 R/4 R/4 R/4* D5#/8 E5#/8 F5#/8 F5#/8 F5#/4 F5#/4 F5#/4 F5#/4 E5#4 E5#/4 D5#/4 D5#/4 "
-    "R/2 R/8 D5#/8 E5#/8 F5#/8 F5#/8 E5#/8 D5#/8 R/4 G5#/4 G5#/4 F5#/8 E5#/8 R/8 D5#/8 R/8 D5#/4 R/8 D5#/4* R/8 R/4 R/4 R/4* D5#/8 E5#/8 F5#/8 F5#/8 F5#/4 F5#/4 F5#/4 F5#/4 E5#4 E5#/4 D5#/4 D5#/4 "
+	"TEMPO=150 " 
+	"e4/4 e4/4 h3/4 e4/8 f#4/8 R/8 h3/8 R/2 g#4/8 R/4 R/16 e4/8 f#4/8 f#4/8 g#4/8 a4/4 e4/8 R/4 R/2 f#4/4 f#4/4 e4/4 d#4/8 e4/8 e4/8 f#4/8 R/4 R/8 e4/8 d#4/8 e4/8 e4/2 e4/2 e4/2"
 );
 
 void PL::refreshTaskQuick(void * parameter) {
@@ -21,8 +20,23 @@ void PL::refreshTaskQuick(void * parameter) {
 void PL::refreshTaskSlow(void * parameter) {
     for(;;) {
         paLampa.power.update();
-        paLampa.lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
         paLampa.thermometer.update();
+
+        float lightCurrentLimit = paLampa.power.getLimitA() - PL::IDLE_CURRENT;
+        if(paLampa.thermometer.get(1) == 0.0) {
+            lightCurrentLimit = 0.9;
+            printf("Error reading top light temperature. Limiting max current to default.\n");
+        }
+        else if(paLampa.thermometer.get(1) > PL::TEMP_LIMIT_TOP) {
+            lightCurrentLimit = 0.0;
+            printf("Maximum light temperature exceeded. Turning light off.\n");
+        }
+        else if(paLampa.thermometer.get(1) > PL::TEMP_LIMIT_BOTTOM) {
+            float reductionRatio = (paLampa.thermometer.get(1) - PL::TEMP_LIMIT_BOTTOM) / (PL::TEMP_LIMIT_TOP - PL::TEMP_LIMIT_BOTTOM);
+            lightCurrentLimit = lightCurrentLimit * (1 - reductionRatio);
+            printf("Light temperature is getting too high. Reducing light current to %.2f A.\n", lightCurrentLimit);
+        }
+        paLampa.lights.setCurrentLimit(lightCurrentLimit);
 
         static uint32_t internetUpdateTime = 0;
         static uint32_t softApDisableTime = 0;
@@ -54,18 +68,23 @@ void PL::refreshTaskSlow(void * parameter) {
 void PaLampa::begin() {
     beginCalled = true;
 
-    //piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
-
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
-    oled.begin();
+	oled.begin();
     oled.drawLogo();
     oled.sendClear();
+    
+    capButton.begin();    
+    capButton.setThreshold({5.0f, 2.0f});
 
-	weather.init(1000 * 60 * 15);
-	weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
-	weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
+    timeModule.begin();
+
+    piezo.begin(PL::BUZZER_CHANNEL, PL::BUZZER_PIN);
+
+    weather.init(1000 * 60 * 15);
+    weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
+    weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
 
     for(int i = 0; i < 3; ++i) {
         pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
@@ -94,6 +113,10 @@ void PaLampa::printDiagnostics() {
         printf("btn%d: %d ", i, buttonRead(i));
     }
 
+    for(int i = 0; i < 2; i++){
+        printf("CapBtn%d: %d ", i, capButton.getPadPressed(i));
+    }
+
     printf("pot: %.2f ", potentiometerRead());
     
     printf(photoresistor.getText().c_str());
@@ -103,6 +126,8 @@ void PaLampa::printDiagnostics() {
     printf(thermometer.getText().c_str());
 
     printf("powerR: %.2f ", paLampa.lights.getCurrentLimitRatio());
+
+    printf("time: %s ", timeModule.getClockText().c_str());
 
     printf("weather: %s \n", paLampa.weather.getWeather().getWeatherString().c_str());
 

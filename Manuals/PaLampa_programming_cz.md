@@ -17,6 +17,7 @@ ___
 * [Funkce](#funkce)
 * [LEDky](#ledky)
 * [Tlačítka](#tlacitka)
+* [Kapacitní tlačítka](#kapacitní-tlačítka)
 * [Piezoakustický měnič](#piezo)
 * [Fotorezistory](#fotorezistory)
 * [Dotyková lišta](#lista)
@@ -56,7 +57,7 @@ Otevřete soubor *main.cpp* který je v cestě *demo_project/src/main.cpp*.
 
 V souboru *main.cpp* upravte název výrobku "<your_name>" tak, aby byl poznatelný, např. jako "Jirka" nebo "Blanka".
 Je možné přidat i heslo pro přihlašování např. takto
-"`PaLampa.startWiFiCaptain("<your_name>", "12345678");`".
+`paLampa.startWiFiCaptain("<your_name>", "12345678");`.
 Heslo musí mít minimálně 8 znaků, jinak nebude použito.
 
 ![alt](SupportFiles/prog_set_name.jpeg)
@@ -136,7 +137,7 @@ Ve VS Code otevřete soubor *main.cpp* ve stáhnutém repozitáři a nahraďte j
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
@@ -146,7 +147,7 @@ void loop() {
 Jednotlivé řádky šablony mají následující význam:
 * `#include "PaLampa/PaLampa.h"` - Příkaz *#include* přidává do našeho programu kód z jiných míst. Nyní nám stačí přidání knihovny *PaLampa.h* ze složky PaLampa.
 * `void setup() {}` - Toto je definice funkce. Funkce jsou kusy kódu, které můžete opakovaně spustit tak, že zavoláte jejich jméno. Kód (tělo) funkce je ohraničen složenými závorkami { a }, a mezi nimi odsazen. Tato funkce se jmenuje *setup* a je spuštěna jedenkrát po zapnutí PaLampa. O to se postará arduino-esp32 framework.
-* `PaLampa.begin();` - Toto je volání funkce z knihovny *PaLampa*, která knihovnu inicializuje a připraví všechny její komponenty pro budoucí použití. Toto je třeba provést pouze jednou po startu výrobku, proto je příkaz umístěn ve funkci *setup*.
+* `paLampa.begin();` - Toto je volání funkce z knihovny *PaLampa*, která knihovnu inicializuje a připraví všechny její komponenty pro budoucí použití. Toto je třeba provést pouze jednou po startu výrobku, proto je příkaz umístěn ve funkci *setup*.
 * `void loop() {}` - Toto je definice funkce *loop*. Ta je spouštěna stále dokola dokud je výrobek zapnutý s provádí kód umístěný mezi složenými závorkami.
 
 Připojte PaLampa pomocí USB-C kabelu k PC.
@@ -173,8 +174,8 @@ Nahrajte program do PaLampa a počkejte, až se LED rozsvítí. Gratulujeme, tot
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
-    PaLampa.lights.setWhite(0, 0.5);
+    paLampa.begin();
+    paLampa.lights.setWhite(0, 0.5);
 }
 
 void loop() {}
@@ -194,9 +195,9 @@ Příklad: Tento program rozsvítí LED a nechá ji rozsvícenou.
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
-    PaLampa.lights.setWhite(0, 0.5); // Toto je komentář
-    //PaLampa.lights.setWhite(0, 0.0); tento řádek se neprovede
+    paLampa.begin();
+    paLampa.lights.setWhite(0, 0.5); // Toto je komentář
+    //paLampa.lights.setWhite(0, 0.0); tento řádek se neprovede
 
     /* Toto je 
     víceřádkový komentář. */
@@ -245,7 +246,7 @@ Příklad:
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
     int cele_cislo = 0;
     cele_cislo = cele_cislo + 10;   // Zvýšíme hodnotu v proměnné o 10
     cele_cislo += 10;   // Zkrácený zápis stejné operace jako výše
@@ -368,10 +369,10 @@ Pro jedno bliknutí LEDkou poslouží tento program:
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
-    PaLampa.lights.setWhite(0, 0.5);
+    paLampa.begin();
+    paLampa.lights.setWhite(0, 0.5);
     delay(500);
-    PaLampa.lights.setWhite(0, 0.0);
+    paLampa.lights.setWhite(0, 0.0);
 }
 
 void loop() {}
@@ -384,15 +385,15 @@ Pro 2 bliknutí LEDkou poslouží tento program, ve kterém jsme pouze zopakoval
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 
-    PaLampa.lights.setWhite(0, 0.5);
+    paLampa.lights.setWhite(0, 0.5);
     delay(500);
-    PaLampa.lights.setWhite(0, 0.0);
+    paLampa.lights.setWhite(0, 0.0);
     delay(500);
-    PaLampa.lights.setWhite(0, 0.5);
+    paLampa.lights.setWhite(0, 0.5);
     delay(500);
-    PaLampa.lights.setWhite(0, 0.0);
+    paLampa.lights.setWhite(0, 0.0);
 }
 
 void loop() {}
@@ -411,9 +412,9 @@ while(podminka){
 V následném úseku kódu budeme blikat LEDkou dokud bude výrobek zapnutý:
 ```
 while(true){
-    PaLampa.lights.setWhite(0, 0.5);
+    paLampa.lights.setWhite(0, 0.5);
     delay(500);
-    PaLampa.lights.setWhite(0, 0.0);
+    paLampa.lights.setWhite(0, 0.0);
     delay(500);
 }
 ```
@@ -434,9 +435,9 @@ Oproti cyklu while je zde podmínková část složitější. Skládá se ze 3 �
 Následující program ukazuje, jak bliknout 10x s LED číslo 1 pomocí cyklus `for`.
 ```
 for(int pocet_bliku = 0; pocet_bliku < 10; pocet_bliku++){
-    PaLampa.lights.setWhite(0, 0.5);
+    paLampa.lights.setWhite(0, 0.5);
     delay(500);
-    PaLampa.lights.setWhite(0, 0.0);
+    paLampa.lights.setWhite(0, 0.0);
     delay(500);
 }
 ```
@@ -479,11 +480,11 @@ Pomocí komentářů si v následujícím kódu vyberte jednu z definic barvy `c
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 
     ColorRGB cervena = {1, 0, 0};
     ColorHSV cervena = {0, 1, 1};
-    PaLampa.lights.setColor(0, 0, cervena);
+    paLampa.lights.setColor(0, 0, cervena);
 }
 
 void loop() {}
@@ -498,15 +499,40 @@ Příklad: Tento program rozsvítí LED při stisku tlačítka 0.
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    if(PaLampa.buttonRead(0)) {
-        PaLampa.lights.setColor(0, 0, white);
+    if(paLampa.buttonRead(0)) {
+        paLampa.lights.setColor(0, 0, white);
     }
     else {
-        PaLampa.lights.setColor(0, 0, black);
+        paLampa.lights.setColor(0, 0, black);
+    }
+    delay(20);
+}
+```
+
+<!-- _________________________________________________________________ -->
+# <a name = KapacitniTlacitka>Kapacitní tlačítka</a>
+Pro získaní stavu tlačítka voláme funkci paLampa.capButton.getPadPressed(pinID);
+pinID může mít hodnotu 0 = viditelné tlačítko vedle displeje, a hodnotu 1 = vámi skryté tlačítko.
+
+Příklad: Tento program rozsvítí LED při stisku kapacitního tlačítka 0.
+```
+#include "PaLampa/PaLampa.h"
+
+void setup() {
+    paLampa.begin();
+}
+
+void loop() {
+    paLampa.capButton.update(); // update hodnoty tlačítka.
+    if(paLampa.capButton.getPadPressed(0)) { // zjištění stavu tlačítka
+        paLampa.lights.setColor(0, 0, white);
+    }
+    else {
+        paLampa.lights.setColor(0, 0, black);
     }
     delay(20);
 }
@@ -517,33 +543,33 @@ void loop() {
 ## Základy
 PaLampa obsahuje tzv. piezoakustický měnič, pomocí kterého dokáže vydávat zvuk.
 
-* Stálý tón zapneme pomocí `PaLampa.piezo.tone(uint16_t freq);`, kde `freq` je freqence v Hz.
-* Veškerý zvuk vypneme pomocí `PaLampa.piezo.stop();`.
+* Stálý tón zapneme pomocí `paLampa.piezo.tone(uint16_t freq);`, kde `freq` je freqence v Hz.
+* Veškerý zvuk vypneme pomocí `paLampa.piezo.stop();`.
 
 Následující příklad přerušovaně "pípá" na frekvenci 1kHz.
 ```
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    PaLampa.piezo.tone(1000);
+    paLampa.piezo.tone(1000);
     delay(500);
-    PaLampa.piezo.stop();
+    paLampa.piezo.stop();
     delay(500);
 }
 ```
 
 ## Melodie
 PaLampa zvládá i jednoduché melodie. Jen pamatujte na to, že nedokáže hrát více tónů zároveň.
-Pro spuštění melodie budeme používat `PaLampa.piezo.playMelody(melodie);`.
+Pro spuštění melodie budeme používat `paLampa.piezo.playMelody(melodie);`.
 
 ### Melodie z Arduino songs
 Asi nejjednoduším způsobem, jak přehrát melodii, je stáhnout ji z https://github.com/robsoncouto/arduino-songs.
 Tam si najděte melodii, otevřte ji a zkopírujte `int melody[] = { ...` a `int tempo = ...`.
-Melodii poté přehrajete pomocí `PaLampa.piezo.playMelody(melody, sizeof(melody)/sizeof(melody[0]), tempo);`
+Melodii poté přehrajete pomocí `paLampa.piezo.playMelody(melody, sizeof(melody)/sizeof(melody[0]), tempo);`
 
 Následující příklad zahraje melodi Nokie.
 
@@ -561,8 +587,8 @@ int nokieMelody[] = {
 };
 
 void setup() {
-    PaLampa.begin();
-    PaLampa.piezo.playMelody(nokieMelody, sizeof(nokieMelody)/sizeof(nokieMelody[0]), nokieTempo);
+    paLampa.begin();
+    paLampa.piezo.playMelody(nokieMelody, sizeof(nokieMelody)/sizeof(nokieMelody[0]), nokieTempo);
 }
 
 void loop() {}
@@ -598,7 +624,7 @@ nazevMelodie.tempo = 180;
 Ale pozor! `nazevMelodie.tempo = 180;` lze volat pouze uvnitř funkce (`void setup()`, `void loop()`, ... ). Proto doporučuji spíše první způsob.
 
 #### Přehrání
-Vlastní melodii přehrajeme pomocí `PaLampa.piezo.playMelody(nazevMelodie);`.
+Vlastní melodii přehrajeme pomocí `paLampa.piezo.playMelody(nazevMelodie);`.
 
 Příklad:
 ```
@@ -607,8 +633,8 @@ Příklad:
 Melody melodyTest("TEMPO=180 c3/4 d3/4 e3/4 f3/4 g3/4 g3/4 a3/4 h3/4 c4/2* c4#/1*");
 
 void setup() {
-    PaLampa.begin();
-	PaLampa.piezo.playMelody(melodyTest);
+    paLampa.begin();
+	paLampa.piezo.playMelody(melodyTest);
 }
 
 void loop() {
@@ -616,7 +642,7 @@ void loop() {
 ```
 
 ## Další funkce PaLampa.piezo
-`PaLampa.piezo.getState();` vrací aktuální stav.
+`paLampa.piezo.getState();` vrací aktuální stav.
 * `0` -> nic nehraje
 * `1` -> stálý tón
 * `2` -> hraje melodie
@@ -628,20 +654,20 @@ Pro snímání úrovně osvětlení v okolí výrobku slouží fotorezistory. V�
 * Fotorezistor ID 0 je umístěn na horní straně spodní podstavy, pod plastovým krytem nad obrazovkou.
 * Fotorezistor ID 1 je umístěn na zadní straně spodní podstavy.
 
-Pro zjištění úrovně osvitu jednotlivých fotorezistorů použijeme příkaz `PaLampa.photoresistor.get(int photoresID);`, kde `photoresID` udává index fotorezistoru. Vrácena je nám celočíselná hodnota v rozsahu 0.0 (tma) až 1.0 (světlo).
+Pro zjištění úrovně osvitu jednotlivých fotorezistorů použijeme příkaz `paLampa.photoresistor.get(int photoresID);`, kde `photoresID` udává index fotorezistoru. Vrácena je nám celočíselná hodnota v rozsahu 0.0 (tma) až 1.0 (světlo).
 
 Následující příklad zjistí hodnotu osvitu fotorezistoru 0 a nastaví podle něj červený jas LED.
 ```
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    float osvit = PaLampa.photoresistor.get(0);
+    float osvit = paLampa.photoresistor.get(0);
     ColorRGB barva = {osvit*255, 0, 0};
-    PaLampa.lights.setColor(0, 0, barva);
+    paLampa.lights.setColor(0, 0, barva);
     delay(20);
 }
 ```
@@ -649,22 +675,22 @@ void loop() {
 <!-- _________________________________________________________________ -->
 # <a name = lista>Dotyková lišta</a>
 
-Pro pohodlné zapínání a vypínání výrobku slouží dotykové tlačítko umístěné napravo od obrazovky. Pro zjištění, jestli je zmáčknuto, použijeme příkaz `PaLampa.touchBar.getPressed(int buttonID);`. Vrácena je binární hodnota 0 (nezmáčknuto) nebo 1 (zmáčknuto).
+Pro pohodlné zapínání a vypínání výrobku slouží dotykové tlačítko umístěné napravo od obrazovky. Pro zjištění, jestli je zmáčknuto, použijeme příkaz `paLampa.touchBar.getPressed(int buttonID);`. Vrácena je binární hodnota 0 (nezmáčknuto) nebo 1 (zmáčknuto).
 
 Následující příklad rozsvítí LED při zmáčknutí dotykového tlačítka.
 ```
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    if(PaLampa.touchBar.getPressed(0)) {
-        PaLampa.lights.setWhite(0, 0.5);
+    if(paLampa.touchBar.getPressed(0)) {
+        paLampa.lights.setWhite(0, 0.5);
     }
     else {
-        PaLampa.lights.setWhite(0, 0.0);
+        paLampa.lights.setWhite(0, 0.0);
     }
     delay(20);
 }
@@ -673,7 +699,7 @@ void loop() {
 <!-- _________________________________________________________________ -->
 # <a name = teplomer>Teploměr</a>
 
-Pro zjištění teploty v okolí je výrobek vybaven dvěma teploměry DS18B20. Pro zjištění měřené teploty použijeme příkaz `PaLampa.thermometer.get(int thermometerID);`. Vráceno je desetinné číslo reprezentující teplotu ve stupních Celsia. Parameter `thermometerID` udává index teploměru nabývající hodnot:
+Pro zjištění teploty v okolí je výrobek vybaven dvěma teploměry DS18B20. Pro zjištění měřené teploty použijeme příkaz `paLampa.thermometer.get(int thermometerID);`. Vráceno je desetinné číslo reprezentující teplotu ve stupních Celsia. Parameter `thermometerID` udává index teploměru nabývající hodnot:
 * `0` pro dolní teploměr měřící teplotu okolního vzduchu.
 * `1` pro horní teploměr měřící teplotu LED panelu za účelem zabránění přehřátí.
 
@@ -682,16 +708,16 @@ Následující příklad zjistí teplotu okolního vzduchu, uloží ji do promě
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
-    int teplota = PaLampa.thermometer.get(0);
+    int teplota = paLampa.thermometer.get(0);
     if(teplota > 25.0) {
-        PaLampa.lights.setColor(0, 0, red);
+        paLampa.lights.setColor(0, 0, red);
     }
     else {
-        PaLampa.lights.setColor(0, 0, black);
+        paLampa.lights.setColor(0, 0, black);
     }
     delay(200);
 }
@@ -709,7 +735,7 @@ Pro výpis textu na sériové lince budeme používat příkaz `printf`. Abyste 
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
@@ -744,7 +770,7 @@ Příklad: Pro opakovaný výpis času od startu PaLampa použijeme následujíc
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
+    paLampa.begin();
 }
 
 void loop() {
@@ -760,11 +786,11 @@ Funkce `millis()` nám vrací počet uplynulých milisekund od startu PaLampa ja
 
 Pro ovládání LED světel je možné použít i schopnější funkce než `.setColor()`, která umí ovládat pouze jednu barevnou LED.
 
-Pro rosvícení celého segmentu LED jedním příkazem je možné použít konstrukci `PaLampa.lights.setColorPanel(int segmentID, ColorRGB color);`. Jedná se o volání funkce s parametry:
+Pro rosvícení celého segmentu LED jedním příkazem je možné použít konstrukci `paLampa.lights.setColorPanel(int segmentID, ColorRGB color);`. Jedná se o volání funkce s parametry:
 * `segmentID` udává index segmentu (úseku LED), který chceme ovládat. Segmenty odpovídají rozdělení jako u funkce `.setColor()`.
 * `color` udává, jakou barvou má daný segment svítit.
 
-Pro rozsvícení několika vybraných segmentů jedním příkazem použijeme konstrukci `PaLampa.lights.setColorSegments(SegmentSelector selector, ColorRGB color);`. Jedná se o volání funkce s parametry:
+Pro rozsvícení několika vybraných segmentů jedním příkazem použijeme konstrukci `paLampa.lights.setColorSegments(SegmentSelector selector, ColorRGB color);`. Jedná se o volání funkce s parametry:
 * `selector` který definuje skupinu segmentů, které mají svítit. 
 * `color` udává, jakou barvou mají dané segmenty svítit.
 
@@ -773,23 +799,25 @@ Parametr `selector` zde nabývá následujících hodnot:
 * `top` - Svítí všechny LED na horním panelu.
 * `back` - Svítí všechny LED na zadním LED pásku.
 
-Příkaz `paLampa.lights.setBrightness(SegmentSelector selector, float brightness);` nastaví jas všech LED na vybraných segmentech. Všechny následující příkazy nastavující barvu LED vybraných segmentů budou nastavovat barvu se sníženým jasem. Jedná se o volání funkce s parametry:
+Příkaz `paLampa.lights.setColorBrightness(SegmentSelector selector, float brightness);` nastaví jas všech barevných LED na vybraných segmentech. Všechny následující příkazy nastavující barvu LED vybraných segmentů budou nastavovat barvu se sníženým jasem. Jedná se o volání funkce s parametry:
 * `selector` udává výběr segmentů pro provedení nastavení.
 * `brightness` nastavuje hodnotu jasu v rozsahu 0.0 (nesvítí vůbec) po 1.0 (svítí naplno).
 
-Příkaz `paLampa.lights.setTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
+Příkaz `paLampa.lights.setColorTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací barevných LED, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
 * `selector` udává výběr segmentů pro provedení nastavení.
 * `aTransitionType` udává druh přechodové animace. Možnosti jsou `Linear` a `Exponential`, kde 2. varianta je vizuálně přirozenější.
 * `aTransitionTime` udává dobu trvání přechodové animace ve vteřinách. Např. `1.0` odpovídá přechodu plného rozsahu z tmy až do plného bílého svitu přechodem trvajícím 1 vteřinu.
+
+Podobně lze použít příkaz `paLampa.lights.setWhiteTransition(std::vector<bool> selectLed, TransitionType aTransitionType, float aTransitionRate);` pro nastavení přechodových animací bílých LED. Prvním parametrem je vektor udávající, kterých bílých LED se příkaz týká, čili např hodnota parametru `{1, 1}` zvolí obě bílé LED (teplou i studenou). Zbylé parametry jsou shodné s předchozí funkcí `setColorTransition()`.
 
 Následující příklad nastaví jas předního displeje na `0.5`, plynulý přechod s rychlostí `2.0`.
 ```
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
-    PaLampa.display.setBrightness(front, 0.5);
-    PaLampa.display.setTransition(front, linear, 2.0);)
+    paLampa.begin();
+    paLampa.display.setColorBrightness(all, 0.5);
+    paLampa.display.setColorTransition(all, linear, 2.0);)
 }
 
 void loop() {}
@@ -807,50 +835,50 @@ Tuto funkci stačí zavolat pouze jednou a to umístěním do funkce `setup(){}`
 <!-- _________________________________________________________________ -->
 # <a name = wifi>WiFi</a>
 
-Pro spuštění WiFi a ovládací webové aplikace slouží funkce `PaLampa.startWiFiCaptain("<your_name>")`. Po jejím zavolání bude postaráno o vytvoření WiFi přístupového bodu (AP) v PaLampa a také o připojní k externí WiFi, jakmile má PaLampa správné přihlašovací údaje a je v dosahu. Také je spuštěn server hostující webovou aplikaci pro dálkové ovládání PaLampa.
+Pro spuštění WiFi a ovládací webové aplikace slouží funkce `paLampa.startWiFiCaptain("<your_name>")`. Po jejím zavolání bude postaráno o vytvoření WiFi přístupového bodu (AP) v PaLampa a také o připojní k externí WiFi, jakmile má PaLampa správné přihlašovací údaje a je v dosahu. Také je spuštěn server hostující webovou aplikaci pro dálkové ovládání PaLampa.
 
 <!-- _________________________________________________________________ -->
 # <a name = prikazy>Vzdálený příkazový řádek</a>
 
 Pro dálkové ovládání PaLampa můžete použít i textové příkazy. Ty budete zadávat do pole *Command entry* na webové stránce dálkového ovládání. Po stisku tlačítka *Enter* (funguje i na klávesnici) je zadaný příkaz odeslán do PaLampa. K použítí přijatého příkazu budeme používat následující funkce:
-* `PaLampa.commandGet()` - vrací textový řetězec (proměnnou typu *String*) obsahující aktuálně přijatý příkaz.
-* `PaLampa.commandGetIndexed(index)` - vrací textový řetězec obsahující jedno slovo z přijatého příkazu. Slova jsou oddělena mezerami a číslována od 0.
-* `PaLampa.commandClear()` - vymaže obsah celého aktuálně přijatého příkazu.
+* `paLampa.commandGet()` - vrací textový řetězec (proměnnou typu *String*) obsahující aktuálně přijatý příkaz.
+* `paLampa.commandGetIndexed(index)` - vrací textový řetězec obsahující jedno slovo z přijatého příkazu. Slova jsou oddělena mezerami a číslována od 0.
+* `paLampa.commandClear()` - vymaže obsah celého aktuálně přijatého příkazu.
 
 Příklad: Následující program blikne LED po obdržení příkazu "blink":
 ```
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
-    PaLampa.startWiFiCaptain("<your_name>");
+    paLampa.begin();
+    paLampa.startWiFiCaptain("<your_name>");
 }
 
 void loop() {
-    if(PaLampa.commandGet() == "blink") {
-        PaLampa.lights.setWhite(0, 0.5);
+    if(paLampa.commandGet() == "blink") {
+        paLampa.lights.setWhite(0, 0.5);
         delay(500);
-        PaLampa.lights.setWhite(0, 0.0);
-        PaLampa.commandClear();  // nutné jinak bude v paměti pořád příkaz "blink" a LED bude pořád svítit
+        paLampa.lights.setWhite(0, 0.0);
+        paLampa.commandClear();  // nutné jinak bude v paměti pořád příkaz "blink" a LED bude pořád svítit
     }
     delay(100);
 }
 ```
 
 PaLampa umožňuje textovou komunikaci i opačným směrem, tedy z PaLampa do webové stránky dálkového ovládání.
-* `PaLampa.commandDisp(command)` - odešle textový příkaz *command* z PaLampa a zobrazí ho šedě v poli *Command entry*.
+* `paLampa.commandDisp(command)` - odešle textový příkaz *command* z PaLampa a zobrazí ho šedě v poli *Command entry*.
 
 Příklad: Následující program bude v textovém poli *Command entry* vypisovat stav tlačítka 1 na PaLampa:
 ```
 #include "PaLampa/PaLampa.h"
 
 void setup() {
-    PaLampa.begin();
-    PaLampa.startWiFiCaptain("<your_name>");
+    paLampa.begin();
+    paLampa.startWiFiCaptain("<your_name>");
 }
 
 void loop() {
-    PaLampa.commandDisp(String(PaLampa.buttonRead(1)));
+    paLampa.commandDisp(String(paLampa.buttonRead(1)));
     delay(500);
 }
 ```
