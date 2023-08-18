@@ -23,18 +23,19 @@
 				<a href='/wifi'><input type = "button" value = "WiFi setup"/></a>
 				<a href='/status'><input type = "button" value = "Status"/></a>
 				<a href='/weatherSetup'><input type = "button" value = "Weather setup"/></a>
+				<a href='/ota'><input type = "button" value = "OTA update"/></a>
 			</div>
 		</div>
-		
+
 		<script>
-			window.onorientationchange = function() { 
-				var orientation = window.orientation; 
-				switch(orientation) { 
+			window.onorientationchange = function() {
+				var orientation = window.orientation;
+				switch(orientation) {
 					case 0:
 					case 90:
-					case -90: window.location.reload(); 
-					break; 
-				} 
+					case -90: window.location.reload();
+					break;
+				}
 			};
 
 			//_____________________________________________________________________________
@@ -54,10 +55,10 @@
 				if(clientConnected == true) {
 					return;
 				}
-				
+
 				// Connect to WebSocket server
 				websocket = new WebSocket(url);
-				
+
 				// Assign callbacks
 				websocket.onopen = function(evt) { onOpen(evt) };
 				websocket.onclose = function(evt) { onClose(evt) };
@@ -81,7 +82,7 @@
 				console.log("Disconnected");
 
 				clientConnected = false;
-				
+
 				// Try to reconnect after a few seconds
 				setTimeout(function() { wsConnect(clientURL) }, 1000);
 			}
@@ -92,7 +93,7 @@
 				var parsedMessage = receivedMessage.split(",");
 
 				console.log("Received: " + receivedMessage);
-				
+
 				switch(parsedMessage[0]) {
 					case "commandDisp":
 						document.getElementById('commandInput').placeholder = parsedMessage[1];
@@ -114,7 +115,7 @@
 					websocket.send(message);
 				}
 			}
-			
+
 			function commandEnter(){
 				var command = document.getElementById("commandInput");
 				var commandText = command.value;
@@ -136,7 +137,7 @@
 			const view = document.getElementById('stream');
 			const WS_URL = "ws://" + window.location.host + ":82";
 			const ws = new WebSocket(WS_URL);
-					
+
 			ws.onmessage = message => {
 				if (message.data instanceof Blob) {
 				var urlObject = URL.createObjectURL(message.data);
