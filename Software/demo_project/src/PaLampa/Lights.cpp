@@ -375,15 +375,17 @@ void Lights::setWhite(int ledID, float brightness) {
 }
 
 void Lights::setWhiteMix(float brightness, float mix){
+    brightness = constrain(brightness, 0, 1);
     mix = constrain(mix, 0, 1);
-    setWhite(1, (1-mix)*brightness);
     setWhite(0, (mix)*brightness);
+    setWhite(1, (1-mix)*brightness);
 }
 
-void Lights::setWhiteTemp(float brightness, float temperature) {    // 2700 - 5200
+void Lights::setWhiteTemp(float brightness, float temperature) {
+    brightness = constrain(brightness, 0, 1);
     temperature = constrain(temperature, 2700, 5200);
-    setWhite(1, ((1-((temperature-2700)/2500))*brightness));
     setWhite(0, ((temperature-2700)/2500)*brightness);
+    setWhite(1, ((1-((temperature-2700)/2500))*brightness));
 }
 
 void Lights::setColor(int panelID, int ledID, ColorRGB color) {

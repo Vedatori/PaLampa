@@ -784,6 +784,8 @@ Funkce `millis()` nám vrací počet uplynulých milisekund od startu PaLampa ja
 <!-- _________________________________________________________________ -->
 # <a name = ledky2>Pokročilé ovládání LED</a>
 
+Pro ovládání teploty bílých LED lze použít funkci `paLampa.lights.setWhiteMix(float brightness, float mix)`, která nastaví teplotu bílých světel v závislosti na hodnotě mix (0.0 až 1.0). Pro stejnou funkcionalitu lze také použít funkci `paLampa.lights.setWhiteTemp(float brightness, float temp)` při které se teplota světel nastavuje v kelvinech v rozmezí 2700 pro teplé světlo až po 5200 pro studené světlo. Hodnota brightness (v rozmezí 0.0 až 1.0) nastavuje jas bílých světel u obou funkcí.
+
 Pro ovládání LED světel je možné použít i schopnější funkce než `.setColor()`, která umí ovládat pouze jednu barevnou LED.
 
 Pro rosvícení celého segmentu LED jedním příkazem je možné použít konstrukci `paLampa.lights.setColorPanel(int segmentID, ColorRGB color);`. Jedná se o volání funkce s parametry:
