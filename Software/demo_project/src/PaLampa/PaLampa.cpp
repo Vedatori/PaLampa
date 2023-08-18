@@ -12,6 +12,7 @@ void PL::refreshTaskQuick(void * parameter) {
         paLampa.oled.sendClear(true);
         paLampa.photoresistor.update();
         paLampa.lights.update();
+        paLampa.capButton.update();
         
         delay(20);
     }
