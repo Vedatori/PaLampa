@@ -4,6 +4,7 @@
 void setup() {
     paLampa.begin();
     paLampa.startWiFiCaptain("<your_name>");
+    paLampa.oled.sendClear();
     paLampa.lights.setColorTransition(all, Exponential, 2.0);
     paLampa.lights.setWhiteTransition({1, 1}, Exponential, 2.0);
 }

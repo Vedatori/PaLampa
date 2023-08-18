@@ -72,7 +72,7 @@ void PaLampa::begin() {
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
-	oled.begin();
+    oled.begin();
     oled.drawLogo();
     oled.sendClear();
     
