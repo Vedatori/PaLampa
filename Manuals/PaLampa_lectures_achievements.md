@@ -152,7 +152,7 @@ void loop() {
 ## Úkol 10 - Světelná signaliazce tmy
 Napište program, který zvýší jas pokud vstoupíme s PaLampou do tmy. Doporučuji dělit hodnotu z fotorezistoru číslem 3.
 
-## Úkol 11 - Průměrné světlo
+## Úkol 11 - Automatické světlo
 Napište program, který upravuje svítivost LED podle okolního osvětlení. Čím temější prostředí tím víc bude lampa svítit, a čím světlejší tím bude lampa méně svítit. Doporučuji použít zadní fotorezistor.
 
 
