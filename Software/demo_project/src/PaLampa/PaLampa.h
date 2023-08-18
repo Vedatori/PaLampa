@@ -14,6 +14,8 @@
 #include <weather/weatherApi.h>
 #include "USB_C_power_module.h"
 #include "Time_module.h"
+#include "Oled_module.h"
+
 
 namespace PL {
 
@@ -26,6 +28,7 @@ const int PHOTORESISTOR_BACK_PIN = 35;
 const int THERMOMETER_BOTTOM_PIN = 15;
 const int THERMOMETER_TOP_PIN = 18;
 const int BUZZER_PIN = 13, BUZZER_CHANNEL = 2;
+const int OLED_ADDRESS = 0x3c, OLED_WIDTH = 128, OLED_HEIGHT = 64;
 
 const char STORAGE_NAMESPACE[] = "PaLampa";
 const uint16_t communicationTimeout = 1000;
@@ -59,6 +62,7 @@ public:
     Piezo piezo;
 	WeatherApi weather;
     USB_C_power_module power;
+    Oled_module oled{PL::OLED_WIDTH, PL::OLED_HEIGHT, PL::OLED_ADDRESS};
 	
     void begin();
     bool buttonRead(int buttonID);

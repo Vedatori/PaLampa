@@ -9,8 +9,10 @@ Melody themeMelody(
 
 void PL::refreshTaskQuick(void * parameter) {
     for(;;) {
+        paLampa.oled.sendClear(true);
         paLampa.photoresistor.update();
         paLampa.lights.update();
+        
         delay(20);
     }
 }
@@ -69,6 +71,10 @@ void PaLampa::begin() {
     lights.begin();
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
+	oled.begin();
+    oled.drawLogo();
+    oled.sendClear();
+    
     capButton.begin();    
     capButton.setThreshold({5.0f, 2.0f});
 
@@ -79,7 +85,7 @@ void PaLampa::begin() {
     weather.init(1000 * 60 * 15);
     weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
     weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
-  
+
     for(int i = 0; i < 3; ++i) {
         pinMode(PL::BUTTON_PIN[i], INPUT_PULLUP);
     }
