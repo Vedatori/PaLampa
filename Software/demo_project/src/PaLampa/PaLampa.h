@@ -12,7 +12,7 @@
 #include "WiFiCaptain.h"
 #include <piezo/piezo.h>
 #include <weather/weatherApi.h>
-#include "USB_C_power_module.h"
+#include "Power.h"
 #include "Time_module.h"
 #include "Oled_module.h"
 
@@ -36,7 +36,7 @@ const uint16_t communicationTimeout = 1000;
 const char WEATHER_API_KEY[] = "bde361c7c969906b9a9571a8f4a14c06";
 const uint32_t INTERNET_UPDATE_PERIOD = 1000 * 60 * 15; // [ms]
 const uint32_t SOFT_AP_DISABLE_TIMEOUT = 1000 * 60 * 5; // [ms]
-const float IDLE_CURRENT = 0.1; // [A]
+const float IDLE_CURRENT = 0.15; // [A]
 const float TEMP_LIMIT_BOTTOM = 60.0;  // [°C]
 const float TEMP_LIMIT_TOP = 75.0;  // [°C]
 

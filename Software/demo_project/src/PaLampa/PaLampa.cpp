@@ -20,7 +20,6 @@ void PL::refreshTaskQuick(void * parameter) {
 
 void PL::refreshTaskSlow(void * parameter) {
     for(;;) {
-        paLampa.power.update();
         paLampa.thermometer.update();
 
         float lightCurrentLimit = paLampa.power.getLimitA() - PL::IDLE_CURRENT;
@@ -69,12 +68,14 @@ void PL::refreshTaskSlow(void * parameter) {
 void PaLampa::begin() {
     beginCalled = true;
 
-    lights.begin();
-    lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
-
     oled.begin();
     oled.drawLogo();
     oled.sendClear();
+
+    power.begin();
+
+    lights.begin();
+    lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
     
     capButton.begin();    
     capButton.setThreshold({5.0f, 2.0f});
@@ -113,25 +114,17 @@ void PaLampa::printDiagnostics() {
     for(int i = 0; i <= 2; ++i) {
         printf("btn%d: %d ", i, buttonRead(i));
     }
-
     for(int i = 0; i < 2; i++){
-        printf("CapBtn%d: %d ", i, capButton.getPadPressed(i));
+        printf("capBtn%d: %d ", i, capButton.getPadPressed(i));
     }
-
     printf("pot: %.2f ", potentiometerRead());
-    
     printf(photoresistor.getText().c_str());
-
-    //printf("priority: %d ", uxTaskPriorityGet(NULL));
-
     printf(thermometer.getText().c_str());
-
-    printf("powerR: %.2f ", paLampa.lights.getCurrentLimitRatio());
-
     printf("time: %s ", timeModule.getClockText().c_str());
-
-    printf("weather: %s \n", paLampa.weather.getWeather().getWeatherString().c_str());
-
+    printf("weather: %s ", paLampa.weather.getWeather().getWeatherString().c_str());
+    printf("currMax: %.2f ", paLampa.power.getLimitA());
+    printf("currFrac: %.2f \n", paLampa.lights.getCurrentLimitRatio());
+    //printf("priority: %d ", uxTaskPriorityGet(NULL));
 }
 
 void handleWeatherConfig(){
