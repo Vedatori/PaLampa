@@ -8,6 +8,8 @@ class Oled_module
 private:
     Adafruit_SSD1306 display;
     int SCREEN_ADDRESS;
+    int SCREEN_WIDTH;
+    int SCREEN_HEIGHT;
 public:
 
     /// @brief Constructor
@@ -21,6 +23,7 @@ public:
     bool autoSend = true;
 
     bool dataChanged = false;
+    
     bool widgetMap[2][8];
     void widgetMapClear();
     bool widgetMapFindSpot(int& w, int& h, bool reserve = true);
@@ -42,9 +45,10 @@ public:
     Display is divided into 2 columns and 8 rows
     */
 
+    /// (WIP)
     /// @brief Displays a clock (11:40)
     /// @param size The size of text (1 - 4), 1 & 2 is single column, 3 & 4 is double column
-    void widgetClock(int16_t size, int column = -1, int row = -1);
+    void widgetText(String text ,int16_t size, int column = -1, int row = -1);
     
 
     

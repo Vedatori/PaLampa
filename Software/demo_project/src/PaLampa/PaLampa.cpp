@@ -60,6 +60,8 @@ void PaLampa::begin() {
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
 
     oled.begin();
+    oled.drawLogo();
+    oled.sendClear();
 
 	weather.init(1000 * 60 * 15);
 	weather.setKey(PL::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);

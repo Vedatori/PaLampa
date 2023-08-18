@@ -113,11 +113,13 @@ void Oled_module::widgetMapReserve(int c0, int c1, int r0, int r1) {
 }
 
 Oled_module::Oled_module(int SCREEN_WIDTH, int SCREEN_HEIGHT, int ADDRESS) {
-    display = Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT);
+    this->SCREEN_WIDTH = SCREEN_WIDTH;
+    this->SCREEN_HEIGHT = SCREEN_HEIGHT;
     SCREEN_ADDRESS = ADDRESS;
 }
 
 void Oled_module::begin() {
+    display = Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT);
     if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
         printf("Oled SSD1306 begin failed");
         abort();
@@ -142,7 +144,7 @@ void Oled_module::drawLogo() {
     display.drawBitmap(0, 0, oled_module::vedatoriBitmap128x64, 128, 64, WHITE);    
 }
 
-void Oled_module::widgetClock(int16_t size, int column, int row) {
+void Oled_module::widgetText(String text ,int16_t size, int column, int row) {
     if(size < 1 || size > 3) size = 1;
 
     int rowSize = size;
@@ -154,17 +156,19 @@ void Oled_module::widgetClock(int16_t size, int column, int row) {
         column = columnSize;
         row = rowSize;
         if(!widgetMapFindSpot(column, row)){
-            printf("widgetClock c%d r%d s%d NO SPACE", column, row, size);
+            printf("widgetText c%d r%d s%d NO SPACE\n", column, row, size);
         }
     }
 
     widgetMapReserve(column-1, column-2+columnSize, row-1, row-2+rowSize);
-    int textW = size*6*5;
+    int maxTextW = columnSize*64/(6*size);
+    if(text.length() > maxTextW) text = text.substring(0, maxTextW);
+    int textW = size*(text.length())*5;
     int spacing = (columnSize*64 - textW)/2;
     display.setCursor((column-1)*64 + spacing, (row-1)*8);
     display.setTextColor(WHITE);
     display.setTextSize(size);
-    display.print("11:40");
+    display.print(text);
     dataChanged = true;
 
 }
