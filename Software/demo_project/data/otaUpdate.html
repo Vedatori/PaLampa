@@ -1,0 +1,63 @@
+<!-- Only for testing purposes - backup version in diresctly in WiFiCaptain.cpp - handleOtaUpload() -->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="theme-color" content="#404040" />
+        <title>OTA Updater</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <p>
+                OTA (Over the air) update allows you to update the ESP32 firmware and file system without having to connect it to your computer via USB.
+                If you have trouble with uploading code from your PC, you might have to fix it trough the OTA update.
+                <br/>
+                To update the ESP32, you need to upload a <b>firmware.bin</b> file. You can download the latest firmware from the <a href="https://github.com/Vedatori/PaLampa/" target="_blank"></a> Releases page.
+                <br/>
+                Than continue with updating <b>spiffs.bin</b> file (file system). You can download the latest file system also from the GitHub repository.
+            </p>
+
+            <form method='POST' action='#' enctype='multipart/form-data' id='upload_form'>
+                <input type='file' name='update'>
+                <input type='submit' value='Update'>
+            </form>
+            <div id='prg'>progress: 0%</div>
+
+            <p><a href='/'><input type = 'button' value = 'Back to home page'/></a></p>
+        </div>
+        <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var form = document.getElementById('upload_form');
+        var data = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', '/update', true);
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                console.log('success!');
+                document.getElementById('prg').textContent = 'progress: done! (ESP32 has been successfully updated and will be rebooted)';
+            } else {
+                // Handle error
+                console.error('Error: ' + xhr.status);
+                document.getElementById('prg').textContent = 'progress: error!: ' + xhr.status;
+            }
+        };
+
+        xhr.upload.addEventListener('progress', function(evt) {
+            if (evt.lengthComputable) {
+                var per = evt.loaded / evt.total;
+                document.getElementById('prg').textContent = 'progress: ' + Math.round(per * 100) + '%';
+            }
+        });
+
+        xhr.send(data);
+    });
+</script>
+    </body>
+</html>

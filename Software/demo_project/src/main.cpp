@@ -26,7 +26,7 @@ void loop() {
         ColorRGB color = {potVal, 0, 0};
         paLampa.lights.setColorPanels(all, color);
     }
-    paLampa.printDiagnostics();
+    // paLampa.printDiagnostics();
 
     delay(500);
 }

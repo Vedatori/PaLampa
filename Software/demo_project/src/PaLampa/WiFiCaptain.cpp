@@ -93,9 +93,9 @@ void handleWifi() {
         F("</td></tr>"
         "<tr><td>IP address: ") +
         WiFi.softAPIP().toString() +
-        F("</td></tr><tr><td>State: ") + 
-        String(softApEnabled ? "enabled" : "disabled") + 
-        F("</td></tr></table>") + 
+        F("</td></tr><tr><td>State: ") +
+        String(softApEnabled ? "enabled" : "disabled") +
+        F("</td></tr></table>") +
         String(softApEnabled ? "" : "<a href='/softApEnable'><input type = 'button' value = 'Enable SoftAP'/></a><br>") +
         F("\r\n<br /><table><tr><th align='left'>External WiFi configuration</th></tr>"
         "<tr><td>SSID: ") +
@@ -103,8 +103,8 @@ void handleWifi() {
         F("</td></tr>"
         "<tr><td>IP address: ") +
         WiFi.localIP().toString() +
-        F("</td></tr><tr><td>State: ") + 
-        String((WiFi.status() == WL_CONNECTED) ? "connected" : "unconnected") + 
+        F("</td></tr><tr><td>State: ") +
+        String((WiFi.status() == WL_CONNECTED) ? "connected" : "unconnected") +
         F("</td></tr></table>"
         "<br>"
         "<form method='POST' action='wifisave'><b>Connect to external WiFi:</b><br>"
@@ -143,11 +143,139 @@ void handleWifiSave() {
     connectWifiAsClient(aCredentials);
 }
 
+void handleOtaUpload() {
+    if (SPIFFS.exists("/otaUpdate.html")) {
+        File f = SPIFFS.open("/otaUpdate.html", "r");
+        webserver.streamFile(f, "text/html");
+        f.close();
+    } else {
+        // Create raw string with html
+        String webPage = R"(
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="theme-color" content="#404040" />
+        <title>OTA Updater</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <p>
+                OTA (Over the air) update allows you to update the ESP32 firmware and file system without having to connect it to your computer via USB.
+                If you have trouble with uploading code from your PC, you might have to fix it trough the OTA update.
+                <br/>
+                To update the ESP32, you need to upload a <b>firmware.bin</b> file. You can download the latest firmware from the <a href="https://github.com/Vedatori/PaLampa/" target="_blank"></a> Releases page.
+                <br/>
+                Than continue with updating <b>spiffs.bin</b> file (file system). You can download the latest file system also from the GitHub repository.
+            </p>
+
+            <form method='POST' action='#' enctype='multipart/form-data' id='upload_form'>
+                <input type='file' name='update'>
+                <input type='submit' value='Update'>
+            </form>
+            <div id='prg'>progress: 0%</div>
+
+            <p><a href='/'><input type = 'button' value = 'Back to home page'/></a></p>
+        </div>
+        <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var form = document.getElementById('upload_form');
+        var data = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', '/update', true);
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                console.log('success!');
+                document.getElementById('prg').textContent = 'progress: done! (ESP32 has been successfully updated and will be rebooted)';
+            } else {
+                // Handle error
+                console.error('Error: ' + xhr.status);
+                document.getElementById('prg').textContent = 'progress: error!: ' + xhr.status;
+            }
+        };
+
+        xhr.upload.addEventListener('progress', function(evt) {
+            if (evt.lengthComputable) {
+                var per = evt.loaded / evt.total;
+                document.getElementById('prg').textContent = 'progress: ' + Math.round(per * 100) + '%';
+            }
+        });
+
+        xhr.send(data);
+    });
+</script>
+    </body>
+</html>
+)";
+        webserver.sendHeader("Connection", "close");
+        webserver.send(200, "text/html", webPage);
+    }
+}
+
+void handleOtaUploadProgress() {
+    webserver.sendHeader("Connection", "close");
+    webserver.send(200, "text/plain", (Update.hasError()) ? "FAIL" : "OK");
+    printf("OTA Update: %s\n", Update.hasError() ? "FAIL" : "OK");
+    delay(1000);
+    ESP.restart();
+}
+
+
+void handleOtaUpdate() {
+    HTTPUpload& upload = webserver.upload();
+
+    if (upload.status == UPLOAD_FILE_START) {
+        printf("Update: %s\n", upload.filename.c_str());
+
+        // Check if the uploaded file is for SPIFFS or firmware based on the file name or path.
+        if (upload.filename == "spiffs.bin") {
+            if (!SPIFFS.begin(true)) {
+                Serial.println("An Error has occurred while mounting SPIFFS");
+                return;
+            }
+
+            if (!Update.begin(UPDATE_SIZE_UNKNOWN, U_SPIFFS)) {
+                Update.printError(Serial);
+            }
+        } else {
+            if (!Update.begin(UPDATE_SIZE_UNKNOWN, U_FLASH)) { //start with max available size
+                Update.printError(Serial);
+            }
+        }
+
+    } else if (upload.status == UPLOAD_FILE_WRITE) {
+        /* flashing firmware to ESP or SPIFFS */
+        if (Update.write(upload.buf, upload.currentSize) != upload.currentSize) {
+            Update.printError(Serial);
+        }
+    } else if (upload.status == UPLOAD_FILE_END) {
+        if (Update.end(true)) { //true to set the size to the current progress
+            if (upload.filename == "spiffs.bin") {
+                printf("SPIFFS Update Success: %u\nRebooting...\n", upload.totalSize);
+            } else {
+                printf("OTA Update Success: %u\nRebooting...\n", upload.totalSize);
+            }
+        } else {
+            Update.printError(Serial);
+        }
+    }
+}
+
+
+
+
+
 void handleNotFound() {
     File f = SPIFFS.open("/notFound.html", "r");
     webserver.streamFile(f, "text/html");
     f.close();
-    
+
     lastConnectionType = (webserver.client().localIP() == WiFi.softAPIP());
 }
 
@@ -225,34 +353,38 @@ void handleClients(void * param) {
     }
 }
 
+
 void wifiCaptInit() {
     if(strlen(apCredentials.ssid) == 0) {
         sprintf(apCredentials.ssid, "PaLampa");
     }
     softApEnable();
-    
+
     if (!SPIFFS.begin()) {
         Serial.println("SPIFFS Mount failed");
     }
-    
+
     //webserver.serveStatic("/", SPIFFS, "/webApp.html");     // quicker than specific handleRoot() function initiating SPIFFS internally
     //webserver.serveStatic("/generate_204", SPIFFS, "/webApp.html");  //Android captive portal. Maybe not needed. Might be handled by notFound handler.
     //webserver.serveStatic("/fwlink", SPIFFS, "/webApp.html");  //Microsoft captive portal. Maybe not needed. Might be handled by notFound handler.
     webserver.on("/", handleRoot);
     webserver.on("/style.css", handleStyle);
     webserver.on("/generate_204", handleRedirectRoot);    //Android captive portal.
-    webserver.on("/fwlink", handleRedirectRoot);    //Microsoft captive portal. 
+    webserver.on("/fwlink", handleRedirectRoot);    //Microsoft captive portal.
     webserver.on("/wifi", handleWifi);
     webserver.on("/wifisave", handleWifiSave);
+    webserver.on("/ota", handleOtaUpload); // ota update form
+
+    webserver.on("/update", HTTP_POST, handleOtaUploadProgress, handleOtaUpdate);
     webserver.on("/softApEnable", handleSoftApEnable);
     webserver.on("/status", handleStatus);
     webserver.onNotFound(handleNotFound);
-    
+
     webserver.begin();
-    
+
     //xTaskCreate(handleClients, "handleClients", 1024 * 4 , (void*) 0, 1, NULL);
     xTaskCreatePinnedToCore(handleClients, "handleClients", 10000 , (void*) 0, 1, NULL, 1);
-    
+
     loadCredentials();
 
     if(strlen(stationCredentials.ssid) > 0) {
@@ -279,7 +411,7 @@ String ipToDisp() {
     else {
         return String("AP" + WiFi.softAPIP().toString());
     }
-    
+
 }
 
 // Callback: receiving any WebSocket message
@@ -302,7 +434,7 @@ void onWebSocketEvent(uint8_t client_num, WStype_t type, uint8_t * payload, size
             IPAddress ip = webSocket.remoteIP(client_num);
             Serial.printf("[%u] Connection from ", client_num);
             Serial.println(ip.toString());
-            
+
             if(!getLastConnectionType()) {
                 softApDisable();
             }

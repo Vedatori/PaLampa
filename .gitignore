@@ -33,3 +33,4 @@ fp-info-cache
 
 ### MacOS ###
 *.DS_Store
+.uploadfs_sha1

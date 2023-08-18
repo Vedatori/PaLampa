@@ -4,6 +4,7 @@
 #include "Arduino.h"
 #include "WebSocketsServer.h"   //https://github.com/Links2004/arduinoWebSockets
 #include <WebServer.h>
+#include <Update.h>
 
 struct credentials {
     char ssid[33] = "";
@@ -20,6 +21,9 @@ void redirect(String path);
 void handleSoftApEnable();
 void handleWifi();
 void handleWifiSave();
+void handleOtaUpload();
+void handleOtaUploadProgress();
+void handleOtaUpdate();
 void handleNotFound();
 void softApEnable();
 void softApDisable();
