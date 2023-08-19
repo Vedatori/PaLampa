@@ -3,8 +3,6 @@
 #include "Arduino.h"
 #include <vector>
 
-const int TOUCH_PIN[2] = {12, 14};
-
 class CapButton {
     std::vector<int> _pinIDs;
     std::vector<float> _threshold;

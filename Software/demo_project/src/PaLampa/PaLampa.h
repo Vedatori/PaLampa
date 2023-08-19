@@ -21,7 +21,7 @@ namespace PL {
 
 const int BUTTON_PIN[3] = {33, 25, 26};
 const int CAP_BUTTON_PIN[2] = {12, 14};
-const float CAP_BUTTON_THRESHOLD[2] = {5.0, 2.0};
+const float CAP_BUTTON_THRESHOLD[2] = {12.0, 10.0};
 const int POTENTIOMETER_PIN = 36;
 const int PHOTORESISTOR_TOP_PIN = 34;
 const int PHOTORESISTOR_BACK_PIN = 35;

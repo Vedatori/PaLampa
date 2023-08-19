@@ -2,7 +2,7 @@
 
 CapButton::CapButton(std::vector<int> pinIDs):
     _pinIDs(pinIDs),
-    _threshold(std::vector<float>(pinIDs.size(), 2.0f)) {}
+    _threshold(std::vector<float>(pinIDs.size(), 5.0f)) {}
 
 void CapButton::begin() {
     for(int i = 0; i < 2; ++i) {
@@ -32,7 +32,7 @@ void CapButton::setThreshold(std::vector<float> threshold) {
     assert(threshold.size() == _pinIDs.size());
     for(int i=0; i < threshold.size();i++){
         if(threshold[i] <= 0.0f){
-            _threshold[i] = 2.0f;
+            _threshold[i] = 5.0f;
         } else {
             _threshold[i] = threshold[i];
         }

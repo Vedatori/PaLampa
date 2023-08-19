@@ -78,7 +78,7 @@ void PaLampa::begin() {
     lights.setCurrentLimit(paLampa.power.getLimitA() - PL::IDLE_CURRENT);
     
     capButton.begin();    
-    capButton.setThreshold({5.0f, 2.0f});
+    capButton.setThreshold({PL::CAP_BUTTON_THRESHOLD[0], PL::CAP_BUTTON_THRESHOLD[1]});
 
     timeModule.begin();
 

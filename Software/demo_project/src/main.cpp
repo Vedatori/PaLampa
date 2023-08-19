@@ -1,6 +1,13 @@
 #include "PaLampa/PaLampa.h"
 #include "Arduino.h"
 
+bool prevCapBtnState = false;
+bool whiteOn = false;
+float whiteBrightness = 0.0;
+float whiteMix = 0.0;
+float colorRed, colorGreen, colorBlue;
+ColorRGB color = black;
+
 void setup() {
     paLampa.begin();
     paLampa.startWiFiCaptain("<your_name>");
@@ -17,17 +24,41 @@ void loop() {
     else if(paLampa.buttonRead(0) && paLampa.buttonRead(2)) {
         ESP.restart();
     }
+    else if(paLampa.buttonRead(1) && paLampa.buttonRead(2)) {
+        color.blue = potVal;
+    }
     else if (paLampa.buttonRead(0)) {
-        paLampa.lights.setWhite(0, potVal);
+        whiteMix = potVal;
     }
     else if(paLampa.buttonRead(1)) {
-        paLampa.lights.setWhite(1, potVal);
+        color.red = potVal;
     }
     else if(paLampa.buttonRead(2)) {
-        ColorRGB color = {potVal, 0, 0};
-        paLampa.lights.setColorPanels(all, color);
+        color.green = potVal;
     }
-    paLampa.printDiagnostics();
+    else {
+        whiteBrightness = potVal;
+    }
 
-    delay(500);
+    bool newCapBtnState = paLampa.capButton.getPadPressed(0);
+    if(newCapBtnState != prevCapBtnState) {
+        prevCapBtnState = newCapBtnState;
+        if(newCapBtnState) {
+            whiteOn = !whiteOn;
+        }
+    }
+    if(whiteOn == false) {
+        whiteBrightness = 0.0;
+    }
+
+    paLampa.lights.setWhiteMix(whiteBrightness, whiteMix);
+    paLampa.lights.setColorPanels(all, color);
+
+    static uint prevDiagTime = 0;
+    if(millis() > prevDiagTime + 1000) {
+        prevDiagTime = millis();
+        paLampa.printDiagnostics();
+    }
+
+    delay(100);
 }
