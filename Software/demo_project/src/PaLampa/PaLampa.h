@@ -21,7 +21,7 @@ namespace PL {
 
 const int BUTTON_PIN[3] = {33, 25, 26};
 const int CAP_BUTTON_PIN[2] = {12, 14};
-const float CAP_BUTTON_THRESHOLD[2] = {12.0, 10.0};
+const float CAP_BUTTON_THRESHOLD[2] = {8.0, 3.0};
 const int POTENTIOMETER_PIN = 36;
 const int PHOTORESISTOR_TOP_PIN = 34;
 const int PHOTORESISTOR_BACK_PIN = 35;
@@ -34,11 +34,11 @@ const char STORAGE_NAMESPACE[] = "PaLampa";
 const uint16_t communicationTimeout = 1000;
 
 const char WEATHER_API_KEY[] = "bde361c7c969906b9a9571a8f4a14c06";
-const uint32_t INTERNET_UPDATE_PERIOD = 1000 * 60 * 15; // [ms]
-const uint32_t SOFT_AP_DISABLE_TIMEOUT = 1000 * 60 * 5; // [ms]
-const float IDLE_CURRENT = 0.15; // [A]
+const uint32_t INTERNET_UPDATE_PERIOD = 1000 * 60 * 15;  // [ms]
+const uint32_t SOFT_AP_DISABLE_TIMEOUT = 1000 * 60 * 5;  // [ms]
+const float IDLE_CURRENT = 0.15;       // [A]
 const float TEMP_LIMIT_BOTTOM = 60.0;  // [°C]
-const float TEMP_LIMIT_TOP = 75.0;  // [°C]
+const float TEMP_LIMIT_TOP = 75.0;     // [°C]
 
 void refreshTaskQuick(void * param);
 void refreshTaskSlow(void * param);
@@ -54,7 +54,7 @@ class PaLampa {
     bool wifiCaptStarted = false;
 
 public:
-    CapButton capButton{{PL::CAP_BUTTON_PIN[0], PL::CAP_BUTTON_PIN[1]}};  //  {PL::CAP_BUTTON_THRESHOLD[0], PL::CAP_BUTTON_THRESHOLD[1]}
+    CapButton capButton{{PL::CAP_BUTTON_PIN[0], PL::CAP_BUTTON_PIN[1]}};
     Photoresistor photoresistor{{PL::PHOTORESISTOR_TOP_PIN, PL::PHOTORESISTOR_BACK_PIN}};
     Thermometer thermometer{{PL::THERMOMETER_BOTTOM_PIN, PL::THERMOMETER_TOP_PIN}};
     Lights lights{};

@@ -114,9 +114,7 @@ void PaLampa::printDiagnostics() {
     for(int i = 0; i <= 2; ++i) {
         printf("btn%d: %d ", i, buttonRead(i));
     }
-    for(int i = 0; i < 2; i++){
-        printf("capBtn%d: %d ", i, capButton.getPadPressed(i));
-    }
+    printf(capButton.getText().c_str());
     printf("pot: %.2f ", potentiometerRead());
     printf(photoresistor.getText().c_str());
     printf(thermometer.getText().c_str());

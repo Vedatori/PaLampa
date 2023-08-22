@@ -40,7 +40,7 @@ void loop() {
         whiteBrightness = potVal;
     }
 
-    bool newCapBtnState = paLampa.capButton.getPadPressed(0);
+    bool newCapBtnState = paLampa.capButton.get(0);
     if(newCapBtnState != prevCapBtnState) {
         prevCapBtnState = newCapBtnState;
         if(newCapBtnState) {

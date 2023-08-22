@@ -4,21 +4,24 @@
 #include <vector>
 
 class CapButton {
-    std::vector<int> _pinIDs;
-    std::vector<float> _threshold;
+    const float _defaultThresholdOffset = 5.0;
+    const float _coefIIR = 0.01;
 
-    uint16_t rawData[2][2]; //Pin, last[1]/current[0] button state
-    float rawDataIIR[2];
-    bool digitalData[2];
-    float coefIIR = 0.01;
+    const std::vector<int> _pinIDs;
+    std::vector<float> _thresholdOffset;
+    std::vector<uint16_t> _raw;
+    std::vector<uint16_t> _rawPrev;
+    std::vector<float> _rawReference;
+    std::vector<bool> _data;
+
 public:
-    CapButton(std::vector<int> pinIDs);  // std::vector<float> threshold
+    CapButton(const std::vector<int> pinIDs);
     void begin();
     void update();
+    void setThreshold(int buttonID, float threshold);
     void setThreshold(std::vector<float> threshold);
-    uint16_t getPadRaw(int padID);
-    float getPadRawIIR(int padID);
-    bool getPadPressed(int padID);
-    bool getPressed(int buttonID);
-    int getPressedIndex();
+    uint16_t getRaw(int buttonID) const;
+    float getRawReference(int buttonID) const;
+    bool get(int buttonID) const;
+    String getText() const;
 };

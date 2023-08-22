@@ -1,64 +1,86 @@
 #include "CapacitiveButton.h"
 
-CapButton::CapButton(std::vector<int> pinIDs):
+CapButton::CapButton(const std::vector<int> pinIDs):
     _pinIDs(pinIDs),
-    _threshold(std::vector<float>(pinIDs.size(), 5.0f)) {}
+    _thresholdOffset(std::vector<float>(pinIDs.size(), _defaultThresholdOffset)),
+    _raw(std::vector<uint16_t>(pinIDs.size(), 0)),
+    _rawPrev(std::vector<uint16_t>(pinIDs.size(), 0)),
+    _rawReference(std::vector<float>(pinIDs.size(), 0.0)),
+    _data(std::vector<bool>(pinIDs.size(), 0)) {}
 
 void CapButton::begin() {
-    for(int i = 0; i < 2; ++i) {
-        rawData[i][0] = touchRead(_pinIDs[i]);
-        rawData[i][1] = rawData[i][0];
-        rawDataIIR[i] = float(getPadRaw(i));
-        digitalData[i] = 0;
+    for(int index = 0; index < _pinIDs.size(); ++index) {
+        _rawPrev[index] = touchRead(_pinIDs[index]);
+        _raw[index] = _rawPrev[index];
+        _rawReference[index] = float(getRaw(index));
+        _data[index] = 0;
     }
 }
 
 void CapButton::update() {
-    for(int i = 0; i < 2; ++i) {
-        rawData[i][1] = rawData[i][0];
-        rawData[i][0] = touchRead(_pinIDs[i]);
+    for(int index = 0; index < _pinIDs.size(); ++index) {
+        _rawPrev[index] = _raw[index];
+        _raw[index] = touchRead(_pinIDs[index]);
 
-        uint8_t rawFiltered = getPadRaw(i);
+        uint16_t rawFiltered = getRaw(index);
 
-        digitalData[i] = rawFiltered < (rawDataIIR[i] - _threshold[i]);
+        _data[index] = rawFiltered < (_rawReference[index] - _thresholdOffset[index]);
 
-        if(digitalData[i] == false) {
-            rawDataIIR[i] = coefIIR*rawFiltered + (1.0 - coefIIR)*rawDataIIR[i];
+        if(!_data[index]) {
+            _rawReference[index] = _coefIIR * rawFiltered + (1.0 - _coefIIR) * _rawReference[index];
         }
     }
+}
+
+void CapButton::setThreshold(int buttonID, float thresholdOffset) {
+    if(buttonID < 0 || buttonID >= _pinIDs.size()) {
+        printf("Invalid capacitive button ID: %d\n", buttonID);
+        return;
+    }
+    if(thresholdOffset < 0.0){
+        printf("Invalid capacitive button threshold offset: %.2f\n", thresholdOffset);
+        return;
+    }
+    _thresholdOffset[buttonID] = thresholdOffset;
 }
 
 void CapButton::setThreshold(std::vector<float> threshold) {
     assert(threshold.size() == _pinIDs.size());
-    for(int i=0; i < threshold.size();i++){
-        if(threshold[i] <= 0.0f){
-            _threshold[i] = 5.0f;
-        } else {
-            _threshold[i] = threshold[i];
-        }
+    for(int index = 0; index < _pinIDs.size(); ++index) {
+        setThreshold(index, _thresholdOffset[index]);
     }
 }
 
-uint16_t CapButton::getPadRaw(int padID) {
-    if(padID < 0 || padID > 1) {
-        printf("Invalid pad ID: %d\n", padID);
+uint16_t CapButton::getRaw(int buttonID) const {
+    if(buttonID < 0 || buttonID >= _pinIDs.size()) {
+        printf("Invalid capacitive button ID: %d\n", buttonID);
         return 0;
     }
-    return max(rawData[padID][0], rawData[padID][1]);;
+    return max(_raw[buttonID], _rawPrev[buttonID]);;
 }
 
-float CapButton::getPadRawIIR(int padID) {
-    if(padID < 0 || padID > 1) {
-        printf("Invalid pad ID: %d\n", padID);
+float CapButton::getRawReference(int buttonID) const {
+    if(buttonID < 0 || buttonID >= _pinIDs.size()) {
+        printf("Invalid capacitive button ID: %d\n", buttonID);
         return 0;
     }
-    return rawDataIIR[padID];
+    return _rawReference[buttonID];
 }
 
-bool CapButton::getPadPressed(int padID) {
-    if(padID < 0 || padID > 1) {
-        printf("Invalid pad ID: %d\n", padID);
-        return 0;
+bool CapButton::get(int buttonID) const {
+    if(buttonID < 0 || buttonID >= _pinIDs.size()) {
+        printf("Invalid capacitive button ID: %d\n", buttonID);
+        return false;
     }
-    return digitalData[padID];
+    return _data[buttonID];
+}
+
+String CapButton::getText() const {
+    String out;
+    char buffer[16];
+    for (int index = 0; index < _pinIDs.size(); ++index) {
+        sprintf(buffer, "capBtn%d: %d ", index, _data[index]);
+        out = out + String(buffer);
+    }
+    return out;
 }
