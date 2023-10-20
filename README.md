@@ -1,8 +1,7 @@
 # PaLampa [cz]
-PaLampa je chytrá stolní lampička navržená jako výrobek na Letní robotický tábor 2023 organizovaný spolkem [Vědátoři](vedatori.cz). 
-Jedná se o výrobek speciálně vyvinutý tak, aby si na něm člověk mohl zlepšit dovednosti při nechanické stavbě, pájení a programování. 
+PaLampa je chytrá stolní lampička navržená jako výrobek na Letní robotický tábor 2023 organizovaný spolkem [Vědátoři](www.vedatori.cz). 
+Jedná se o výrobek speciálně vyvinutý tak, aby si na něm člověk mohl zlepšit dovednosti při mechanické stavbě, pájení a programování. 
 Účastníci dostali tento výrobek jako stavebnici, kdy pájeli nestandardní součástky na DPS s předem osazenými SMD součástkami a z předem připravených dílů sestavili mechanickou část. 
-Po finalizaci je možné výrobek programovat programování účastníků díky možnostem, které poskytují vsupní a výstupní periferie. 
 Po finalizaci je možné výrobek programovat a díky množství vstupních a výstupních periferií si naprogramované funkcionality přehledně demonstrovat. 
 Nakonec je výrobek možné použít jako chytrou a praktickou stolní lampičku. 
 
@@ -33,6 +32,20 @@ Při stavbě hodin Time-O-Mat postupujte podle připravených návodů v násled
 1. [Návod pro programování](https://github.com/Vedatori/PaLampa/blob/main/Manuals/PaLampa_programming_cz.md)
 1. [Lekce na programování](https://github.com/Vedatori/PaLampa/blob/main/Manuals/PaLampa_lectures_achievements.md)
 
+# PaLampa [en]
+PaLampa is a smart desk lamp designed as a product for the Summer Robotics Camp 2023 organized by the association Vědátoři. It is a product specially developed to help individuals improve their skills in mechanical construction, soldering, and programming. Participants received this product as a kit, where they soldered non-standard components onto a PCB with pre-mounted SMD components and assembled the mechanical part from pre-prepared pieces. After completion, the product can be programmed, and the programmed functionalities can be easily demonstrated thanks to the variety of input and output peripherals. In the end, the product can be used as a smart and practical desk lamp.
+
+The mechanical part can be divided into two main components - the bottom box and the upper lamp. The outer parts of the box are laser-cut from plywood and include locking mechanisms. These are glued together with dispersion adhesive during construction, forming a sturdy foundation for the placement of other components.
+The core component of the upper lamp is 3D-printed, and the light diffuser is cut from frosted plexiglass. The connection between the box and the lamp is ensured by a 3D-printed beam located inside the box, which also secures the printed circuit boards (PCBs).
+The connection between the box and the lamp is facilitated by a plywood beam connected through flexible joints, with the lower joint having several locking positions.
+
+The main PCB (Printed Circuit Board) primarily features the ESP32 microcontroller, which is soldered onto it. Programming and power supply are provided through USB-C. The main PCB also includes buttons, touch buttons, a potentiometer, photoresistors, a temperature sensor, an OLED graphic display, and a buzzer.
+In the lamp, there is a PCB embedded with warm and cool white LEDs, as well as a series of addressable RGB LEDs. Additional LEDs of this kind are positioned at the rear on the beam, providing ambient lighting for the area behind the product. The product is modular, and the individual PCBs are connected via connectors, while remote peripherals are linked using cables.
+
+All peripherals were selected to create a product with many optional side functionalities. Thanks to these features, participants in the camp can develop their ability to algorithmize tasks and program. A software library was developed for the lessons, significantly simplifying the interaction with peripherals. Using this library, a sample software was created that allows the product to be used in its basic configuration.
+The product can be controlled through input peripherals or via Wi-Fi using a computer or smartphone connecting to an internally hosted web page. All of these features can be customized, and new functionalities can be added as per the user's desires. The device is programmed in Visual Studio Code using the C++ language and the esp32-arduino framework.
+
+The idea behind this project is for the product to serve as an everyday useful addition to a room, but with software that can be easily modified and expanded as envisioned by each owner.
 
 ## Licence
 * Obsah tohoto repozitáře mimo složku *Software* je sdílen pod licencí [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
