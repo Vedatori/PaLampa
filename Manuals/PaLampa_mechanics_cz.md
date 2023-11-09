@@ -21,7 +21,11 @@ ___
 * [Slepení krabičky](#krabice)
 * [Sestavení části s hexagony](#CastSHexagony)
 * [Sestavení podstavy](#spodek)
-* [Sestavení kloubů](#klouby)
+* [Sestavení spodního kloubu](#spodniKloub)
+* [Sestavení horního dílu](#horniDil)
+* [Sestavení horního kloubu](#horniKloub)
+* [Finalizace](#finalizace)
+* [Příloha: Seznam spojovacího materiálu](#spojovaciMaterial)
 ___
 
 <!-- _________________________________________________________________ -->
@@ -383,11 +387,11 @@ Nechte lak dostatečně zaschnout.
 * Sestava krku
 * Menší 3D tištěný kruhový kryt fotorezistoru
 * Větší 3D tištěná plocha kapacitního tlačítka
-* Matky
-* 1x Šroub M3x8 
+* 1x šroub M3x8 
 * 2x šroub M3x12
 * 2x šroub M3x16
 * 4x šroub M3x30
+* 9x matice M3
 * 4x podložka M3
 * 4x gumová nožička
 * Lepidlo Pattex
@@ -407,7 +411,7 @@ Výsledný díl bude vypadat takto:
 
 ![alt](SupportFiles/IMG_5028.jpeg)
 
-**Důležité: **
+**Důležité:**
 Dalším krokem je vsazení matek do části spodního kloubu se širokou podstavou. Na tento krok nezapomeňte, protože to jinak se to bude muset celé rozmontovat :-)
 
 Na bok matky naneste malé množství lepidla a vsuňte ji do prostředního otvoru.
@@ -505,20 +509,20 @@ Spodní díl krabičky zatím nešroubujte k kornímu dílu, pouze jej přitlač
 Tímto je spodek lampy sestavený. 
 
 <!-- _________________________________________________________________ -->
-# <a name = klouby>Sestavení kloubů</a>
+# <a name = spodniKloub>Sestavení spodního kloubu</a>
 
 ## Potřebujeme:
-* 4 tištěné díly kloubů
-* 2 šrouby M3x25
-* 2 samojistné matky (s gumovým kroužkem uvnitř)
-* 4 šrouby M3x12 se zápustnou hlavou 
-* 4 matky M3
-* 3 gumové O-kroužky
+* 2 tištěné díly spodního kloubu (jeden se zoubky a protikus)
+* 1 šroub M3x25
+* 1 samojistná matka (s gumovým kroužkem uvnitř)
+* 2 šrouby M3x12 se zápustnou hlavou 
+* 2 matky M3
+* 1 gumový O-kroužek
 
 ## Postup: 
-Nejprve vytvořte z dílů kloubů správné dvojice - spodní kloub je z jedné strany tvořen zoubky. K němu najděte protikus, jehož zámečky do něj zapadají. Zbylé dva díly kloubů patří k sobě. 
+Nejprve zkontrolujte, že máte vybrány správné tištěné díly - spodní kloub je z jedné strany tvořen zoubky. K němu najděte protikus, jehož zámečky do něj zapadají. 
 
-Nejprve sestavíme spodní kloub lampy. Díly kloubu nyní rozložte. Na díl s kruhovou drážkou nasaďte jeden z O-kroužků podle obrázku. 
+Na díl s kruhovou drážkou nasaďte jeden z O-kroužků podle obrázku. 
 
 ![alt](SupportFiles/IMG_5085.jpeg)
 
@@ -553,7 +557,7 @@ Ty teď z druhé strany je zašroubuj dvěma šrouby M3x12.
 
 
 <!-- _________________________________________________________________ -->
-# <a name = klouby>Sestavení kloubů</a>
+# <a name = horniDil>Sestavení horního dílu</a>
 
 ## Potřebujeme:
 * PCB s LEDkami
@@ -648,7 +652,16 @@ Celý díl sešroubujte čtyřmi šrouby M3x20:
 
 ![alt](SupportFiles/IMG_5147.jpeg)
 
-Nyní zbývá sestavit horní kloub lampy.
+<!-- _________________________________________________________________ -->
+# <a name = horniKloub>Sestavení horního kloubu</a>
+
+## Potřebujeme:
+* 2 tištěné díly horního kloubu (zbylé)
+* 1 šroub M3x25
+* 1 samojistná matka (s gumovým kroužkem uvnitř)
+* 2 šrouby M3x12 se zápustnou hlavou 
+* 2 matky M3
+* 2 gumové O-kroužky
 
 Připravte si zbylé díly horního kloubu a dva O-kroužky. Jeden z nich vložte mezi výstup z vršku lampy a boční díl kloubu. 
 
@@ -672,6 +685,9 @@ Do šestiúhelníkových otvorů ze spodní strany krku vložte zbylé dvě matk
 
 V případě potřeby dotáhněte / povolte šrouby v kloubech.
 
+<!-- _________________________________________________________________ -->
+# <a name = finalizace>Finalizace</a>
+
 Natočte potenciometr úplně doleva (na minimum). Přiložte krytku potenciometru tak, aby její značka byla vlevo dole.
 
 ![alt](SupportFiles/IMG_5745.jpeg)
@@ -682,8 +698,18 @@ Nasaďte takto natočenou krytku na potenciometr a zatlačte tak, aby se na něj
 
 Gratulujeme - tímto je mechanická stavba hotová :-).
 
-
-
-
-
 <!-- _________________________________________________________________ -->
+# <a name = spojovaciMaterial>Příloha: Seznam spojovacího materiálu</a>
+
+1. Šroub M3x30 s kulatou hlavou: 4
+1. Šroub M3x25 s kulatou hlavou: 2
+1. Šroub M3x20 se zápustnou hlavou: 4
+1. Šroub M3x16 s kulatou hlavou: 2
+1. Šroub M3x12 s kulatou hlavou: 2
+1. Šroub M3x12 se zápustnou hlavou: 8
+1. Šroub M3x8 s kulatou hlavou: 1
+1. Matice M3: 23
+1. Samojistná matice M3: 2
+1. Podložka M3: 4
+
+![alt](SupportFiles/IMG_6343.jpeg)
