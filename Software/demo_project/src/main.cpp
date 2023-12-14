@@ -58,6 +58,13 @@ void loop() {
     if(millis() > prevDiagTime + 1000) {
         prevDiagTime = millis();
         paLampa.printDiagnostics();
+
+        paLampa.oled.getDisplay().clearDisplay();
+        paLampa.oled.getDisplay().setTextSize(4);
+        paLampa.oled.getDisplay().setTextColor(WHITE);
+        paLampa.oled.getDisplay().setCursor(6, 0);
+        paLampa.oled.getDisplay().println(paLampa.timeModule.getClockText());
+        paLampa.oled.getDisplay().display();
     }
 
     delay(100);

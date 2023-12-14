@@ -19,13 +19,13 @@ ___
 * [Příprava překližkových dílů](#preklizka)
 * [Sestavení krku](#krk)
 * [Slepení krabičky](#krabice)
-* [Sestavení části s hexagony](#CastSHexagony)
+* [Sestavení části s hexagony](#hexagony)
 * [Sestavení podstavy](#spodek)
-* [Sestavení spodního kloubu](#spodniKloub)
-* [Sestavení horního dílu](#horniDil)
-* [Sestavení horního kloubu](#horniKloub)
+* [Sestavení spodního kloubu](#spodnikloub)
+* [Sestavení horního dílu](#hornidil)
+* [Sestavení horního kloubu](#hornikloub)
 * [Finalizace](#finalizace)
-* [Příloha: Seznam spojovacího materiálu](#spojovaciMaterial)
+* [Příloha: Seznam spojovacího materiálu](#spojovacimaterial)
 ___
 
 <!-- _________________________________________________________________ -->
@@ -287,7 +287,7 @@ Zkuste do otvoru vsadit tištěný díl s pantem podle obrázku:
 Pokud je možné bez problémů díl vsunout do krabičky, můžete pokračovat k dalšímu kroku.
 
 <!-- _________________________________________________________________ -->
-# <a name = CastSHexagony>Sestavení části s hexagony</a>
+# <a name = hexagony>Sestavení části s hexagony</a>
 
 ## Potřebujeme:
 * Překližka s šestiúhleníkovými výřezy
@@ -509,7 +509,7 @@ Spodní díl krabičky zatím nešroubujte k kornímu dílu, pouze jej přitlač
 Tímto je spodek lampy sestavený. 
 
 <!-- _________________________________________________________________ -->
-# <a name = spodniKloub>Sestavení spodního kloubu</a>
+# <a name = spodnikloub>Sestavení spodního kloubu</a>
 
 ## Potřebujeme:
 * 2 tištěné díly spodního kloubu (jeden se zoubky a protikus)
@@ -519,8 +519,9 @@ Tímto je spodek lampy sestavený.
 * 2 matky M3
 * 1 gumový O-kroužek
 
-## Postup: 
-Nejprve zkontrolujte, že máte vybrány správné tištěné díly - spodní kloub je z jedné strany tvořen zoubky. K němu najděte protikus, jehož zámečky do něj zapadají. 
+## Postup:
+Vyšroubujte 2 šrouby M3x12 ze spodní části krku. Šrouby vyjměte i s matkami a následně vyjmětě plastové díly z krku.
+Zkontrolujte, že máte správné plastové díly - spodní kloub je z jedné strany tvořen zoubky. K němu najděte protikus, jehož zámečky do něj zapadají. Pokud nemáte správné, vyměňte je s díly z horní části krku.
 
 Na díl s kruhovou drážkou nasaďte jeden z O-kroužků podle obrázku. 
 
@@ -546,18 +547,18 @@ Slepený díl krku nyní nasuň na plastový kloub, který jsme právě vytvoři
 
 ![alt](SupportFiles/IMG_5095.jpeg)
 
-Do šestiúhleníkových otvorů ve dřevě nyní vlož matičky (obyčejné) 
+Do šestiúhleníkových otvorů ve dřevě nyní vlož 2 obyčejné matky M3, které jsme dříve vyjmuli. 
 
 ![alt](SupportFiles/IMG_5097.jpeg)
 
-Ty teď z druhé strany je zašroubuj dvěma šrouby M3x12. 
+Ty teď z druhé strany je zašroubuj dvěma šrouby M3x12, které jsme dříve vyjmuli.
 
 ![alt](SupportFiles/IMG_5099.jpeg)
 
 
 
 <!-- _________________________________________________________________ -->
-# <a name = horniDil>Sestavení horního dílu</a>
+# <a name = hornidil>Sestavení horního dílu</a>
 
 ## Potřebujeme:
 * PCB s LEDkami
@@ -653,21 +654,21 @@ Celý díl sešroubujte čtyřmi šrouby M3x20:
 ![alt](SupportFiles/IMG_5147.jpeg)
 
 <!-- _________________________________________________________________ -->
-# <a name = horniKloub>Sestavení horního kloubu</a>
+# <a name = hornikloub>Sestavení horního kloubu</a>
 
 ## Potřebujeme:
 * 2 tištěné díly horního kloubu (zbylé)
 * 1 šroub M3x25
 * 1 samojistná matka (s gumovým kroužkem uvnitř)
-* 2 šrouby M3x12 se zápustnou hlavou 
-* 2 matky M3
 * 2 gumové O-kroužky
 
-Připravte si zbylé díly horního kloubu a dva O-kroužky. Jeden z nich vložte mezi výstup z vršku lampy a boční díl kloubu. 
+Vyšroubujte 2 šrouby M3x12 z horní části krku. Šrouby vyjměte i s matkami a následně vyjmětě plastové díly z krku.
+
+Vložte jeden O-kroužek mezi výstup z vršku lampy a boční díl kloubu. 
 
 ![alt](SupportFiles/IMG_5151.jpeg)
 
-Stejným způsobem zopakujte na druhé straně a otáčením jedním z bočních dílků zacvakněte zámečky do sebe.
+Stejným způsobem vložte druhý O-kroužek na druhé straně a otáčením jedním z bočních dílků zacvakněte zámečky do sebe.
 
 ![alt](SupportFiles/IMG_5154.jpeg)
 
@@ -681,7 +682,7 @@ Stejně jako při stavbě spodního kloubu, vsuňte plastový díl do drážky v
 
 ![alt](SupportFiles/IMG_5162.jpeg)
 
-Do šestiúhelníkových otvorů ze spodní strany krku vložte zbylé dvě matky M3 a z druhé strany je přišroubujte šrouby M3x12 se zápustnou hlavou, stejně jako na spodní straně krku. 
+Do šestiúhelníkových otvorů ze spodní strany krku vložte dvě dříve vyjmuté matky M3 a z druhé strany je přišroubujte dříve vyjmutými šrouby M3x12 se zápustnou hlavou, stejně jako na spodní straně krku.
 
 V případě potřeby dotáhněte / povolte šrouby v kloubech.
 
@@ -699,7 +700,7 @@ Nasaďte takto natočenou krytku na potenciometr a zatlačte tak, aby se na něj
 Gratulujeme - tímto je mechanická stavba hotová :-).
 
 <!-- _________________________________________________________________ -->
-# <a name = spojovaciMaterial>Příloha: Seznam spojovacího materiálu</a>
+# <a name = spojovacimaterial>Příloha: Seznam spojovacího materiálu</a>
 
 1. Šroub M3x30 s kulatou hlavou: 4
 1. Šroub M3x25 s kulatou hlavou: 2
@@ -708,7 +709,7 @@ Gratulujeme - tímto je mechanická stavba hotová :-).
 1. Šroub M3x12 s kulatou hlavou: 2
 1. Šroub M3x12 se zápustnou hlavou: 8
 1. Šroub M3x8 s kulatou hlavou: 1
-1. Matice M3: 23
+1. Matice M3: 21
 1. Samojistná matice M3: 2
 1. Podložka M3: 4
 
