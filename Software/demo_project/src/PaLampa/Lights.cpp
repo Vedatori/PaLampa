@@ -375,11 +375,28 @@ void Lights::setWhite(int ledID, float brightness) {
     _ledWhiteState[ledID].targetBrightness = brightness;
 }
 
-void Lights::setWhiteMix(float brightness, float mix){
+void Lights::setWhiteMix(float brightness, float mix, bool preserveBrightness) {
     brightness = constrain(brightness, 0, 1);
     mix = constrain(mix, 0, 1);
-    setWhite(0, (1 - mix) * brightness);
-    setWhite(1, mix * brightness);
+
+    float brightnessWarm{}, brightnessCold{};
+    if(preserveBrightness) {
+        brightnessWarm = (1 - mix) * brightness;
+        brightnessCold = mix * brightness;
+    }
+    else {
+        if(mix < 0.5) {
+            brightnessWarm = brightness;
+            brightnessCold = mix / 0.5 * brightness;
+        }
+        else {
+            brightnessWarm = (1 - mix) / 0.5 * brightness;
+            brightnessCold = brightness;
+        }
+    }
+    
+    setWhite(0, brightnessWarm);
+    setWhite(1, brightnessCold);
 }
 
 void Lights::setWhiteTemp(float brightness, float temperature) {

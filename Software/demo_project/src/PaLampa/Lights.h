@@ -108,7 +108,7 @@ public:
     float getCurrentLimitRatio();
 
     void setWhite(int ledID, float brightness);
-    void setWhiteMix(float brightness, float mix);
+    void setWhiteMix(float brightness, float mix, bool preserveBrightness = true);
     void setWhiteTemp(float brightness, float temperature);
 
 
